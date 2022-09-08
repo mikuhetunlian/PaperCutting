@@ -1,0 +1,42 @@
+{
+"skeleton": {
+	"hash": "+2r7Yu+GsT24RNocAKKQ9Dzol7E",
+	"spine": "3.8",
+	"x": -153.5,
+	"y": -116,
+	"width": 242,
+	"height": 274,
+	"images": "../../PSD/images/",
+	"audio": ""
+},
+"bones": [
+	{ "name": "root" },
+	{ "name": "bone", "parent": "root", "length": 93.37, "rotation": 74.48, "x": 15.83, "y": 3.57 }
+],
+"slots": [
+	{ "name": "杂草2", "bone": "bone", "attachment": "杂草2" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"杂草2": {
+				"杂草2": { "x": 3.86, "y": 51.23, "rotation": -74.48, "width": 242, "height": 274 }
+			}
+		}
+	}
+],
+"animations": {
+	"UI_Weed2": {
+		"bones": {
+			"bone": {
+				"rotate": [
+					{ "curve": 0.25, "c3": 0.75 },
+					{ "time": 1, "angle": -3.61, "curve": 0.25, "c3": 0.75 },
+					{ "time": 1.9667 }
+				]
+			}
+		}
+	}
+}
+}

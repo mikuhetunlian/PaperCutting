@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1b3b4b945939a54ea0b23d3396115fb, type: 3}
+  m_Name: skeleton_SkeletonData
+  m_EditorClassIdentifier: 
+  atlasAssets:
+  - {fileID: 11400000, guid: 740173d428fa66c4d8b226952dacf45d, type: 2}
+  scale: 0.01
+  skeletonJSON: {fileID: 4900000, guid: 6a7c2d2320ee2b84993aa48b094e296a, type: 3}
+  isUpgradingBlendModeMaterials: 0
+  blendModeMaterials:
+    requiresBlendModeMaterials: 0
+    applyAdditiveMaterial: 1
+    additiveMaterials: []
+    multiplyMaterials: []
+    screenMaterials: []
+  skeletonDataModifiers: []
+  fromAnimation: []
+  toAnimation: []
+  duration: []
+  defaultMix: 0.2
+  controller: {fileID: 9100000, guid: 0ca9607528846cf448f99212b7b801e1, type: 2}

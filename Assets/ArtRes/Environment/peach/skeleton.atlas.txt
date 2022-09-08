@@ -1,0 +1,41 @@
+
+skeleton.png
+size: 2048,2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+树干
+  rotate: 270
+  xy: 331, 908
+  size: 609, 723
+  orig: 942, 723
+  offset: 0, 0
+  index: -1
+树干2
+  rotate: false
+  xy: 0, 1264
+  size: 1777, 514
+  orig: 1779, 518
+  offset: 0, 0
+  index: -1
+深粉花
+  rotate: false
+  xy: 0, 1143
+  size: 146, 152
+  orig: 146, 153
+  offset: 0, 0
+  index: -1
+白花
+  rotate: false
+  xy: 0, 1297
+  size: 229, 264
+  orig: 229, 264
+  offset: 0, 0
+  index: -1
+粉花
+  rotate: false
+  xy: 0, 1592
+  size: 84, 77
+  orig: 85, 77
+  offset: 1, 0
+  index: -1

@@ -1,0 +1,146 @@
+
+skeleton.png
+size: 2048,2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+前上臂1
+  rotate: false
+  xy: 313, 448
+  size: 21, 114
+  orig: 21, 114
+  offset: 0, 0
+  index: -1
+前上臂2
+  rotate: false
+  xy: 831, 1103
+  size: 29, 115
+  orig: 29, 115
+  offset: 0, 0
+  index: -1
+前大腿
+  rotate: false
+  xy: 353, 517
+  size: 25, 168
+  orig: 25, 168
+  offset: 0, 0
+  index: -1
+前小腿
+  rotate: false
+  xy: 380, 535
+  size: 22, 150
+  orig: 22, 150
+  offset: 0, 0
+  index: -1
+前手掌
+  rotate: false
+  xy: 831, 1387
+  size: 36, 26
+  orig: 36, 26
+  offset: 0, 0
+  index: -1
+前脚掌
+  rotate: false
+  xy: 336, 468
+  size: 19, 47
+  orig: 19, 48
+  offset: 0, 1
+  index: -1
+后上臂1
+  rotate: false
+  xy: 265, 469
+  size: 46, 93
+  orig: 46, 93
+  offset: 0, 0
+  index: -1
+后上臂2
+  rotate: false
+  xy: 119, 419
+  size: 76, 44
+  orig: 76, 44
+  offset: 0, 0
+  index: -1
+后大腿
+  rotate: false
+  xy: 404, 533
+  size: 17, 152
+  orig: 17, 152
+  offset: 0, 0
+  index: -1
+后小腿
+  rotate: false
+  xy: 202, 453
+  size: 61, 109
+  orig: 61, 109
+  offset: 0, 0
+  index: -1
+后手掌
+  rotate: false
+  xy: 0, 419
+  size: 29, 29
+  orig: 29, 29
+  offset: 0, 0
+  index: -1
+后脚掌
+  rotate: false
+  xy: 265, 422
+  size: 25, 45
+  orig: 25, 46
+  offset: 0, 1
+  index: -1
+头
+  rotate: false
+  xy: 831, 1220
+  size: 92, 156
+  orig: 92, 156
+  offset: 0, 0
+  index: -1
+披风
+  rotate: false
+  xy: 551, 413
+  size: 897, 1022
+  orig: 899, 1023
+  offset: 2, 1
+  index: -1
+胯
+  rotate: false
+  xy: 119, 465
+  size: 81, 97
+  orig: 81, 99
+  offset: 0, 0
+  index: -1
+胸腔
+  rotate: false
+  xy: 0, 450
+  size: 117, 112
+  orig: 117, 112
+  offset: 0, 0
+  index: -1
+脖子
+  rotate: false
+  xy: 31, 428
+  size: 17, 20
+  orig: 20, 20
+  offset: 0, 0
+  index: -1
+金箍棒
+  rotate: false
+  xy: 0, 687
+  size: 829, 761
+  orig: 831, 763
+  offset: 1, 1
+  index: -1
+长鞭1
+  rotate: false
+  xy: 0, 564
+  size: 351, 121
+  orig: 353, 123
+  offset: 0, 0
+  index: -1
+长鞭2
+  rotate: true
+  xy: 831, 687
+  size: 378, 275
+  orig: 378, 276
+  offset: 0, 1
+  index: -1

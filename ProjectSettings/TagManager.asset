@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - PaperScrap
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - ground
+  - back3
+  - back2
+  - back1
+  - mid2
+  - mid1
+  - front2
+  - front1
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: back3
+    uniqueID: 236914063
+    locked: 0
+  - name: back2
+    uniqueID: 1161374467
+    locked: 0
+  - name: back1
+    uniqueID: 811181205
+    locked: 0
+  - name: mid2
+    uniqueID: 1753564319
+    locked: 0
+  - name: mid1
+    uniqueID: 3718609453
+    locked: 0
+  - name: front2
+    uniqueID: 4290458471
+    locked: 0
+  - name: front1
+    uniqueID: 3092928255
+    locked: 0

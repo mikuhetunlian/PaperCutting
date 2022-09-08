@@ -1,0 +1,51 @@
+{
+"skeleton": {
+	"hash": "fQEZgwtPNApLDW3nLwcFV2X4RCA",
+	"spine": "3.8",
+	"x": -90.9,
+	"y": -2.41,
+	"width": 170.3,
+	"height": 137.62,
+	"images": "../../PSD/images/tool/叠纸桥/",
+	"audio": ""
+},
+"bones": [
+	{ "name": "root", "x": -81, "y": 69 },
+	{ "name": "brigd", "parent": "root", "length": 129.6, "rotation": 90.29, "x": 73.02, "y": -69.14 }
+],
+"slots": [
+	{ "name": "桥", "bone": "brigd", "attachment": "桥" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"桥": {
+				"桥": { "x": 66.53, "y": -2.57, "rotation": -89.73, "width": 169, "height": 136 }
+			}
+		}
+	}
+],
+"animations": {
+	"animation": {
+		"slots": {
+			"桥": {
+				"color": [
+					{ "color": "ffffff3c", "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.3333, "color": "fffffff6" }
+				]
+			}
+		},
+		"bones": {
+			"brigd": {
+				"translate": [
+					{ "x": 2.45, "y": -128.57, "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.5667, "x": 1.71, "y": 18.86, "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.7, "x": 1.81, "y": -0.18 },
+					{ "time": 2.3333, "x": -2.77, "y": -3.23 }
+				]
+			}
+		}
+	}
+}
+}

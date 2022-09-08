@@ -1,0 +1,41 @@
+
+skeleton.png
+size: 512,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+草1
+  rotate: false
+  xy: 0, 91
+  size: 143, 261
+  orig: 143, 263
+  offset: 0, 2
+  index: -1
+草2
+  rotate: 270
+  xy: 129, 2
+  size: 125, 134
+  orig: 126, 136
+  offset: 1, 2
+  index: -1
+草3
+  rotate: false
+  xy: 0, 7
+  size: 206, 325
+  orig: 206, 328
+  offset: 0, 3
+  index: -1
+草4
+  rotate: false
+  xy: 114, 15
+  size: 104, 146
+  orig: 104, 151
+  offset: 0, 5
+  index: -1
+草5
+  rotate: 180
+  xy: 67, 111
+  size: 88, 240
+  orig: 88, 245
+  offset: 0, 5
+  index: -1

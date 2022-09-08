@@ -1,0 +1,257 @@
+{
+"skeleton": {
+	"hash": "whmz3SiZgNXDJWH3kdBbRa+P7BM",
+	"spine": "3.8",
+	"x": -351.83,
+	"y": -163.05,
+	"width": 916.59,
+	"height": 701.55,
+	"images": "../../PSD/images/tool/叶子血/",
+	"audio": ""
+},
+"bones": [
+	{ "name": "root" },
+	{ "name": "leaf1", "parent": "root", "length": 191.39, "rotation": 20.55, "x": 283.66, "y": 160.73 },
+	{ "name": "leaf2", "parent": "root", "length": 193.26, "rotation": 120.51, "x": 47.48, "y": -59.75 },
+	{ "name": "leaf3", "parent": "root", "length": 132.54, "rotation": 134.4, "x": -46.49, "y": 269.58 },
+	{ "name": "rice1", "parent": "root", "length": 126.17, "rotation": -28.29, "x": -14.16, "y": 507.98 },
+	{ "name": "rice2", "parent": "root", "length": 134.13, "rotation": -0.2, "x": 121.38, "y": 486.88 },
+	{ "name": "leaf5", "parent": "root", "length": 132.54, "rotation": 134.4, "x": -243.34, "y": 199.1 },
+	{ "name": "rice4", "parent": "root", "length": 127.49, "rotation": 57.01, "x": 286, "y": 408.56 },
+	{ "name": "leaf4", "parent": "root", "length": 193.26, "rotation": 120.51, "x": 47.48, "y": -59.75 }
+],
+"slots": [
+	{ "name": "叶1", "bone": "leaf1", "attachment": "叶1" },
+	{ "name": "叶2", "bone": "leaf2", "attachment": "叶2" },
+	{ "name": "叶4", "bone": "leaf4", "attachment": "叶2" },
+	{ "name": "叶3", "bone": "rice1", "attachment": "叶3" },
+	{ "name": "稻1", "bone": "leaf3", "attachment": "稻1" },
+	{ "name": "稻5", "bone": "leaf5", "attachment": "稻1" },
+	{ "name": "稻6", "bone": "rice4", "attachment": "稻2" },
+	{ "name": "稻3", "bone": "rice2", "attachment": "稻3" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"稻1": {
+				"稻1": {
+					"x": 64.69,
+					"y": 1.59,
+					"scaleX": 0.6,
+					"scaleY": 0.6,
+					"rotation": -134.4,
+					"width": 207,
+					"height": 227
+				}
+			},
+			"稻3": {
+				"稻3": { "x": 68.2, "y": -23.14, "rotation": 0.2, "width": 178, "height": 150 }
+			},
+			"稻5": {
+				"稻1": {
+					"x": 64.69,
+					"y": 1.59,
+					"scaleX": 0.6,
+					"scaleY": 0.6,
+					"rotation": -134.4,
+					"width": 207,
+					"height": 227
+				}
+			},
+			"稻6": {
+				"稻2": { "x": 72.84, "y": -27.83, "rotation": -57.01, "width": 131, "height": 168 }
+			},
+			"叶1": {
+				"叶1": { "x": 62.02, "y": -58.35, "rotation": -47.85, "width": 301, "height": 300 }
+			},
+			"叶2": {
+				"叶2": { "x": 87.94, "y": -10.12, "rotation": -60.8, "width": 207, "height": 376 }
+			},
+			"叶3": {
+				"叶3": { "x": 57.23, "y": -8.93, "rotation": 28.29, "width": 127, "height": 131 }
+			},
+			"叶4": {
+				"叶2": { "x": 87.94, "y": -10.12, "rotation": -60.8, "width": 207, "height": 376 }
+			}
+		}
+	}
+],
+"animations": {
+	"show": {
+		"slots": {
+			"叶4": {
+				"color": [
+					{ "color": "9b9b9bff" },
+					{ "time": 0.5333, "color": "ffffffff" },
+					{ "time": 0.7, "color": "ffffff3c" }
+				]
+			},
+			"叶2": {
+				"color": [
+					{ "color": "c8c8c8ff" },
+					{ "time": 0.5333, "color": "ffffffff" },
+					{ "time": 0.7, "color": "ffffff4d" }
+				]
+			},
+			"稻5": {
+				"color": [
+					{ "color": "9b9b9bff" },
+					{ "time": 0.5333, "color": "ffffffff" },
+					{ "time": 0.7, "color": "ffffff4f" }
+				]
+			},
+			"稻6": {
+				"color": [
+					{ "color": "868686ff" },
+					{ "time": 0.4667, "color": "ffffffff", "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.7, "color": "ffffff47" }
+				]
+			},
+			"稻1": {
+				"color": [
+					{ "time": 0.5667, "color": "ffffffff" },
+					{ "time": 0.7, "color": "ffffff21" }
+				]
+			},
+			"叶3": {
+				"color": [
+					{ "time": 0.5667, "color": "ffffffff" },
+					{ "time": 0.7, "color": "ffffff30" }
+				]
+			},
+			"叶1": {
+				"color": [
+					{ "color": "c9c9c9ff" },
+					{ "time": 0.5667, "color": "ffffffff", "curve": 0, "c2": 0.64, "c3": 0.718, "c4": 0.9 },
+					{ "time": 0.7, "color": "ffffff29" }
+				]
+			},
+			"稻3": {
+				"color": [
+					{ "time": 0.5, "color": "ffffffff" },
+					{ "time": 0.7, "color": "ffffff27" }
+				]
+			}
+		},
+		"bones": {
+			"leaf1": {
+				"rotate": [
+					{ "angle": -145.92, "curve": 0.25, "c3": 0 },
+					{ "time": 0.7, "angle": -84.57 }
+				],
+				"translate": [
+					{ "x": -249.88, "y": -70.67, "curve": 0.25, "c3": 0.07 },
+					{ "time": 0.7, "x": 543.47, "y": 257.5 }
+				],
+				"shear": [
+					{ "curve": 0.25, "c3": 0.49 },
+					{ "time": 0.7, "y": 28.11 }
+				]
+			},
+			"leaf2": {
+				"rotate": [
+					{ "angle": -158.4, "curve": 0.25, "c3": 0.098 },
+					{ "time": 0.7, "angle": 140.35 }
+				],
+				"translate": [
+					{ "x": -42.09, "y": 173.52, "curve": 0.25, "c3": 0.01 },
+					{ "time": 0.7, "x": -569.98, "y": 392.48 }
+				],
+				"shear": [
+					{ "curve": 0.25, "c3": 0.478 },
+					{ "time": 0.7, "y": -35.48 }
+				]
+			},
+			"leaf3": {
+				"rotate": [
+					{ "angle": 50.4, "curve": 0.25, "c3": 0.086, "c4": 1.01 },
+					{ "time": 0.7, "angle": 32.74 }
+				],
+				"translate": [
+					{ "x": 88.59, "y": -243.2, "curve": 0.25, "c3": 0.122, "c4": 1.03 },
+					{ "time": 0.7, "x": 659.54, "y": 71.7 }
+				],
+				"scale": [
+					{ "x": 0.6, "y": 0.6, "curve": 0.25, "c3": 0.234 },
+					{ "time": 0.7, "x": 0.4, "y": 0.4 }
+				]
+			},
+			"rice1": {
+				"rotate": [
+					{ "curve": 0.25, "c3": 0.05 },
+					{ "time": 0.7, "angle": -173.96 }
+				],
+				"translate": [
+					{ "x": -24.8, "y": -437.57, "curve": 0.25, "c3": 0 },
+					{ "time": 0.7, "x": -572.16, "y": -553.97 }
+				],
+				"scale": [
+					{ "curve": 0.25, "c3": 0.326 },
+					{ "time": 0.7, "x": 0.4, "y": 0.4 }
+				]
+			},
+			"rice2": {
+				"rotate": [
+					{ "curve": 0.25, "c3": 0 },
+					{ "time": 0.7, "angle": -77.61 }
+				],
+				"translate": [
+					{ "x": -109.6, "y": -493.2, "curve": 0.25, "c3": 0 },
+					{ "time": 0.7, "x": -373.65, "y": -266.89 }
+				],
+				"scale": [
+					{ "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.7, "x": 0.7, "y": 0.7 }
+				],
+				"shear": [
+					{ "curve": 0.25, "c3": 0.374 },
+					{ "time": 0.7, "y": -22.44 }
+				]
+			},
+			"leaf5": {
+				"rotate": [
+					{ "angle": 50.4, "curve": 0.25, "c3": 0.086, "c4": 1.01 },
+					{ "time": 0.7, "angle": 109.58 }
+				],
+				"translate": [
+					{ "x": 289.93, "y": -156.91, "curve": 0.25, "c3": 0.122, "c4": 1.03 },
+					{ "time": 0.7, "x": 977.34, "y": -110.77 }
+				],
+				"scale": [
+					{ "curve": 0.25, "c3": 0.234 },
+					{ "time": 0.7, "x": 0.4, "y": 0.4 }
+				]
+			},
+			"rice4": {
+				"rotate": [
+					{ "angle": 137.64, "curve": 0.25, "c3": 0.302 },
+					{ "time": 0.7, "angle": 173.44 }
+				],
+				"translate": [
+					{ "x": -223.87, "y": -362.56, "curve": 0.25, "c3": 0.046 },
+					{ "time": 0.7, "x": 231.62, "y": -574.46 }
+				],
+				"scale": [
+					{ "curve": 0.25, "c3": 0.214 },
+					{ "time": 0.7, "x": 0.8, "y": 0.8 }
+				]
+			},
+			"leaf4": {
+				"rotate": [
+					{ "angle": -102.72, "curve": 0.25, "c3": 0.146 },
+					{ "time": 0.7, "angle": -165.78 }
+				],
+				"translate": [
+					{ "x": -18.76, "y": 36.65, "curve": 0.275, "c3": 0.026, "c4": 0.91 },
+					{ "time": 0.7, "x": -369.09, "y": -71.04 }
+				],
+				"scale": [
+					{ "curve": 0.25, "c3": 0 },
+					{ "time": 0.7, "x": 0.5, "y": 0.5 }
+				]
+			}
+		}
+	}
+}
+}
