@@ -21,7 +21,7 @@ public class Player : MonoBehaviour
     public SpawnFacingDirections SpawnDir = SpawnFacingDirections.Right;
 
     //包括player的状态（正常，冰冻，眩晕等） 和 player的移动状态
-    public PlayerStates PlayerState;
+    public PlayerStates State;
     public StateMachine<PlayerStates.MovementStates> Movement;
     public StateMachine<PlayerStates.PlayerConditions> Condition;
     public Animator _animator;
@@ -109,6 +109,6 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+ 
     }
 }

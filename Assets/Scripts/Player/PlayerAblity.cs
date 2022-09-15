@@ -20,7 +20,6 @@ public class PlayerAblity :MonoBehaviour
     protected InputManager _inputManager;
     protected float _verticalInput;
     protected float _horizontalInput;
-    protected FacingDirections _currentFacingDir;
 
     protected virtual void Start()
     {

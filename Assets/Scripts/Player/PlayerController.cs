@@ -66,9 +66,13 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        EveryFrame();
         RaycastCheckHit();
         RaycastCheckFallPoint();
+    }
+
+    private void Update()
+    {
+        EveryFrame();
     }
 
 

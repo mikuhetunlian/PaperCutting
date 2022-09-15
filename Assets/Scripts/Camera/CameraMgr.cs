@@ -63,7 +63,7 @@ public class CameraMgr : BaseManager<CameraMgr>
             {
                 camera.orthographicSize = maincamera.orthographicSize + subCameraDic[camera];
             }
-            yield return new WaitForFixedUpdate();
+            yield return  new WaitForFixedUpdate();
         }
 
     }

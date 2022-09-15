@@ -18,7 +18,7 @@ public class ActionInBubble : PlayerAblity
         base.Initialization();
         AbilityPermitted = false;
         jumpOutTime = 1f;
-        EventMgr.GetInstance().AddLinstener<KeyCode>("GetKey", GetKey);
+        //EventMgr.GetInstance().AddLinstener<KeyCode>("GetKey", GetKey);
     }
 
     public override void GetComponents()
@@ -32,20 +32,24 @@ public class ActionInBubble : PlayerAblity
 
     public override void ProcessAbility()
     {
-        if (AbilityPermitted)
-        {
-            base.ProcessAbility();
             KeepPostionInBubble();
             this.transform.eulerAngles = Vector3.zero;
-        }
-
     }
+
+    public override void HandleInput()
+    {
+        if (_inputManager.JumpButton.State.CurrentState == InputHelper.ButtonState.ButtonDown)
+        {
+            GetOutBubble();
+        }
+    }
+
 
     private void GetKey(KeyCode key)
     {
         if (key == KeyCode.Space && _movement.CurrentState == PlayerStates.MovementStates.InBubble && canJumpOutOfBubble)
         {
-            Debug.Log("按下了空格键");
+            Debug.Log("bubble 按下了空格键");
             GetOutBubble();
         }
     }
@@ -94,7 +98,7 @@ public class ActionInBubble : PlayerAblity
     private void GetOutBubble()
     {
         this.transform.parent = null;
-        _movement.ChangeState(PlayerStates.MovementStates.Jumping);
+        _movement.ChangeState(PlayerStates.MovementStates.InBubble);
         _jump.PermitAbility(true);
         _horizontalMove.PermitAbility(true);
         PermitAbility(false);

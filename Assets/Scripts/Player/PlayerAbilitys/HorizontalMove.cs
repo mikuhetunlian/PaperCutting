@@ -171,10 +171,10 @@ public class HorizontalMove :PlayerAblity
     {
         if (AbilityPermitted)
         {
-            if (_playerController.State.isCollidingBelow)
-            {
-                _movement.ChangeState(PlayerStates.MovementStates.Walking);
-            }
+            //if (_playerController.State.isCollidingBelow)
+            //{
+            //    _movement.ChangeState(PlayerStates.MovementStates.Walking);
+            //}
             Vector2 _newPostion;
             if (facingDir == FacingDir.Left && _playerController.State.isCollidingLeft)
             {

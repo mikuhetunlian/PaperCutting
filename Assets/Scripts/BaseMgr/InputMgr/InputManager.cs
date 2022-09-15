@@ -129,7 +129,11 @@ public class InputManager : SingeltonAutoManager<InputManager>
 
     public void JumpButtonDown() { JumpButton.State.ChangeState(InputHelper.ButtonState.ButtonDown); }
     public void JumpButtonPresswd() { JumpButton.State.ChangeState(InputHelper.ButtonState.ButtonPressed); }
-    public void JumpButtonUp() { JumpButton.State.ChangeState(InputHelper.ButtonState.ButtonUp); }
+    public void JumpButtonUp() 
+    {
+        JumpButton.State.ChangeState(InputHelper.ButtonState.ButtonUp);
+  
+    }
 
 
 

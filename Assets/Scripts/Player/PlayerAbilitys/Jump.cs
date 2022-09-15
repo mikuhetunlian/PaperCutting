@@ -45,8 +45,6 @@ public class Jump : PlayerAblity
         upTimeMutilper = 5.5f;
         fallAddSpeed = 30;
         isFalling = true;
-        EventMgr.GetInstance().AddLinstener<KeyCode>("GetKey", GetKey);
-        EventMgr.GetInstance().AddLinstener<KeyCode>("GetKeyUp", GetKeyUp);
     }
 
     
@@ -63,55 +61,60 @@ public class Jump : PlayerAblity
     }
 
 
-    public override void ProcessAbility()
+
+    public override void HandleInput()
     {
-        //自然掉落的处理
-        if (!isJumping && !State.isCollidingBelow && !startNatureFall && AbilityPermitted)
+        if (_inputManager.JumpButton.State.CurrentState == InputHelper.ButtonState.ButtonPressed)
         {
-            startNatureFall = true;
-            isFalling = true;
-            StartCoroutine(Fall(Mathf.PI / 2));
+            JumpStart();
         }
-
-
-    }
-
-
-
-    private void GetKey(KeyCode key)
-    {
-        if (key == KeyCode.Space && AbilityPermitted)
+        if (_inputManager.JumpButton.State.CurrentState == InputHelper.ButtonState.ButtonUp)
         {
-            
-            if ((State.isCollidingBelow && canJump) || _movement.CurrentState == PlayerStates.MovementStates.InBubble)
-            {
-                isUping = true;
-                isFalling = false;
-                isJumping = true;
-                canJump = false;
-                _movement.ChangeState(PlayerStates.MovementStates.Jumping);
-                StartCoroutine(Up());
-            }
+            JumpGetKeyUp();
         }
     }
 
-    private void GetKeyUp(KeyCode key)
+    /// <summary>
+    /// 第一次按下space后跳跃开始
+    /// </summary>
+    protected virtual void JumpStart()
     {
+        if ((State.isCollidingBelow && canJump))
+        {
+            isUping = true;
+            isFalling = false;
+            isJumping = true;
+            canJump = false;
+            _movement.ChangeState(PlayerStates.MovementStates.Jumping);
+            StartCoroutine(Up());
+        }
+        if (_movement.CurrentState == PlayerStates.MovementStates.InBubble)
+        {
+            _movement.ChangeState(PlayerStates.MovementStates.Jumping);
+            StartCoroutine(Up());
+        }
       
-        if (key == KeyCode.Space && AbilityPermitted)
-        {
-            if (isUping)
-            {
-                isUping = false;
-                isFalling = true;
-            }
-            canJump = true;
-        }
+
+
     }
 
 
+    
 
-    private IEnumerator Up()
+    /// <summary>
+    /// 按下开始跳跃后第一次松开跳跃键的逻辑
+    /// </summary>
+    protected virtual void JumpGetKeyUp()
+    {
+        if (isUping)
+        {
+            isUping = false;
+            isFalling = true;
+        }
+        canJump = true;
+    }
+
+    public IEnumerator Up()
     {
         float t = 0;
         while (isUping)
@@ -144,7 +147,30 @@ public class Jump : PlayerAblity
     }
 
 
-    //下落函数
+
+    public override void ProcessAbility()
+    {
+        Fall();
+    }
+
+    /// <summary>
+    /// //自然掉落的处理
+    /// </summary>
+    protected void Fall()
+    {
+        if (!isJumping  &&!State.isCollidingBelow && !startNatureFall)
+        {
+            startNatureFall = true;
+            isFalling = true;
+            StartCoroutine(Fall(Mathf.PI / 2));
+        }
+    }
+
+   /// <summary>
+   /// 执行重力下落的地方
+   /// </summary>
+   /// <param name="fallStartTime"></param>
+   /// <returns></returns>
     private IEnumerator Fall(float fallStartTime)
     {
         float t = fallStartTime;
@@ -157,7 +183,7 @@ public class Jump : PlayerAblity
             }
             if (playerController.fallHitInfo.collider != null)
             {
-                
+
                 if (Mathf.Abs(transform.position.y - playerController.fallHitInfo.point.y) <= 0.4f)
                 {
                     break;
@@ -165,13 +191,13 @@ public class Jump : PlayerAblity
             }
             if (t * fallTimeMutilper > Mathf.PI)
             {
-                rbody.velocity = new Vector2(rbody.velocity.x, -fallSpeed -  addSpeedTime * fallAddSpeed);
+                rbody.velocity = new Vector2(rbody.velocity.x, -fallSpeed - addSpeedTime * fallAddSpeed);
                 addSpeedTime += Time.fixedDeltaTime;
             }
             else
             {
                 rbody.velocity = new Vector2(rbody.velocity.x, fallSpeed * Mathf.Cos(t * fallTimeMutilper));
-                t +=  Time.fixedDeltaTime;
+                t += Time.fixedDeltaTime;
             }
             yield return new WaitForFixedUpdate();
         }
@@ -190,8 +216,21 @@ public class Jump : PlayerAblity
         }
 
         rbody.velocity = new Vector2(rbody.velocity.x, 0);
-        transform.position = new Vector2(transform.position.x,hitPointY);
+        transform.position = new Vector2(transform.position.x, hitPointY);
     }
+
+
+    public void ResetJumpPrameters()
+    {
+        isUping = false;
+        isFalling = false;
+        isJumping = false;
+        startNatureFall = false;
+        isTouchGround = false;
+        canJump = true;
+    }
+
+
 
     /// <summary>
     /// 重置IsTouchGround参数

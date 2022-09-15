@@ -16,30 +16,18 @@ public class bubble : MonoBehaviour
     }
 
     
-    void Update()
-    {
-        
-    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         GameObject obj = collision.gameObject;
-        if (obj.name.Equals("MeI"))
+        if (obj.tag.Equals("Player"))
         { 
-            
             ActionInBubble actionInBubble = obj.GetComponent<ActionInBubble>();
             actionInBubble.PermitAbility(true);
             actionInBubble.GetInBubble(this.transform, _ferrisTransfrom);
-            //horizontalMove.PermitAbility(false);
-            //jumpAbility.PermitAbility(false);
-            //keepRotateInBubble.SetBubbleTransform(this.transform);
-            //keepRotateInBubble.PermitAbility(true);
-            //obj.transform.position = new Vector3(this.transform.position.x, this.transform.position.y - 0.15f, this.transform.position.z);
-            //obj.transform.SetParent(_ferrisTransfrom, true);
             CameraMgr.GetInstance().SetDefaultBlednTime(2);
             CameraMgr.GetInstance().SetCamerasSize();
             _VCamera.enabled = true;
-                //player.Movement.ChangeState(PlayerStates.MovementStates.InBubble);
         }
     }
 
