@@ -25,6 +25,11 @@ public class StateMachine<T> where T : struct, IComparable, IConvertible, IForma
         PerviousState = default(T);
     }
 
+
+    /// <summary>
+    /// ¸üÐÂ CurrentState ºÍ PerviousState
+    /// </summary>
+    /// <param name="newState"></param>
     public void ChangeState(T newState)
     {
         if (CurrentState.Equals(newState))

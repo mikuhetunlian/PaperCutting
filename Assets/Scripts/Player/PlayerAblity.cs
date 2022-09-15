@@ -17,7 +17,10 @@ public class PlayerAblity :MonoBehaviour
     protected Animator _animator;
     protected StateMachine<PlayerStates.MovementStates> _movement;
     protected StateMachine<PlayerStates.PlayerConditions> _condition;
-
+    protected InputManager _inputManager;
+    protected float _verticalInput;
+    protected float _horizontalInput;
+    protected FacingDirections _currentFacingDir;
 
     protected virtual void Start()
     {
@@ -41,6 +44,7 @@ public class PlayerAblity :MonoBehaviour
         _animator = GetComponent<Animator>();
         _movement = _player.Movement;
         _condition = _player.Condition;
+        _inputManager = _player.LinkedInputManager;
         if (_animator != null)
         {
             InitializeAnimatorParameter();
@@ -59,10 +63,29 @@ public class PlayerAblity :MonoBehaviour
     }
 
 
+
+    public virtual void InternalHandleInput()
+    {
+        if (_inputManager == null) { return; }
+
+        _horizontalInput = _inputManager.PrimaryMovement.x;
+        _verticalInput = _inputManager.PrimaryMovement.y;
+        HandleInput();
+    }
+
+    /// <summary>
+    /// 重写这个方法来获得运动轴值或按键状态 从而处理逻辑
+    /// </summary>
+    public virtual void HandleInput()
+    {
+        
+    }
+
     //ability的第一段
     public virtual void EarlyProcessAblity()
     {
-        
+        //每个ability先获取input信息再进行逻辑处理
+        InternalHandleInput();
     }
 
     //ability的第二段
@@ -76,6 +99,20 @@ public class PlayerAblity :MonoBehaviour
     {
 
     }
+
+
+    /// <summary>
+    /// 设置新的 InputManager
+    /// </summary>
+    /// <param name="inputManager"></param>
+    public virtual void SetInputManager(InputManager inputManager)
+    {
+        _inputManager = inputManager;
+    }
+
+
+
+
 
     /// <summary>
     /// 重写这个方法，添加自己ability需要处理的animator的参数到Player的_animatorParameterList中

@@ -3,17 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using Spine.Unity;
 
+
+//设定初始的面朝向
+public enum FacingDirections { Left, Right }
+
 /// <summary>
 /// 这个类是用来定义所有gameplay的地方（大概）
 /// </summary>
 public class Player : MonoBehaviour
 {
 
-    //设定初始的面朝向
-    public enum FacingDirections { Left, Right }
+   
     //重生后的面朝向，或许某次重生后的面朝向需要改变
     public enum SpawnFacingDirections { Left, Right }
-
+    public FacingDirections CurrentFaceingDir = FacingDirections.Right;
     public FacingDirections InitialFacingDir = FacingDirections.Right;
     public SpawnFacingDirections SpawnDir = SpawnFacingDirections.Right;
 
@@ -22,9 +25,10 @@ public class Player : MonoBehaviour
     public StateMachine<PlayerStates.MovementStates> Movement;
     public StateMachine<PlayerStates.PlayerConditions> Condition;
     public Animator _animator;
+    public PlayerAblity[] _playerAbilities;
     public List<string> _animatorParameterList { get; set;}
 
-
+    public InputManager LinkedInputManager { get; protected set; }
 
     protected virtual void Awake()
     {
@@ -44,7 +48,35 @@ public class Player : MonoBehaviour
     public void GetComponents()
     {
         GetAnimator();
+        SetInputManager();
+        _playerAbilities = GetComponents<PlayerAblity>();
+
     }
+
+
+
+    public virtual void SetInputManager()
+    {
+
+        LinkedInputManager = InputManager.GetInstance();
+        //UpDateInputManagerInAbilities();
+    }
+
+    /// <summary>
+    /// 更新 InputManager 到所有的 abilities中
+    /// </summary>
+    public virtual void UpDateInputManagerInAbilities()
+    {
+        if (_playerAbilities == null)
+        {
+            return;
+        }
+        for (int i = 0; i < _playerAbilities.Length; i++)
+        {
+            _playerAbilities[i].SetInputManager(LinkedInputManager);
+        }
+    }
+
 
     public virtual void GetAnimator()
     {

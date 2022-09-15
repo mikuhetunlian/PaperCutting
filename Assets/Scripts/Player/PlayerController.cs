@@ -106,8 +106,26 @@ public class PlayerController : MonoBehaviour
     //在FixUpdate中执行，相对独立一些
     public void EveryFrame()
     {
+        EarlyProcessAbilitys();
         ProcessAbiblitys();
+        LateProcessAbilitys();
     }
+
+    /// <summary>
+    /// 遍历 abilitysList 来不断地运行ability中的 EarlyProcessAbilitys
+    /// <summary>
+    protected void EarlyProcessAbilitys()
+    {
+        foreach (PlayerAblity ability in abilitysList)
+        {
+            if (ability.AbilityPermitted)
+            {
+                ability.EarlyProcessAblity();
+            }
+
+        }
+    }
+
 
     /// <summary>
     /// 遍历 abilitysList 来不断地运行ability中的ProcessAbility
@@ -124,6 +142,25 @@ public class PlayerController : MonoBehaviour
          
         }
     }
+
+    /// <summary>
+    /// 遍历 abilitysList 来不断地运行ability中的ProcessAbility
+    /// </summary>
+    protected void LateProcessAbilitys()
+    {
+        foreach (PlayerAblity ability in abilitysList)
+        {
+            if (ability.AbilityPermitted)
+            {
+                ability.LateProcessAbility();
+            }
+
+        }
+    }
+
+
+
+
 
 
     /// <summary>
