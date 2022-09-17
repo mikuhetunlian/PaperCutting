@@ -13,25 +13,23 @@ public class OpenShadowPlay : MonoBehaviour
     private Animator _animator;
     private SkeletonMecanim _skeletonMecanim;
     private Skeleton _skeleton;
-    void Start()
+    private bool hasOpenShadowPlay = false;
+    void Start() 
     {
         _skeletonMecanim = this.GetComponent<SkeletonMecanim>();
         _skeleton = _skeletonMecanim.skeleton;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag.Equals("Player"))
+        if (collision.gameObject.tag.Equals("Player") && !hasOpenShadowPlay)
         {
             _horizontalMove = collision.gameObject.GetComponent<HorizontalMove>();
-            _horizontalMove.AbilityPermitted = false;
+            _horizontalMove.PermitAbility(false);
             collision.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            hasOpenShadowPlay = true;
             Debug.Log("…Ë÷√Œ™ºŸ");
 
             this.gameObject.layer = LayerMask.NameToLayer("front1");

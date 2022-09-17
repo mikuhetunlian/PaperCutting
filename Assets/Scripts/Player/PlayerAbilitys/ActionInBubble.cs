@@ -98,6 +98,7 @@ public class ActionInBubble : PlayerAblity
     private void GetOutBubble()
     {
         this.transform.parent = null;
+        _playerController.ResetRotation();
         _movement.ChangeState(PlayerStates.MovementStates.InBubble);
         _jump.PermitAbility(true);
         _horizontalMove.PermitAbility(true);

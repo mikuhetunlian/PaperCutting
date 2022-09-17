@@ -227,7 +227,13 @@ public class PlayerController : MonoBehaviour
                     for (int j = 0; j < RaycastNum; j++)
                     {
                         originPoint = new Vector2(leftDownPoint.x + j * offset_x, Collider.bounds.center.y);
-                        RaycastHit2D hitInfo = DebugHelper.RaycastAndDrawLine(originPoint, Vector2.down, _extentY + downRayDistance, 1 << LayerMask.NameToLayer(_groundCheckLayerName),isDrawRay);
+                        float mutiper = 1;
+                        //如果正在下落，加长向下检测射线的长度
+                        if (State.IsJumping)
+                        {
+                            mutiper = 3;
+                        }
+                        RaycastHit2D hitInfo = DebugHelper.RaycastAndDrawLine(originPoint, Vector2.down, _extentY + downRayDistance * mutiper, 1 << LayerMask.NameToLayer(_groundCheckLayerName),isDrawRay);
                         hitInfos[RaycastDirection.Down][j] = hitInfo;
                     }
                     break;
@@ -306,5 +312,14 @@ public class PlayerController : MonoBehaviour
     private void RaycastCheckFallPoint()
     {
          fallHitInfo = DebugHelper.RaycastAndDrawLine(Collider.bounds.center, Vector2.down, 10, 1 << LayerMask.NameToLayer(_groundCheckLayerName));
+    }
+
+
+    /// <summary>
+    /// 重置旋转
+    /// </summary>
+    public void ResetRotation()
+    {
+        transform.rotation = Quaternion.Euler(0,0,0);
     }
 }

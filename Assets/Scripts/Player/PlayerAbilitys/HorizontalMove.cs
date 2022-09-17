@@ -3,11 +3,13 @@ using UnityEngine;
 public class HorizontalMove :PlayerAblity
 {
 
-    public enum FacingDir { Left,Right}
-    protected FacingDir facingDir = FacingDir.Right;
+
+    protected Player.FacingDirections facingDir = Player.FacingDirections.Right;
     public float speed;
     public bool move;
     private Rigidbody2D rbody;
+    [SerializeField]
+    private Vector2 _newPostion;
 
 
     protected float _horizontalMovement;
@@ -17,9 +19,6 @@ public class HorizontalMove :PlayerAblity
     {
         base.Initialization();
         speed = 16f;
-        //Ìí¼Ó°´¼ü¼àÌý
-        //EventMgr.GetInstance().AddLinstener<KeyCode>("GetKey", GetKey);
-        //EventMgr.GetInstance().AddLinstener<KeyCode>("GetKeyUp", GetKeyUp);
     }
 
     public override void GetComponents()
@@ -125,16 +124,6 @@ public class HorizontalMove :PlayerAblity
     public override void PermitAbility(bool abilityPermitted)
     {
         base.PermitAbility(abilityPermitted);
-        //if (!abilityPermitted)
-        //{
-        //    EventMgr.GetInstance().RemoveLinstener<KeyCode>("GetKey", GetKey);
-        //    EventMgr.GetInstance().RemoveLinstener<KeyCode>("GetKeyUp", GetKeyUp);
-        //}
-        //else
-        //{
-        //    EventMgr.GetInstance().AddLinstener<KeyCode>("GetKey", GetKey);
-        //    EventMgr.GetInstance().AddLinstener<KeyCode>("GetKeyUp", GetKeyUp);
-        //}
     }
 
 
@@ -156,11 +145,11 @@ public class HorizontalMove :PlayerAblity
     {
         if (transform.localScale.x > 0)
         {
-            facingDir = FacingDir.Right;
+            facingDir = Player.FacingDirections.Right;
         }
         if (transform.localScale.x < 0) 
         {
-            facingDir = FacingDir.Left;
+            facingDir = Player.FacingDirections.Left;
         }
     }
 
@@ -171,19 +160,19 @@ public class HorizontalMove :PlayerAblity
     {
         if (AbilityPermitted)
         {
-            //if (_playerController.State.isCollidingBelow)
-            //{
-            //    _movement.ChangeState(PlayerStates.MovementStates.Walking);
-            //}
-            Vector2 _newPostion;
-            if (facingDir == FacingDir.Left && _playerController.State.isCollidingLeft)
+            if (_playerController.State.isCollidingBelow)
+            {
+                _movement.ChangeState(PlayerStates.MovementStates.Walking);
+            }
+      
+            if (facingDir == Player.FacingDirections.Left && _playerController.State.isCollidingLeft)
             {
                 float hitPointX = GetHitPointX(RaycastDirection.Left);
                 transform.position = new Vector3(hitPointX + _playerController.Collider.bounds.extents.x, transform.position.y, transform.position.z);
                 _newPostion = new Vector2(0, 0);
                 return;
             }
-            if (facingDir == FacingDir.Right && _playerController.State.isCollidingRight)
+            if (facingDir == Player.FacingDirections.Right && _playerController.State.isCollidingRight)
             {
                 float hitPointX = GetHitPointX(RaycastDirection.Right);
                 transform.position = new Vector3(hitPointX - _playerController.Collider.bounds.extents.x, transform.position.y, transform.position.z);

@@ -27,5 +27,18 @@ public static class DebugHelper
 
     }
 
+   
+    public static void DrawGizmoPoint(Vector3 positon,float size,Color color)
+    {
+        Gizmos.color = color;
+        Gizmos.DrawWireSphere(positon, size);
+    }
+
+    public static void DrawGizmoLine(Vector3 start, Vector3 end, Color color)
+    {
+        Gizmos.color = color;
+        Gizmos.DrawLine(start, end);
+    }
+
 
 }

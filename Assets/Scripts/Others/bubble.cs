@@ -35,7 +35,7 @@ public class bubble : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.name.Equals("MeI"))
+        if (collision.gameObject.tag.Equals("Player"))
         {
             Invoke("ResetBlendTime", 2.1f);
             _VCamera.enabled = false;

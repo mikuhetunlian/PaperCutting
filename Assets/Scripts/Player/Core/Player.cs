@@ -4,8 +4,7 @@ using UnityEngine;
 using Spine.Unity;
 
 
-//设定初始的面朝向
-public enum FacingDirections { Left, Right }
+
 
 /// <summary>
 /// 这个类是用来定义所有gameplay的地方（大概）
@@ -13,7 +12,8 @@ public enum FacingDirections { Left, Right }
 public class Player : MonoBehaviour
 {
 
-   
+    //设定初始的面朝向
+    public enum FacingDirections { Left, Right }
     //重生后的面朝向，或许某次重生后的面朝向需要改变
     public enum SpawnFacingDirections { Left, Right }
     public FacingDirections CurrentFaceingDir = FacingDirections.Right;
@@ -24,10 +24,10 @@ public class Player : MonoBehaviour
     public PlayerStates State;
     public StateMachine<PlayerStates.MovementStates> Movement;
     public StateMachine<PlayerStates.PlayerConditions> Condition;
-    public Animator _animator;
-    public PlayerAblity[] _playerAbilities;
+    protected Animator _animator;
+    protected PlayerAblity[] _playerAbilities;
     public List<string> _animatorParameterList { get; set;}
-
+    protected Rigidbody2D _rbody;
     public InputManager LinkedInputManager { get; protected set; }
 
     protected virtual void Awake()
@@ -50,7 +50,7 @@ public class Player : MonoBehaviour
         GetAnimator();
         SetInputManager();
         _playerAbilities = GetComponents<PlayerAblity>();
-
+        _rbody = GetComponent<Rigidbody2D>();
     }
 
 
@@ -104,6 +104,44 @@ public class Player : MonoBehaviour
     }
 
 
+    /// <summary>
+    /// 使 player 在指定的地点和朝向重生
+    /// </summary>
+    /// <param name="spawnPoint"></param>
+    /// <param name="facingDirections"></param>
+    public void RespawnAt(Transform spawnPoint, FacingDirections facingDirections)
+    {
+        transform.position = spawnPoint.position;
+        ResetVelosity();
+        Face(facingDirections);
+    }
+
+
+    /// <summary>
+    /// 改变player的面朝向
+    /// </summary>
+    /// <param name="facingDirections"></param>
+    public void Face(FacingDirections facingDirections)
+    {
+        short face;
+        if (facingDirections == FacingDirections.Right)
+        {
+            face = 1;
+        }
+        else
+        {
+            face = -1;
+        }
+        transform.localScale = new Vector3(face * transform.localScale.x, transform.localScale.y, transform.localScale.z);
+    }
+
+    /// <summary>
+    /// 重置 player 的 velosity
+    /// </summary>
+    public void ResetVelosity()
+    {
+        _rbody.velocity = Vector2.zero;
+    }
 
 
     // Update is called once per frame
