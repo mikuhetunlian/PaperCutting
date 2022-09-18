@@ -31,6 +31,8 @@ public class PlayerController : MonoBehaviour
 
     ///是否画出射线
     public bool isDrawRay;
+    ///距离边界一小段的offset
+    public float rayOffset;
     ///从上边界开始向上的射线距离
     public float upRayDistance;
     ///从下边界开始向下的射线距离
@@ -83,10 +85,11 @@ public class PlayerController : MonoBehaviour
         InputMgr.GetInstance().InputEnable(true);
         Parameters = new PlayerControllerParameters();
         State = new PlayerControllerState();
+        rayOffset = 0.1f;
         upRayDistance = 0.1f;
         downRayDistance = 0.4f;
-        leftRayDistance = 0.1f;
-        rightRayDistance = 0.1f;
+        leftRayDistance = 0.3f;
+        rightRayDistance = 0.3f;
         RaycastNum = 5;
         isDrawRay = true;
         _extentX = Collider.bounds.extents.x;
@@ -206,7 +209,7 @@ public class PlayerController : MonoBehaviour
 
         Vector2 originPoint = new Vector2();
         float offset_x = Collider.bounds.size.x / (RaycastNum - 1);
-        float offset_y = Collider.bounds.size.y / (RaycastNum - 1);
+        float offset_y = (Collider.bounds.size.y - rayOffset*2) / (RaycastNum - 1);
 
         for (int i = 1; i <= 4; i++)
         {
@@ -241,7 +244,7 @@ public class PlayerController : MonoBehaviour
                     //左
                     for (int j = 0; j < RaycastNum; j++)
                     {
-                        originPoint = new Vector2(Collider.bounds.center.x, leftDownPoint.y + j * offset_y);
+                        originPoint = new Vector2(Collider.bounds.center.x, (leftDownPoint.y + rayOffset) + j * offset_y);
                         RaycastHit2D hitInfo = DebugHelper.RaycastAndDrawLine(originPoint, Vector2.left, _extentX + leftRayDistance, 1 << LayerMask.NameToLayer(_groundCheckLayerName),isDrawRay);
                         hitInfos[RaycastDirection.Left][j] = hitInfo;
                     }
@@ -250,7 +253,7 @@ public class PlayerController : MonoBehaviour
                     //右
                     for (int j = 0; j < RaycastNum; j++)
                     {
-                        originPoint = new Vector2(Collider.bounds.center.x, leftDownPoint.y + j * offset_y);
+                        originPoint = new Vector2(Collider.bounds.center.x, (leftDownPoint.y + rayOffset) + j * offset_y);
                         RaycastHit2D hitInfo = DebugHelper.RaycastAndDrawLine(originPoint, Vector2.right, _extentX + rightRayDistance, 1 << LayerMask.NameToLayer(_groundCheckLayerName), isDrawRay);
                         hitInfos[RaycastDirection.Right][j] = hitInfo;
                     }
@@ -305,6 +308,9 @@ public class PlayerController : MonoBehaviour
 
 
     }
+
+
+
 
 
 

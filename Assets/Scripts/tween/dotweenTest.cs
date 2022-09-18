@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
-using PathCreation;
+//using PathCreation;
 
 public class dotweenTest : MonoBehaviour
 {

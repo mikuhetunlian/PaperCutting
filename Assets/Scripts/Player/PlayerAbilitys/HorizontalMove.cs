@@ -179,8 +179,9 @@ public class HorizontalMove :PlayerAblity
                 return;
             }
 
-            _newPostion = new Vector2(_horizontalMovement * speed * Time.deltaTime,0);
+            _newPostion = new Vector2(_horizontalMovement * speed * Time.deltaTime, 0);
             transform.Translate(_newPostion, Space.Self);
+            //rbody.velocity = new Vector2(_horizontalMovement * speed , rbody.velocity.y);
         }
        
     }
