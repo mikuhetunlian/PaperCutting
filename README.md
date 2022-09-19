@@ -8,8 +8,8 @@ Assets<br>
 &emsp;Documents --存放文档的地方<br>
 &emsp;Editor --特殊文件夹，存放编辑器相关脚本<br>
 &emsp;Plugins --特殊文件夹，存放插件的地方<br>
-&emsp; Resources --特殊文件夹，存放游戏运行时加载的资源的地方<br>
-&emsp; Scripts --存放游戏逻辑脚本的地方<br>
-&emsp; Spine -- spine runtime <br>
+&emsp;Resources --特殊文件夹，存放游戏运行时加载的资源的地方<br>
+&emsp;Scripts --存放游戏逻辑脚本的地方<br>
+&emsp;Spine -- spine runtime <br>
 ProjectSetting -- 项目设置相关 <br>
 
