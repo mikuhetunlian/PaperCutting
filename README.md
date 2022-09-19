@@ -2,7 +2,7 @@
 项目中有两个分支 main 和 optimization1<br>
 目前更新的内容都会在 optimization1 中更新，可以在里面找到最新更改的脚本和美术资源<br>
 下面是目录的大致描述<br>
-Assets<br>  
+Assets<br>
 &emsp;ArtRes   -- 存放美术资源的地方<br>
 &emsp;AudioRes --存放音频资源的地方<br>
 &emsp;Documents --存放文档的地方<br>
