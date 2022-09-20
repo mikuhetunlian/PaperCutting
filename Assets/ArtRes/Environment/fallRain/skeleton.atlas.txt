@@ -1,0 +1,13 @@
+
+skeleton.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+下坠雨滴
+  rotate: false
+  xy: 0, 0
+  size: 144, 830
+  orig: 144, 832
+  offset: 0, 0
+  index: -1

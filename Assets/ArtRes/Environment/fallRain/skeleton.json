@@ -1,0 +1,42 @@
+{
+"skeleton": {
+	"hash": "k0Yr2h8hJD0DsfTQUyvNA9gC/pc",
+	"spine": "3.8",
+	"x": -90,
+	"y": -73.5,
+	"width": 144,
+	"height": 832,
+	"images": "../../PSD/images/tool/雨/下落雨滴/",
+	"audio": ""
+},
+"bones": [
+	{ "name": "root" },
+	{ "name": "下坠雨滴", "parent": "root" },
+	{ "name": "下坠雨滴3", "parent": "下坠雨滴", "length": 481.35, "rotation": 89.55, "x": -17.86, "y": 21.62 }
+],
+"slots": [
+	{ "name": "下坠雨滴", "bone": "下坠雨滴3", "attachment": "下坠雨滴" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"下坠雨滴": {
+				"下坠雨滴": { "x": 320.87, "y": 2.68, "rotation": -89.55, "width": 144, "height": 832 }
+			}
+		}
+	}
+],
+"animations": {
+	"animation": {
+		"bones": {
+			"下坠雨滴3": {
+				"translate": [
+					{ "x": 19.5, "y": 847.49, "curve": 0, "c2": 1, "c3": 0.407, "c4": 0.99 },
+					{ "time": 0.8333, "x": 19.5, "y": -192.09 }
+				]
+			}
+		}
+	}
+}
+}
