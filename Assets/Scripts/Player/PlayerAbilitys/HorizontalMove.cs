@@ -1,10 +1,10 @@
 using UnityEngine;
 
-public class HorizontalMove :PlayerAblity
+public class HorizontalMove : PlayerAblity
 {
 
 
-    protected Player.FacingDirections facingDir = Player.FacingDirections.Right;
+    public Player.FacingDirections facingDir = Player.FacingDirections.Right;
     public float speed;
     public bool move;
     private Rigidbody2D rbody;
@@ -18,7 +18,7 @@ public class HorizontalMove :PlayerAblity
     public override void Initialization()
     {
         base.Initialization();
-        speed = 16f;
+        speed = 18f;
     }
 
     public override void GetComponents()
@@ -60,7 +60,7 @@ public class HorizontalMove :PlayerAblity
                         transform.position = new Vector3(hitPointX + _playerController.Collider.bounds.extents.x, transform.position.y);
                     }
                 }
-                
+
                 break;
             case KeyCode.D:
                 if (AbilityPermitted)
@@ -88,7 +88,7 @@ public class HorizontalMove :PlayerAblity
                         transform.position = new Vector3(hitPointX - _playerController.Collider.bounds.extents.x, transform.position.y);
                     }
                 }
-               
+
                 break;
         }
     }
@@ -117,7 +117,7 @@ public class HorizontalMove :PlayerAblity
                     break;
             }
         }
-      
+
     }
 
 
@@ -129,32 +129,55 @@ public class HorizontalMove :PlayerAblity
 
     public override void ProcessAbility()
     {
-        SetFacingDir();
+        //SetFacingDir()
         HorizontalMovement();
     }
 
     public override void HandleInput()
     {
         _horizontalMovement = _horizontalInput;
+
     }
-    
+
+
+    protected void LeftPressed()
+    {
+        _playerController.SetHorizontalForce(-speed);
+    }
+
+    protected void LeftUp()
+    {
+        _playerController.SetHorizontalForce(0);
+    }
+
+    protected void RightPressed()
+    {
+        _playerController.SetHorizontalForce(speed);
+    }
+
+    protected void RightUp()
+    {
+        _playerController.SetHorizontalForce(0);
+    }
+
+
     /// <summary>
     /// 检测当前的朝向
     /// </summary>
     protected void SetFacingDir()
     {
-        if (transform.localScale.x > 0)
+        if (_horizontalMovement > 0)
         {
             facingDir = Player.FacingDirections.Right;
         }
-        if (transform.localScale.x < 0) 
+        if (_horizontalMovement < 0) 
         {
             facingDir = Player.FacingDirections.Left;
         }
     }
 
     /// <summary>
-    /// 真正执行水平移动的地方
+    /// 
     /// </summary>
     public virtual void HorizontalMovement()
     {
@@ -164,23 +187,29 @@ public class HorizontalMove :PlayerAblity
             {
                 _movement.ChangeState(PlayerStates.MovementStates.Walking);
             }
-      
-            if (facingDir == Player.FacingDirections.Left && _playerController.State.isCollidingLeft)
-            {
-                float hitPointX = GetHitPointX(RaycastDirection.Left);
-                transform.position = new Vector3(hitPointX + _playerController.Collider.bounds.extents.x, transform.position.y, transform.position.z);
-                _newPostion = new Vector2(0, 0);
-                return;
-            }
-            if (facingDir == Player.FacingDirections.Right && _playerController.State.isCollidingRight)
-            {
-                float hitPointX = GetHitPointX(RaycastDirection.Right);
-                transform.position = new Vector3(hitPointX - _playerController.Collider.bounds.extents.x, transform.position.y, transform.position.z);
-                return;
-            }
 
-            _newPostion = new Vector2(_horizontalMovement * speed * Time.deltaTime, 0);
-            transform.Translate(_newPostion, Space.Self);
+            //if (facingDir == Player.FacingDirections.Left && _playerController.State.isCollidingLeft)
+            //{
+            //    float hitPointX = _playerController.LeftHitInfo.point.x;
+            //    transform.position = new Vector3(hitPointX + _playerController.Collider.bounds.extents.x, transform.position.y, transform.position.z);
+            //    _newPostion = new Vector2(0, 0);
+            //    return;
+            //}
+            //if (facingDir == Player.FacingDirections.Right && _playerController.State.isCollidingRight)
+            //{
+            //    float hitPointX = _playerController.RighthHitInfo.point.x;
+            //    transform.position = new Vector3(hitPointX - _playerController.Collider.bounds.extents.x, transform.position.y, transform.position.z);
+            //    return;
+            //}
+
+            //if (_horizontalMovement != 0)
+            //{
+            //    _playerController.SetHorizontalForce(_horizontalMovement * speed);
+            //}
+            _playerController.SetHorizontalForce(_horizontalMovement * speed);
+
+            //_newPostion = new Vector2(_horizontalMovement * speed * Time.deltaTime, 0);
+            //transform.Translate(_newPostion, Space.Self);
             //rbody.velocity = new Vector2(_horizontalMovement * speed , rbody.velocity.y);
         }
        

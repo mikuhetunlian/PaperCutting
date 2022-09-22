@@ -1,0 +1,63 @@
+{
+"skeleton": {
+	"hash": "tonH412sFth132qjWo5DzEN+6TU",
+	"spine": "3.8",
+	"x": -489.59,
+	"y": -490.8,
+	"width": 965.83,
+	"height": 978.8,
+	"images": "../../PSD/images/tool/雨水泡泡/",
+	"audio": ""
+},
+"bones": [
+	{ "name": "root" },
+	{ "name": "外环", "parent": "root", "length": 410.07, "rotation": 89.25, "x": -0.59, "y": -8.46 },
+	{ "name": "内环", "parent": "外环", "length": 200.35, "rotation": -0.02, "x": 10.74, "y": -1.2 },
+	{ "name": "图案环", "parent": "外环", "length": 335.71, "rotation": -137.98, "x": 9.32, "y": 4.81 }
+],
+"slots": [
+	{ "name": "内环", "bone": "内环", "attachment": "内环" },
+	{ "name": "图案环", "bone": "图案环", "attachment": "图案环" },
+	{ "name": "外环", "bone": "外环", "attachment": "外环" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"内环": {
+				"内环": { "x": 4.58, "y": 8.1, "rotation": -89.23, "width": 394, "height": 417 }
+			},
+			"外环": {
+				"外环": { "x": 15.3, "y": 8.24, "rotation": -89.25, "width": 841, "height": 841 }
+			},
+			"图案环": {
+				"图案环": { "x": 0.82, "y": -2.58, "rotation": -160.62, "width": 697, "height": 731 }
+			}
+		}
+	}
+],
+"animations": {
+	"idle": {
+		"bones": {
+			"图案环": {
+				"rotate": [
+					{ "angle": 48.73 },
+					{ "time": 0.7333, "angle": 168.73 },
+					{ "time": 1.4667, "angle": -71.27 },
+					{ "time": 2.1667, "angle": 48.73 }
+				]
+			}
+		}
+	},
+	"show": {
+		"bones": {
+			"外环": {
+				"scale": [
+					{ "x": 0.1, "y": 0.1, "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.3667 }
+				]
+			}
+		}
+	}
+}
+}

@@ -40,7 +40,7 @@ InputManager:
   - serializedVersion: 3
     m_Name: Player1_Horizontal
     descriptiveName: 
-    descriptiveNegativeName: Horizontal
+    descriptiveNegativeName: 
     negativeButton: a
     positiveButton: d
     altNegativeButton: 
@@ -55,7 +55,7 @@ InputManager:
     joyNum: 0
   - serializedVersion: 3
     m_Name: Player1_Vertical
-    descriptiveName: Vertical
+    descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
     positiveButton: w

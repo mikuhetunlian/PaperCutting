@@ -12,14 +12,15 @@ public class InputManager : SingeltonAutoManager<InputManager>
     //是否开启惯性移动
     public bool SmoothMovement;
     public List<InputHelper.IMButton> ButtonList;
-    public Vector2 PrimaryMovement { get { return _primaryMovement; }}
+    public Vector2 PrimaryMovement { get { return _primaryMovement; } }
 
     protected Vector2 _primaryMovement = Vector2.zero;
     protected string _axisHorizontal;
     protected string _axisVertical;
 
 
-
+    public InputHelper.IMButton LeftMove { get; protected set; }
+    public InputHelper.IMButton RightMove { get; protected set; }
     public InputHelper.IMButton JumpButton { get; protected set; }
 
     protected void Start()
@@ -34,7 +35,14 @@ public class InputManager : SingeltonAutoManager<InputManager>
     protected void InitializaButtons()
     {
         ButtonList = new List<InputHelper.IMButton>();
+        //ButtonList.Add(LeftMove = new InputHelper.IMButton(playerID, "LeftMove", LeftMoveDown, LeftMovePresswd, LeftMoveUp));
+        //ButtonList.Add(RightMove = new InputHelper.IMButton(playerID, "RightMove",RightMoveDown,RightMovePresswd,RightMoveUp));
+
         ButtonList.Add(JumpButton = new InputHelper.IMButton(playerID, "Jump", JumpButtonDown, JumpButtonPresswd, JumpButtonUp));
+    
+    
+    
+    
     }
 
     /// <summary>
@@ -132,8 +140,24 @@ public class InputManager : SingeltonAutoManager<InputManager>
     public void JumpButtonUp() 
     {
         JumpButton.State.ChangeState(InputHelper.ButtonState.ButtonUp);
-  
     }
+
+
+    public void LeftMoveDown() { LeftMove.State.ChangeState(InputHelper.ButtonState.ButtonDown); }
+    public void LeftMovePresswd() { LeftMove.State.ChangeState(InputHelper.ButtonState.ButtonPressed); }
+    public void LeftMoveUp()
+    {
+        LeftMove.State.ChangeState(InputHelper.ButtonState.ButtonUp);
+    }
+
+
+    public void RightMoveDown() { RightMove.State.ChangeState(InputHelper.ButtonState.ButtonDown); }
+    public void RightMovePresswd() { RightMove.State.ChangeState(InputHelper.ButtonState.ButtonPressed); }
+    public void RightMoveUp()
+    {
+        RightMove.State.ChangeState(InputHelper.ButtonState.ButtonUp);
+    }
+
 
 
 

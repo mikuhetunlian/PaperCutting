@@ -1,0 +1,27 @@
+
+skeleton.png
+size: 2048,2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+bubbleEffect_1
+  rotate: false
+  xy: 464, 173
+  size: 289, 289
+  orig: 289, 289
+  offset: 0, 0
+  index: -1
+bubbleEffect_2
+  rotate: false
+  xy: 0, 0
+  size: 462, 462
+  orig: 462, 462
+  offset: 0, 0
+  index: -1
+bubbleEffect_3
+  rotate: false
+  xy: 0, 464
+  size: 831, 831
+  orig: 831, 831
+  offset: 0, 0
+  index: -1

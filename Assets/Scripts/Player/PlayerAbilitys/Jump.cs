@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,45 +6,49 @@ public class Jump : PlayerAblity
 {
     private Rigidbody2D rbody;
     private Transform transform;
-
-    //ÉÏÉıµÄËÙ¶È
+    public float JumpHeight;
+    //ä¸Šå‡çš„é€Ÿåº¦
     public float upSpeed;
-    //ÏÂ½µµÄËÙ¶È
+    //ä¸‹é™çš„é€Ÿåº¦
     public float fallSpeed;
-    //ÉÏÉıÊ±¼ä±¶ÔöÆ÷
+    //ä¸Šå‡æ—¶é—´å€å¢å™¨
     public float upTimeMutilper;
-    //ÏÂ½µÊ±¼ä±¶ÔöÆ÷
+    //ä¸‹é™æ—¶é—´å€å¢å™¨
     public float fallTimeMutilper;
     public float fallAddSpeed;
+    private bool isRainBubbleJump;
+    private bool standOnFloor;
+    private bool canFall;
 
 
-    private PlayerController playerController;
     private PlayerControllerParameters parameter;
     private PlayerControllerState State;
 
 
-    //ÊÇ·ñÔÚÉÏÉı
+    //æ˜¯å¦åœ¨ä¸Šå‡
     public bool isUping;
-    //ÊÇ·ñÔÚÏÂ½µ
+    //æ˜¯å¦åœ¨ä¸‹é™
     public bool isFalling;
-    //ÊÇ·ñÔÚÌøÔ¾ £¨°üÀ¨ÉÏÉıºÍÏÂ½µ£©
+    //æ˜¯å¦åœ¨è·³è·ƒ ï¼ˆåŒ…æ‹¬ä¸Šå‡å’Œä¸‹é™ï¼‰
     public bool isJumping;
-    //ÊÇ·ñ×ÔÈ»µôÂä
+    //æ˜¯å¦è‡ªç„¶æ‰è½
     public bool startNatureFall;
     public bool isTouchGround;
-    //ÊÇ·ñÄÜÔÙ´ÎÌøÔ¾
+    //æ˜¯å¦èƒ½å†æ¬¡è·³è·ƒ
     public bool canJump;
 
 
     public override void Initialization()
     {
         base.Initialization();
+        JumpHeight = 8;
         upSpeed = 15f;
         fallSpeed = 12f;
         fallTimeMutilper = 8f;
         upTimeMutilper = 5.5f;
         fallAddSpeed = 30;
         isFalling = true;
+        canFall = true;
     }
 
     
@@ -53,10 +57,10 @@ public class Jump : PlayerAblity
     {
         base.GetComponents();
         rbody = GetComponent<Rigidbody2D>();
-        playerController = GetComponent<PlayerController>();
+     
         transform = GetComponent<Transform>();
-        State = playerController.State;
-        parameter = playerController.Parameters;
+        State = _playerController.State;
+        parameter = _playerController.Parameters;
         
     }
 
@@ -64,7 +68,7 @@ public class Jump : PlayerAblity
 
     public override void HandleInput()
     {
-        if (_inputManager.JumpButton.State.CurrentState == InputHelper.ButtonState.ButtonPressed)
+        if (_inputManager.JumpButton.State.CurrentState == InputHelper.ButtonState.ButtonDown)
         {
             JumpStart();
         }
@@ -75,148 +79,35 @@ public class Jump : PlayerAblity
     }
 
     /// <summary>
-    /// µÚÒ»´Î°´ÏÂspaceºóÌøÔ¾¿ªÊ¼
+    /// ç»™ player ä¸€ä¸ªå‘ä¸Šçš„ç¬æ—¶é€Ÿåº¦ VÂ² = 2as 
     /// </summary>
-    protected virtual void JumpStart()
+    public void JumpStart()
     {
-        if ((State.isCollidingBelow && canJump))
-        {
-            isUping = true;
-            isFalling = false;
-            isJumping = true;
-            canJump = false;
-            _movement.ChangeState(PlayerStates.MovementStates.Jumping);
-            StartCoroutine(Up());
-        }
-        if (_movement.CurrentState == PlayerStates.MovementStates.InBubble)
+        if (_playerController.State.isCollidingBelow)
         {
             _movement.ChangeState(PlayerStates.MovementStates.Jumping);
-            StartCoroutine(Up());
+            _playerController.SetVerticalForce(Mathf.Sqrt(2f * Mathf.Abs(_playerController.Parameters.Gravity) * JumpHeight));
         }
-      
-
 
     }
 
+    public void JumpGetKeyUp()
+    {
+        if (!_playerController.State.IsGrounded && !_playerController.State.IsFalling)
+        {
 
-    
+            _playerController.SetVerticalForce(0);
+        }
+    }
+
+
 
     /// <summary>
-    /// °´ÏÂ¿ªÊ¼ÌøÔ¾ºóµÚÒ»´ÎËÉ¿ªÌøÔ¾¼üµÄÂß¼­
+    /// è®¾ç½®ä¸Šå‡é€Ÿåº¦
     /// </summary>
-    protected virtual void JumpGetKeyUp()
+    public void SetUpSpeed(float speed)
     {
-        if (isUping)
-        {
-            isUping = false;
-            isFalling = true;
-        }
-        canJump = true;
-    }
-
-    public IEnumerator Up()
-    {
-        float t = 0;
-        while (isUping)
-        {
-            if (!AbilityPermitted)
-            {
-                yield break;
-            }
-            if (rbody.velocity.y < 0 || State.isCollidingAbove)
-            {
-                break;   
-            }
-            rbody.velocity = new Vector2(rbody.velocity.x, upSpeed * Mathf.Cos(t * upTimeMutilper));
-            t +=  0.01f;
-            yield return new WaitForFixedUpdate();
-        }
-
-        isUping = false;
-        isFalling = true;
-        if (rbody.velocity.y > 0)
-        {
-            rbody.velocity = new Vector2(rbody.velocity.x, 0);
-            StartCoroutine(Fall(Mathf.PI / (2 * upTimeMutilper)));
-        }
-        else
-        {
-            StartCoroutine(Fall(t));
-        }
-      
-    }
-
-
-
-    public override void ProcessAbility()
-    {
-        Fall();
-    }
-
-    /// <summary>
-    /// //×ÔÈ»µôÂäµÄ´¦Àí
-    /// </summary>
-    protected void Fall()
-    {
-        if (!isJumping  &&!State.isCollidingBelow && !startNatureFall)
-        {
-            startNatureFall = true;
-            isFalling = true;
-            StartCoroutine(Fall(Mathf.PI / 2));
-        }
-    }
-
-   /// <summary>
-   /// Ö´ĞĞÖØÁ¦ÏÂÂäµÄµØ·½
-   /// </summary>
-   /// <param name="fallStartTime"></param>
-   /// <returns></returns>
-    private IEnumerator Fall(float fallStartTime)
-    {
-        float t = fallStartTime;
-        float addSpeedTime = 0;
-        while (isFalling)
-        {
-            if (!AbilityPermitted)
-            {
-                yield break;
-            }
-            if (playerController.fallHitInfo.collider != null)
-            {
-
-                if (Mathf.Abs(transform.position.y - playerController.fallHitInfo.point.y) <= 0.4f)
-                {
-                    break;
-                }
-            }
-            if (t * fallTimeMutilper > Mathf.PI)
-            {
-                rbody.velocity = new Vector2(rbody.velocity.x, -fallSpeed - addSpeedTime * fallAddSpeed);
-                addSpeedTime += Time.fixedDeltaTime;
-            }
-            else
-            {
-                rbody.velocity = new Vector2(rbody.velocity.x, fallSpeed * Mathf.Cos(t * fallTimeMutilper));
-                t += Time.fixedDeltaTime;
-            }
-            yield return new WaitForFixedUpdate();
-        }
-
-        isFalling = false;
-        isJumping = false;
-        Invoke("ResetIsTouchGround", 0.15f);
-        isTouchGround = true;
-        startNatureFall = false;
-        _movement.ChangeState(PlayerStates.MovementStates.Idle);
-
-        float hitPointY = 0;
-        if (playerController.fallHitInfo.collider != null)
-        {
-            hitPointY = playerController.fallHitInfo.point.y;
-        }
-
-        rbody.velocity = new Vector2(rbody.velocity.x, 0);
-        transform.position = new Vector2(transform.position.x, hitPointY);
+        upSpeed = speed;
     }
 
 
@@ -233,7 +124,7 @@ public class Jump : PlayerAblity
 
 
     /// <summary>
-    /// ÖØÖÃIsTouchGround²ÎÊı
+    /// é‡ç½®IsTouchGroundå‚æ•°
     /// </summary>
     private void ResetIsTouchGround()
     {

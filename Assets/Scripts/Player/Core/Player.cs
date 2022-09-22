@@ -19,17 +19,17 @@ public class Player : MonoBehaviour
     public FacingDirections CurrentFaceingDir = FacingDirections.Right;
     public FacingDirections InitialFacingDir = FacingDirections.Right;
     public SpawnFacingDirections SpawnDir = SpawnFacingDirections.Right;
-
+    //player的abilitys
+    protected List<PlayerAblity> abilitysList;
     //包括player的状态（正常，冰冻，眩晕等） 和 player的移动状态
     public PlayerStates State;
     public StateMachine<PlayerStates.MovementStates> Movement;
     public StateMachine<PlayerStates.PlayerConditions> Condition;
     protected Animator _animator;
     protected PlayerAblity[] _playerAbilities;
-    public List<string> _animatorParameterList { get; set;}
+    public List<string> _animatorParameterList { get; set; }
     protected Rigidbody2D _rbody;
     public InputManager LinkedInputManager { get; protected set; }
-
     protected virtual void Awake()
     {
         Initialization();
@@ -51,7 +51,77 @@ public class Player : MonoBehaviour
         SetInputManager();
         _playerAbilities = GetComponents<PlayerAblity>();
         _rbody = GetComponent<Rigidbody2D>();
+        abilitysList = new List<PlayerAblity>();
+        PlayerAblity[] abilitys = this.gameObject.GetComponents<PlayerAblity>();
+        for (int i = 0; i < abilitys.Length; i++)
+        {
+            abilitysList.Add(abilitys[i]);
+        }
     }
+
+
+
+    public void Update()
+    {
+        UpdateFaceDirection();
+        EveryFrame();
+    }
+
+    //在FixUpdate中执行，相对独立一些
+    public void EveryFrame()
+    {
+        EarlyProcessAbilitys();
+        ProcessAbiblitys();
+        LateProcessAbilitys();
+    }
+
+    /// <summary>
+    /// 遍历 abilitysList 来不断地运行ability中的 EarlyProcessAbilitys
+    /// <summary>
+    protected void EarlyProcessAbilitys()
+    {
+        foreach (PlayerAblity ability in abilitysList)
+        {
+            if (ability.AbilityPermitted)
+            {
+                ability.EarlyProcessAblity();
+            }
+
+        }
+    }
+
+
+    /// <summary>
+    /// 遍历 abilitysList 来不断地运行ability中的ProcessAbility
+    /// </summary>
+    protected void ProcessAbiblitys()
+    {
+        foreach (PlayerAblity ability in abilitysList)
+        {
+            if (ability.AbilityPermitted)
+            {
+                ability.ProcessAbility();
+                ability.UpdateAnimator();
+            }
+
+        }
+    }
+
+    /// <summary>
+    /// 遍历 abilitysList 来不断地运行ability中的ProcessAbility
+    /// </summary>
+    protected void LateProcessAbilitys()
+    {
+        foreach (PlayerAblity ability in abilitysList)
+        {
+            if (ability.AbilityPermitted)
+            {
+                ability.LateProcessAbility();
+            }
+
+        }
+    }
+
 
 
 
@@ -82,7 +152,7 @@ public class Player : MonoBehaviour
     {
         _animator = GetComponent<Animator>();
         //如果找到了aniamtor,就初始化animator里的参数到_animatorParametrs中
-        if (_animator!=null)
+        if (_animator != null)
         {
             InitializeAnimatorParameters();
         }
@@ -113,15 +183,30 @@ public class Player : MonoBehaviour
     {
         transform.position = spawnPoint.position;
         ResetVelosity();
-        Face(facingDirections);
+        SetFace(facingDirections);
     }
 
+
+    /// <summary>
+    /// 根据 transform.localScale.x 的正负来调整 CurrentFaceingDir
+    /// </summary>
+    public void UpdateFaceDirection()
+    {
+        if (transform.localScale.x > 0)
+        {
+            CurrentFaceingDir = FacingDirections.Right;
+        }
+        else
+        {
+            CurrentFaceingDir = FacingDirections.Left;
+        }
+    }
 
     /// <summary>
     /// 改变player的面朝向
     /// </summary>
     /// <param name="facingDirections"></param>
-    public void Face(FacingDirections facingDirections)
+    public void SetFace(FacingDirections facingDirections)
     {
         short face;
         if (facingDirections == FacingDirections.Right)
@@ -132,8 +217,10 @@ public class Player : MonoBehaviour
         {
             face = -1;
         }
-        transform.localScale = new Vector3(face * transform.localScale.x, transform.localScale.y, transform.localScale.z);
+        transform.localScale = new Vector3(face *Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
     }
+
+
 
     /// <summary>
     /// 重置 player 的 velosity
@@ -144,9 +231,6 @@ public class Player : MonoBehaviour
     }
 
 
-    // Update is called once per frame
-    void Update()
-    {
- 
-    }
+   
+  
 }

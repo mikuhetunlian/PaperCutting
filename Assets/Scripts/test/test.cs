@@ -11,16 +11,16 @@ public class test : MonoBehaviour
     public Skeleton skeleton;
     void Start()
     {
-        skeletonAnimation = GetComponent<SkeletonAnimation>();
-        skeletonMecanim = GetComponent<SkeletonMecanim>();
-        skeleton = skeletonMecanim.skeleton;
-        skeleton.SetSkin("shadowPlay");
+        //skeletonAnimation = GetComponent<SkeletonAnimation>();
+        //skeletonMecanim = GetComponent<SkeletonMecanim>();
+        //skeleton = skeletonMecanim.skeleton;
+        //skeleton.SetSkin("shadowPlay");
  
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        this.transform.Translate(new Vector2(1,0) * Time.deltaTime, Space.Self);
     }
 }

@@ -34,8 +34,6 @@ public class LookUpAndDown : PlayerAblity
 
 
 
-
-
     public override void GetComponents()
     {
         base.GetComponents();

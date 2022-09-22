@@ -1,0 +1,46 @@
+{
+"skeleton": {
+	"hash": "PWk5MOiyOoUNjizcUguk4s2VvaY",
+	"spine": "3.8",
+	"x": -25.72,
+	"y": -96.15,
+	"width": 538.14,
+	"height": 586.3,
+	"images": "../../PSD/images/tool/操控柄/",
+	"audio": ""
+},
+"bones": [
+	{ "name": "root" },
+	{ "name": "蓝柄", "parent": "root", "length": 499.09, "rotation": 41.91, "x": -10, "y": 4 }
+],
+"slots": [
+	{ "name": "蓝柄", "bone": "蓝柄", "attachment": "蓝柄" },
+	{ "name": "红头", "bone": "蓝柄", "attachment": "红头" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"蓝柄": {
+				"蓝柄": { "x": 242.17, "y": -4.26, "rotation": -63.33, "width": 247, "height": 459 }
+			},
+			"红头": {
+				"红头": { "x": 526.81, "y": 2.73, "rotation": -63.33, "width": 204, "height": 204 }
+			}
+		}
+	}
+],
+"animations": {
+	"off": {},
+	"on": {
+		"bones": {
+			"蓝柄": {
+				"rotate": [
+					{ "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.6667, "angle": 101.09 }
+				]
+			}
+		}
+	}
+}
+}

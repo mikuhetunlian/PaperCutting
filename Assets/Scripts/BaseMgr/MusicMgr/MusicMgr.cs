@@ -15,7 +15,7 @@ public class MusicMgr : BaseManager<MusicMgr>
     //音效链
     private List<AudioSource> sourceList;
     //音效的大小 0-1之间
-    public float efValue;
+    public float efValue = 10;
 
 
 
@@ -68,6 +68,24 @@ public class MusicMgr : BaseManager<MusicMgr>
          });
 
     }
+
+    /// <summary>
+    /// 播放背景音乐
+    /// </summary>
+    /// <param name="clip">背景音乐的clip</param>
+    public void PlayBkMusic(AudioClip clip)
+    {
+        if (bkMusic == null)
+        {
+            GameObject obj = new GameObject("bkMusic");
+            bkMusic = obj.AddComponent<AudioSource>();
+        }
+
+        bkMusic.clip = clip;
+        bkMusic.volume = bkValue;
+        bkMusic.Play();
+    }
+
 
     /// <summary>
     /// 终止播放背景音乐
@@ -123,6 +141,28 @@ public class MusicMgr : BaseManager<MusicMgr>
 
     }
 
+
+    /// <summary>
+    /// 播放音效
+    /// </summary>
+    /// <param name="audioClip">音效的effect</param>
+    /// <param name="isLoop">是否循环</param>
+    public void PlayMusicEffect(AudioClip audioClip,bool isLoop)
+    {
+        if (efMusicObj == null)
+        {
+            GameObject obj = new GameObject("effectMusic");
+            efMusicObj = obj;
+        }
+
+        AudioSource efMusic = efMusicObj.AddComponent<AudioSource>();
+        efMusic.clip = audioClip;
+        efMusic.volume = efValue;
+        efMusic.loop = isLoop;
+        efMusic.Play();
+    }
+
+
     /// <summary>
     /// 暂停某个音效播放
     /// </summary>
@@ -149,4 +189,24 @@ public class MusicMgr : BaseManager<MusicMgr>
             GameObject.Destroy(sourse);
         }
     }
+
+    /// <summary>
+    /// 设定背景音量
+    /// </summary>
+    /// <param name="bkValue"></param>
+    public void SetBkValue(float bkValue)
+    {
+        this.bkValue = bkValue;
+    }
+
+    /// <summary>
+    /// 设定声效音量
+    /// </summary>
+    /// <param name="effectValue"></param>
+    public void SetEffectValue(float effectValue)
+    {
+        efValue = effectValue;
+    }
+
+
 }

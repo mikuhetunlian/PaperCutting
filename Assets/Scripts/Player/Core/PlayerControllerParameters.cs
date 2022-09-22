@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerControllerParameters 
 {
     [Header("Gravity")]
-    public float Gravity = -30f;
+    public float Gravity = -50f;
     ///下降倍增器
     public float FallMultiplier = 1f;
     ///上升倍增器

@@ -32,10 +32,10 @@ public class PlayerControllerState
 
     ///是否在地面上
     public bool IsGrounded { get { return isCollidingBelow; } }
-    ///是否正在falling
-    public bool IsFalling { get; set; }
     ///是否正在跳跃
     public bool IsJumping { get; set; }
+    ///是否正在falling
+    public bool IsFalling { get; set; }
     ///上一帧是不是在地面上
     public bool WasGroundedLastFrame { get; set; }
     ///上一帧是不是撞到了天花板上

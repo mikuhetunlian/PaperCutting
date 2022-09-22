@@ -4,33 +4,28 @@ using UnityEngine;
 
 public class Flip : PlayerAblity
 {
-    /// true 为 向右，false 为 向左 
-    public bool IsFaceRight;
-    public override void Initialization()
+    private float _horizontalMovement;
+    private void Start()
     {
-        base.Initialization();
-        IsFaceRight = true; 
-        EventMgr.GetInstance().AddLinstener<KeyCode>("GetKey", GetKey);
+        
+        GetComponents();
+        Initialization();
     }
 
+    public override void Initialization()
+    {
+        base.Initialization();       
+    }
 
     public override void GetComponents()
     {
         base.GetComponents();
+
     }
 
-
-    private void GetKey(KeyCode key)
+    public override void HandleInput()
     {
-        switch (key)
-        {
-            case KeyCode.A:
-                IsFaceRight = false;
-                break;
-            case KeyCode.D:
-                IsFaceRight = true;
-                break;
-        }
+        _horizontalMovement = _horizontalInput;   
     }
 
     public override void ProcessAbility()
@@ -39,16 +34,17 @@ public class Flip : PlayerAblity
         FlipDo();
     }
 
+
     /// <summary>
-    /// 实现翻转的地方，根据IsFaceRight参数来实现翻转
+    /// 实现翻转的地方，根据 _horizontalMovement 参数来实现翻转
     /// </summary>
     private void FlipDo()
     {
-        if (IsFaceRight)
+        if (_horizontalInput > 0)
         {
             this.transform.localScale = new Vector2(Mathf.Abs(transform.localScale.x) ,Mathf.Abs(transform.localScale.y));
         }
-        else
+        if(_horizontalInput < 0)
         {
             this.transform.localScale = new Vector2(-Mathf.Abs(transform.localScale.x), Mathf.Abs(transform.localScale.y));
         }

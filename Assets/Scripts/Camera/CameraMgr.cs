@@ -6,8 +6,11 @@ using Cinemachine;
 public class CameraMgr : BaseManager<CameraMgr>
 {
 
+
+    public Vector3 DefaultOffset = new Vector2(0,7.6f);
     private bool set;
     private CinemachineBrain _brain;
+    
 
     public Dictionary<Camera,float> subCameraDic = new Dictionary<Camera, float>();
     public CameraMgr()
@@ -79,6 +82,53 @@ public class CameraMgr : BaseManager<CameraMgr>
         }
     }
 
+    /// <summary>
+    /// 重置当前镜头的 offset 为 默认镜头
+    /// </summary>
+    public void ResetCurrnteCameraOffset()
+    {
+        CinemachineVirtualCamera currentCamera = _brain.ActiveVirtualCamera as CinemachineVirtualCamera;
+        CinemachineFramingTransposer transporser = currentCamera.GetCinemachineComponent<CinemachineFramingTransposer>();
+        MonoManager.GetInstance().StartCoroutine(DoSetCurrentCameraOffset(transporser, DefaultOffset));
 
+    }
+
+    /// <summary>
+    /// 设置当前镜头的 offsetX
+    /// </summary>
+    /// <param name="y"></param>
+    public void SetCurrentCameraOffsetX(float x)
+    {
+        CinemachineVirtualCamera currentCamera = _brain.ActiveVirtualCamera as CinemachineVirtualCamera;
+        CinemachineFramingTransposer transporser = currentCamera.GetCinemachineComponent<CinemachineFramingTransposer>();
+
+        MonoManager.GetInstance().StartCoroutine(DoSetCurrentCameraOffset(transporser, new Vector2(x, transporser.m_TrackedObjectOffset.y)));
+    }
+
+    /// <summary>
+    /// 设置当前镜头的 offsetY
+    /// </summary>
+    /// <param name="y"></param>
+    public void SetCurrentCameraOffsetY( float y)
+    {
+        CinemachineVirtualCamera currentCamera = _brain.ActiveVirtualCamera as CinemachineVirtualCamera;
+        CinemachineFramingTransposer transporser = currentCamera.GetCinemachineComponent<CinemachineFramingTransposer>();
+        
+        MonoManager.GetInstance().StartCoroutine(DoSetCurrentCameraOffset(transporser, new Vector2(transporser.m_TrackedObjectOffset.x, y)));
+    }
+
+
+    IEnumerator DoSetCurrentCameraOffset(CinemachineFramingTransposer transporser,Vector2 offset)
+    {
+        float t = 0;
+        Vector3 originPoint = transporser.m_TrackedObjectOffset;
+        while (t<=1)
+        {
+            transporser.m_TrackedObjectOffset = Vector3.Lerp(originPoint, offset, t);
+            t += 0.05f;
+            yield return null;
+        }
+        Debug.Log("达到完毕");
+    }
 
 }
