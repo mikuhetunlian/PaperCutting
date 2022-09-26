@@ -126,17 +126,17 @@ public class HorizontalMove : PlayerAblity
         base.PermitAbility(abilityPermitted);
     }
 
+    public override void HandleInput()
+    {
+        _horizontalMovement = _horizontalInput;
+
+    }
+
 
     public override void ProcessAbility()
     {
         //SetFacingDir()
         HorizontalMovement();
-    }
-
-    public override void HandleInput()
-    {
-        _horizontalMovement = _horizontalInput;
-
     }
 
 
@@ -177,40 +177,20 @@ public class HorizontalMove : PlayerAblity
     }
 
     /// <summary>
-    /// 
+    /// 根据input输入来 改变 newPostion 的 x分量值
     /// </summary>
     public virtual void HorizontalMovement()
     {
         if (AbilityPermitted)
         {
-            if (_playerController.State.isCollidingBelow)
+            if (_playerController.State.isCollidingBelow 
+                && _movement.CurrentState != PlayerStates.MovementStates.LadderClimbing //不在爬梯子
+                && _movement.CurrentState != PlayerStates.MovementStates.Jumping)//不在跳跃
             {
                 _movement.ChangeState(PlayerStates.MovementStates.Walking);
             }
-
-            //if (facingDir == Player.FacingDirections.Left && _playerController.State.isCollidingLeft)
-            //{
-            //    float hitPointX = _playerController.LeftHitInfo.point.x;
-            //    transform.position = new Vector3(hitPointX + _playerController.Collider.bounds.extents.x, transform.position.y, transform.position.z);
-            //    _newPostion = new Vector2(0, 0);
-            //    return;
-            //}
-            //if (facingDir == Player.FacingDirections.Right && _playerController.State.isCollidingRight)
-            //{
-            //    float hitPointX = _playerController.RighthHitInfo.point.x;
-            //    transform.position = new Vector3(hitPointX - _playerController.Collider.bounds.extents.x, transform.position.y, transform.position.z);
-            //    return;
-            //}
-
-            //if (_horizontalMovement != 0)
-            //{
-            //    _playerController.SetHorizontalForce(_horizontalMovement * speed);
-            //}
+            
             _playerController.SetHorizontalForce(_horizontalMovement * speed);
-
-            //_newPostion = new Vector2(_horizontalMovement * speed * Time.deltaTime, 0);
-            //transform.Translate(_newPostion, Space.Self);
-            //rbody.velocity = new Vector2(_horizontalMovement * speed , rbody.velocity.y);
         }
        
     }

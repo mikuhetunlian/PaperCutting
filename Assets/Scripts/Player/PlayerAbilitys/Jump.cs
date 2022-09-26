@@ -16,9 +16,7 @@ public class Jump : PlayerAblity
     //下降时间倍增器
     public float fallTimeMutilper;
     public float fallAddSpeed;
-    private bool isRainBubbleJump;
-    private bool standOnFloor;
-    private bool canFall;
+    protected PlayerLadder _playerLadder;
 
 
     private PlayerControllerParameters parameter;
@@ -48,7 +46,6 @@ public class Jump : PlayerAblity
         upTimeMutilper = 5.5f;
         fallAddSpeed = 30;
         isFalling = true;
-        canFall = true;
     }
 
     
@@ -61,7 +58,7 @@ public class Jump : PlayerAblity
         transform = GetComponent<Transform>();
         State = _playerController.State;
         parameter = _playerController.Parameters;
-        
+        _playerLadder = GetComponent<PlayerLadder>();
     }
 
 
@@ -83,8 +80,15 @@ public class Jump : PlayerAblity
     /// </summary>
     public void JumpStart()
     {
-        if (_playerController.State.isCollidingBelow)
+
+
+        if (_playerController.State.isCollidingBelow
+            || _movement.CurrentState == PlayerStates.MovementStates.LadderClimbing)
         {
+            if (_movement.CurrentState == PlayerStates.MovementStates.LadderClimbing)
+            {
+                _playerLadder.GetOffTheLadder();
+            }
             _movement.ChangeState(PlayerStates.MovementStates.Jumping);
             _playerController.SetVerticalForce(Mathf.Sqrt(2f * Mathf.Abs(_playerController.Parameters.Gravity) * JumpHeight));
         }

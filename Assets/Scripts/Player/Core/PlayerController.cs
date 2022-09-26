@@ -11,7 +11,7 @@ public enum RaycastDirection { Up, Down, Left, Right }
 /// </summary>
 public class PlayerController : MonoBehaviour
 {
- 
+
 
     //每个方向的射线数
     public int RaycastNum;
@@ -29,7 +29,8 @@ public class PlayerController : MonoBehaviour
 
     public Player.FacingDirections facingDir = Player.FacingDirections.Right;
     public Vector2 Speed { get; protected set; }
- 
+    public bool IsGravityActive { get { return _gravityActive; } }
+
     ///是否画出射线
     public bool isDrawRay;
     public short NumberOfHorizontalRays = 8;
@@ -128,7 +129,7 @@ public class PlayerController : MonoBehaviour
         _player = GetComponent<Player>();
     }
 
-  
+
 
     public void AddForce(Vector2 force)
     {
@@ -166,7 +167,7 @@ public class PlayerController : MonoBehaviour
         _externalForce.y = y;
     }
 
-    
+
     private void FixedUpdate()
     {
         EveryFrame();
@@ -188,7 +189,9 @@ public class PlayerController : MonoBehaviour
 
         _externalForce.x = 0;
         _externalForce.y = 0;
-
+        
+        
+        SetSate();
     }
 
     public void ApplyGravity()
@@ -204,7 +207,7 @@ public class PlayerController : MonoBehaviour
     public void CastRayToLeft()
     {
         float leftRayLength = _extentX + leftRayDistance;
-       
+
         _horizontalRayCastFromDown = Collider.bounds.center - new Vector3(0, _extentY - rayOffset);
         _horizontalRayCastToUp = Collider.bounds.center + new Vector3(0, _extentY - rayOffset);
 
@@ -216,18 +219,18 @@ public class PlayerController : MonoBehaviour
         {
             Vector2 originPoint = Vector2.Lerp(_horizontalRayCastFromDown, _horizontalRayCastToUp, (float)i / (NumberOfHorizontalRays - 1));
 
-                _leftHitStorage[i] = DebugHelper.RaycastAndDrawLine(originPoint,   Vector2.left, leftRayLength, 1 << LayerMask.NameToLayer(_groundCheckLayerName));
-                if (_leftHitStorage[i].collider != null)
+            _leftHitStorage[i] = DebugHelper.RaycastAndDrawLine(originPoint, Vector2.left, leftRayLength, 1 << LayerMask.NameToLayer(_groundCheckLayerName));
+            if (_leftHitStorage[i].collider != null)
+            {
+                float distance = Mathf.Abs(_leftHitStorage[i].point.x - _horizontalRayCastFromDown.x);
+                if (distance < leftSamllestDistance)
                 {
-                    float distance = Mathf.Abs(_leftHitStorage[i].point.x - _horizontalRayCastFromDown.x);
-                    if (distance < leftSamllestDistance)
-                    {
-                        leftSmallestIndex = i;
-                        leftSamllestDistance = distance;
-                    }
-                    leftHitConnect = true;
+                    leftSmallestIndex = i;
+                    leftSamllestDistance = distance;
                 }
-            
+                leftHitConnect = true;
+            }
+
         }
 
         if (leftHitConnect)
@@ -237,7 +240,7 @@ public class PlayerController : MonoBehaviour
             if (_inputManager.PrimaryMovement.x < 0)
             {
                 float distance = Mathf.Abs(transform.position.x - _extentX - _leftHitStorage[leftSmallestIndex].point.x);
-              
+
                 Debug.Log("distance" + distance);
                 _newPostion.x = -distance;
 
@@ -246,7 +249,7 @@ public class PlayerController : MonoBehaviour
                     _newPostion.x = 0;
                 }
             }
-          
+
         }
         else
         {
@@ -257,14 +260,14 @@ public class PlayerController : MonoBehaviour
 
     public void CastRayToRight()
     {
-       
+
         float rightRayLength = _extentX + rightRayDistance;
 
 
         _horizontalRayCastFromDown = Collider.bounds.center - new Vector3(0, _extentY - rayOffset);
         _horizontalRayCastToUp = Collider.bounds.center + new Vector3(0, _extentY - rayOffset);
 
-       
+
         float rightSmallestDistance = float.MaxValue;
         int rightSmallestIndex = 0;
         bool rightHitConnect = false;
@@ -273,20 +276,20 @@ public class PlayerController : MonoBehaviour
         {
             Vector2 originPoint = Vector2.Lerp(_horizontalRayCastFromDown, _horizontalRayCastToUp, (float)i / (NumberOfHorizontalRays - 1));
 
-                _rightHitStorage[i] = DebugHelper.RaycastAndDrawLine(originPoint,   Vector2.right, rightRayLength, 1 << LayerMask.NameToLayer(_groundCheckLayerName));
-                if (_rightHitStorage[i].collider != null)
+            _rightHitStorage[i] = DebugHelper.RaycastAndDrawLine(originPoint, Vector2.right, rightRayLength, 1 << LayerMask.NameToLayer(_groundCheckLayerName));
+            if (_rightHitStorage[i].collider != null)
+            {
+                float distance = Mathf.Abs(_rightHitStorage[i].point.x - _horizontalRayCastFromDown.x);
+                if (distance < rightSmallestDistance)
                 {
-                        float distance = Mathf.Abs(_rightHitStorage[i].point.x - _horizontalRayCastFromDown.x);
-                        if (distance < rightSmallestDistance)
-                        {
-                            rightSmallestIndex = i;
-                            rightSmallestDistance = distance;
-                        }
-                        rightHitConnect = true;
-                                    
+                    rightSmallestIndex = i;
+                    rightSmallestDistance = distance;
                 }
+                rightHitConnect = true;
+
+            }
         }
-       
+
         if (rightHitConnect)
         {
             State.isCollidingRight = true;
@@ -308,7 +311,7 @@ public class PlayerController : MonoBehaviour
         }
 
     }
-   
+
     public void CastRayBelow()
     {
         if (_newPostion.y < 0)
@@ -385,7 +388,7 @@ public class PlayerController : MonoBehaviour
             {
                 float distance = Mathf.Abs(_belowHitStorage[smallestDistanceIndex].point.y - transform.position.y);
 
-                _newPostion.y = - distance;
+                _newPostion.y = -distance;
             }
 
             if (Mathf.Abs(_newPostion.y) < 0.05f)
@@ -445,6 +448,23 @@ public class PlayerController : MonoBehaviour
             }
 
         }
+    }
+
+    public void SetSate()
+    {
+        //if (State.IsGrounded  && _inputManager.PrimaryMovement.x == 0)
+        //{
+        //    _player.Movement.ChangeState(PlayerStates.MovementStates.Idle);
+        //}
+    }
+
+    /// <summary>
+    /// 开启重力 或 关闭重力 的开关
+    /// </summary>
+    /// <param name="state"></param>
+    public void GravityActive(bool state)
+    {
+        _gravityActive = state;
     }
 
 

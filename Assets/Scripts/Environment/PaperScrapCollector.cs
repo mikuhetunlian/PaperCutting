@@ -53,6 +53,6 @@ public class PaperScrapCollector : MonoBehaviour
   
         _player.transform.position = this.transform.position;
         _player.layer = LayerMask.NameToLayer("mid1");
-        _player.GetComponent<Rigidbody2D>().velocity += new Vector2(0, 10);
+        _player.GetComponent<PlayerController>().SetVerticalForce(10f);
     }
 }

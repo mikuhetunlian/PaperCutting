@@ -26,7 +26,7 @@ public class PlayerStates
         TouchGround,
         Runnig,
         InBubble,
-
+        LadderClimbing,
 
     }
 
