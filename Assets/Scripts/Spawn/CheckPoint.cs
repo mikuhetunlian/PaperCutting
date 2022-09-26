@@ -5,14 +5,12 @@ using UnityEngine;
 public class CheckPoint : MonoBehaviour
 {
 
-    public Player.FacingDirections FacingDirection  = Player.FacingDirections.Right;
-
-    protected List<Respawnable> _listener;
-
+    public CheckPointData checkPointData;
 
     private void Awake()
     {
-        _listener = new List<Respawnable>();
+        checkPointData = new CheckPointData();
+        checkPointData.checkPointName = this.gameObject.name;
     }
 
 
@@ -22,7 +20,7 @@ public class CheckPoint : MonoBehaviour
     /// <param name="player"></param>
     public virtual void SpawnPlayer(Player player)
     {
-        player.RespawnAt(transform, FacingDirection);
+        player.RespawnAt(this.transform, checkPointData.facingDirection);
     }
 
 

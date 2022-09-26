@@ -57,6 +57,7 @@ public class Player : MonoBehaviour
         {
             abilitysList.Add(abilitys[i]);
         }
+       
     }
 
 

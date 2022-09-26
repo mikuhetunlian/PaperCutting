@@ -100,6 +100,8 @@ public class PlayerController : MonoBehaviour
     {
         //打开Input模块
         InputMgr.GetInstance().InputEnable(true);
+        //初始levelMgr
+        LevelManager.GetInstance();
         Parameters = new PlayerControllerParameters();
         State = new PlayerControllerState();
         rayOffset = 0.1f;

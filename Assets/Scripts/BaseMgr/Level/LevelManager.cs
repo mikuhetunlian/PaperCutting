@@ -5,11 +5,15 @@ using UnityEngine;
 public class LevelManager : SingeltonAutoManager<LevelManager>
 {
     /// <summary>
-    /// 玩家下一次重生的地点
+    /// 玩家下一次重生的地点,在进入游戏的时候，会重新读取一次这个checkPoint
     /// </summary>
-    public CheckPoint currentCheckPoint;
+  
+    public CheckPointData currentCheckPointData;
+    protected CheckPoint currentCheckPoint;  
     /// 通过 GameObject.Find 来找到Player
-    public Player _player;
+    protected Player _player;
+    protected string KEY_NAME = "currentCheckPointData";
+
 
 
     private void Start()
@@ -20,6 +24,10 @@ public class LevelManager : SingeltonAutoManager<LevelManager>
     protected void Initialization()
     {
         _player = GameObject.FindObjectOfType<Player>();
+        //在初始加载时，读取上一个checkPoint
+        currentCheckPointData = DataMgr.Instance.Load(typeof(CheckPointData),KEY_NAME) as CheckPointData;
+        currentCheckPoint = GameObject.Find(currentCheckPointData.checkPointName).gameObject.GetComponent<CheckPoint>();
+        Debug.Log("目前的checkPoint是" + (DataMgr.Instance.Load(typeof(CheckPointData), KEY_NAME) as CheckPointData).checkPointName);
     }
 
     /// <summary>
@@ -27,21 +35,26 @@ public class LevelManager : SingeltonAutoManager<LevelManager>
     /// </summary>
     public void RespawnPlayer()
     {
-        if (currentCheckPoint == null)
+        if (currentCheckPointData == null)
         {
             return;
         }
+        Debug.Log("重生");
         currentCheckPoint.SpawnPlayer(_player);
     }
 
 
     /// <summary>
-    /// 修改目前的 checkPoint
+    /// 修改目前的 checkPoint，并用DataMgr存储
     /// </summary>
     /// <param name="checkPoint"></param>
     public void SetCurrentCheckPoint(CheckPoint checkPoint)
     {
         currentCheckPoint = checkPoint;
+        currentCheckPointData = currentCheckPoint.checkPointData;
+        //用DataMgr存储 currentCheckPoint 中的 checkPointData
+        DataMgr.Instance.Save(currentCheckPointData, KEY_NAME);
+        Debug.Log("目前的checkPoint是" + (DataMgr.Instance.Load(typeof(CheckPointData), KEY_NAME) as CheckPointData).checkPointName);
     }
-    
+
 }
