@@ -14,14 +14,14 @@ TagManager:
   - 
   - Water
   - UI
-  - ground
-  - back3
-  - back2
-  - back1
-  - mid2
-  - mid1
-  - front2
-  - front1
+  - Platforms
+  - OneWayPlatforms
+  - Ladder
+  - Background
+  - Pushables
+  - 
+  - 
+  - 
   - 
   - 
   - 

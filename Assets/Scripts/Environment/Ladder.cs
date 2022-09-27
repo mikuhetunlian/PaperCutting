@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class Ladder : MonoBehaviour
 {
-
+    //ladder上方的平台
+    public GameObject LadderPlatform;
+    //在梯子上是否保持在中间位置
+    public bool CenterOnLadder;
     protected Collider2D _collider;
 
     // Start is called before the first frame update
@@ -12,8 +15,6 @@ public class Ladder : MonoBehaviour
     {
         _collider = GetComponent<BoxCollider2D>();
     }
-
-
 
 
     private void OnTriggerEnter2D(Collider2D collision)

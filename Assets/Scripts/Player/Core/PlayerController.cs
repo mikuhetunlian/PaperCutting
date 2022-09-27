@@ -31,6 +31,14 @@ public class PlayerController : MonoBehaviour
     public Vector2 Speed { get; protected set; }
     public bool IsGravityActive { get { return _gravityActive; } }
 
+    [Header("CollisonLayerMask")]
+    public LayerMask PlatformMask;
+    public LayerMask MovingPlatformMask;
+    public LayerMask OneWayPlatformMask;
+
+
+
+    [Header("Ray")]
     ///是否画出射线
     public bool isDrawRay;
     public short NumberOfHorizontalRays = 8;
@@ -79,8 +87,9 @@ public class PlayerController : MonoBehaviour
     protected Vector2 _horizontalRayCastFromDown;
     protected Vector2 _horizontalRayCastToUp;
     protected InputManager _inputManager;
-
-
+    protected LayerMask _raysBelowLayerMaskPlatforms;
+    protected LayerMask _rayBelowLayerMaskPlatformWithoutOneWay;
+    protected LayerMask _platformMaskSave;
 
     private void Awake()
     {
@@ -120,6 +129,8 @@ public class PlayerController : MonoBehaviour
         _leftHitStorage = new RaycastHit2D[NumberOfHorizontalRays];
         _rightHitStorage = new RaycastHit2D[NumberOfHorizontalRays];
         _inputManager = _player.LinkedInputManager;
+
+        CachePlatformMask();
     }
 
     public void GetComponents()
@@ -219,7 +230,7 @@ public class PlayerController : MonoBehaviour
         {
             Vector2 originPoint = Vector2.Lerp(_horizontalRayCastFromDown, _horizontalRayCastToUp, (float)i / (NumberOfHorizontalRays - 1));
 
-            _leftHitStorage[i] = DebugHelper.RaycastAndDrawLine(originPoint, Vector2.left, leftRayLength, 1 << LayerMask.NameToLayer(_groundCheckLayerName));
+            _leftHitStorage[i] = DebugHelper.RaycastAndDrawLine(originPoint, Vector2.left, leftRayLength, PlatformMask);
             if (_leftHitStorage[i].collider != null)
             {
                 float distance = Mathf.Abs(_leftHitStorage[i].point.x - _horizontalRayCastFromDown.x);
@@ -276,7 +287,7 @@ public class PlayerController : MonoBehaviour
         {
             Vector2 originPoint = Vector2.Lerp(_horizontalRayCastFromDown, _horizontalRayCastToUp, (float)i / (NumberOfHorizontalRays - 1));
 
-            _rightHitStorage[i] = DebugHelper.RaycastAndDrawLine(originPoint, Vector2.right, rightRayLength, 1 << LayerMask.NameToLayer(_groundCheckLayerName));
+            _rightHitStorage[i] = DebugHelper.RaycastAndDrawLine(originPoint, Vector2.right, rightRayLength, PlatformMask);
             if (_rightHitStorage[i].collider != null)
             {
                 float distance = Mathf.Abs(_rightHitStorage[i].point.x - _horizontalRayCastFromDown.x);
@@ -349,7 +360,14 @@ public class PlayerController : MonoBehaviour
         {
             Vector2 originPoint = Vector2.Lerp(_verticalRayCastFromLeft, _verticalRayCastToRight, ((float)i / (NumberOfHorizontalRays - 1)));
 
-            _belowHitStorage[i] = DebugHelper.RaycastAndDrawLine(originPoint, Vector2.down, rayLength, 1 << LayerMask.NameToLayer(_groundCheckLayerName));
+            _raysBelowLayerMaskPlatforms = PlatformMask;
+            _rayBelowLayerMaskPlatformWithoutOneWay = PlatformMask & ~(OneWayPlatformMask);
+
+          
+           
+            _belowHitStorage[i] = DebugHelper.RaycastAndDrawLine(originPoint, Vector2.down, rayLength, _raysBelowLayerMaskPlatforms);
+            
+           
             float distance = Mathf.Abs(_verticalRayCastFromLeft.y - _belowHitStorage[i].point.y);
 
             if (distance < 0.05f)
@@ -373,6 +391,16 @@ public class PlayerController : MonoBehaviour
         {
             StandingOn = _belowHitStorage[smallestDistanceIndex].collider.gameObject;
             StandingOnCollider = _belowHitStorage[smallestDistanceIndex].collider;
+
+            if (smallestDistance < 1f && StandingOn.layer == LayerMgr.OneWayPlatformLayer && _speed.y >0)
+            {
+                StandingOn = null;
+                StandingOnCollider = null;
+                State.isCollidingBelow = false;
+                return;
+            }
+
+
 
             State.IsFalling = false;
             State.isCollidingBelow = true;
@@ -422,7 +450,7 @@ public class PlayerController : MonoBehaviour
         for (int i = 0; i < NumberOfVerticalRays; i++)
         {
             Vector2 originPoint = Vector2.Lerp(_verticalRayCastFromLeft, _verticalRayCastToRight, (float)i / (NumberOfHorizontalRays - 1));
-            _aboveHitStorage[i] = DebugHelper.RaycastAndDrawLine(originPoint, Vector2.up, rayLength, 1 << LayerMask.NameToLayer(_groundCheckLayerName));
+            _aboveHitStorage[i] = DebugHelper.RaycastAndDrawLine(originPoint, Vector2.up, rayLength, PlatformMask & ~(OneWayPlatformMask));
 
             if (_aboveHitStorage[i].collider != null)
             {
@@ -467,9 +495,35 @@ public class PlayerController : MonoBehaviour
         _gravityActive = state;
     }
 
+    /// <summary>
+    /// 在初始化的时候保存一份最开始的platformMask
+    /// </summary>
+    public void CachePlatformMask()
+    {
+        _platformMaskSave = PlatformMask;
+    }
+
+    /// <summary>
+    /// 开启正常的碰撞检测
+    /// </summary>
+    public void CollisonOn()
+    {
+        PlatformMask = _platformMaskSave;
+        PlatformMask |= OneWayPlatformMask;
+
+    }
+
+    /// <summary>
+    /// 关闭所有碰撞检测
+    /// </summary>
+    public void CollisionOff()
+    {
+        PlatformMask = 0;
+    }
 
     public void FrameInitialization()
     {
+        //在这一帧的开始 根据 其他ability设置好的 _speed 来计算_newPostion
         _newPostion = _speed * Time.deltaTime;
         State.WasGroundedLastFrame = State.isCollidingBelow;
         
@@ -503,6 +557,21 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 将位置瞬间贴合到地面上
+    /// </summary>
+    public void AnchorToGround()
+    {
+        
+            float distanceToGround = this.transform.position.y - _belowHitStorage[0].point.y;
+            if (distanceToGround > 0)
+            {
+                SetForce(Vector2.zero);
+                this.transform.position = new Vector3(transform.position.x, _belowHitStorage[0].point.y, transform.position.z);
+                Debug.Log("瞬间贴合了");
+            }
+        
+    }
 
 
     /// <summary>

@@ -18,8 +18,10 @@ public class PlayerAblity :MonoBehaviour
     protected StateMachine<PlayerStates.MovementStates> _movement;
     protected StateMachine<PlayerStates.PlayerConditions> _condition;
     protected InputManager _inputManager;
+    protected Transform _transform;
     protected float _verticalInput;
     protected float _horizontalInput;
+
 
     protected virtual void Start()
     {
@@ -41,6 +43,7 @@ public class PlayerAblity :MonoBehaviour
         _playerController = GetComponent<PlayerController>();
         _player = GetComponent<Player>();
         _animator = GetComponent<Animator>();
+        _transform = GetComponent<Transform>();
         _movement = _player.Movement;
         _condition = _player.Condition;
         _inputManager = _player.LinkedInputManager;
