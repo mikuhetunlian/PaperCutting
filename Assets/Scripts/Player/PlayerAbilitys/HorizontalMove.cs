@@ -15,6 +15,18 @@ public class HorizontalMove : PlayerAblity
     protected float _horizontalMovement;
     protected float _horizontalMovementForce;
 
+
+    /// aniamtor parameters
+    protected string _idleAniamtorParameterName = "idle";
+    protected string _walkAniamtorParameterName = "walk";
+    protected string _touchGroundAnimatorParameterName = "touchGround";
+    protected int _idleAnimatorParameter;
+    protected int _walkAniamtorParameter;
+    protected int _touchGroundAnimatorParameter;
+
+
+
+
     public override void Initialization()
     {
         base.Initialization();
@@ -183,11 +195,20 @@ public class HorizontalMove : PlayerAblity
     {
         if (AbilityPermitted)
         {
-            if (_playerController.State.isCollidingBelow 
+            if (_playerController.State.isCollidingBelow
                 && _movement.CurrentState != PlayerStates.MovementStates.LadderClimbing //不在爬梯子
-                && _movement.CurrentState != PlayerStates.MovementStates.Jumping)//不在跳跃
+                && _movement.CurrentState != PlayerStates.MovementStates.Jumping //不在跳跃
+               )
             {
-                _movement.ChangeState(PlayerStates.MovementStates.Walking);
+                if (_horizontalMovement != 0)
+                {
+                    _movement.ChangeState(PlayerStates.MovementStates.Walking);
+                }
+                else
+                {
+                    _movement.ChangeState(PlayerStates.MovementStates.Idle);
+                       
+                }
             }
             
             _playerController.SetHorizontalForce(_horizontalMovement * speed);
@@ -217,14 +238,31 @@ public class HorizontalMove : PlayerAblity
 
     protected override void InitializeAnimatorParameter()
     {
-        RegisterAnimatorParameter("walk", AnimatorControllerParameterType.Bool);
-        RegisterAnimatorParameter("idle", AnimatorControllerParameterType.Bool);
+        RegisterAnimatorParameter(_idleAniamtorParameterName, AnimatorControllerParameterType.Bool, out _idleAnimatorParameter);
+        RegisterAnimatorParameter(_walkAniamtorParameterName, AnimatorControllerParameterType.Bool, out _walkAniamtorParameter);
+        RegisterAnimatorParameter(_touchGroundAnimatorParameterName, AnimatorControllerParameterType.Bool,out _touchGroundAnimatorParameter);
     }
 
     public override void UpdateAnimator()
     {
-        AnimatorHelper.UpdateAnimatorBool(_animator, "walk", (_movement.CurrentState == PlayerStates.MovementStates.Walking), _player._animatorParameterList);
-        AnimatorHelper.UpdateAnimatorBool(_animator, "idle", (_movement.CurrentState == PlayerStates.MovementStates.Idle), _player._animatorParameterList);
+        if (_movement.CurrentState == PlayerStates.MovementStates.Walking)
+        {
+            AnimatorHelper.UpdateAnimatorBool(_animator, _walkAniamtorParameter, true, _player._animatorParameters);
+        }
+        else
+        {
+            AnimatorHelper.UpdateAnimatorBool(_animator, _walkAniamtorParameter, false, _player._animatorParameters);
+        }
+
+
+        if (_movement.CurrentState == PlayerStates.MovementStates.Idle)
+        {
+            AnimatorHelper.UpdateAnimatorBool(_animator, _idleAnimatorParameter, true, _player._animatorParameters);
+        }
+        else
+        {
+            AnimatorHelper.UpdateAnimatorBool(_animator, _idleAnimatorParameter, false, _player._animatorParameters);
+        }
     }
 
 }

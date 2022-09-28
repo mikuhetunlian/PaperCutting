@@ -117,7 +117,7 @@ public class PlayerAblity :MonoBehaviour
 
 
     /// <summary>
-    /// 重写这个方法，添加自己ability需要处理的animator的参数到Player的_animatorParameterList中
+    /// 重写这个方法，添加自己ability需要处理的animator的参数到Player的_animatorParameters中
     /// 在 awake 的 GetComponents 中会调用这个方法
     /// </summary>
     protected virtual void InitializeAnimatorParameter()
@@ -126,19 +126,21 @@ public class PlayerAblity :MonoBehaviour
     }
 
     /// <summary>
-    /// 如果animator中存在这个参数，就把它添加到Player的_animatorParameterList中
+    /// 如果animator中存在这个参数，就把它添加到Player的 _animatorParameters 中
     /// </summary>
     /// <param name="parameterName"></param>
     /// <param name="type"></param>
-    protected virtual void RegisterAnimatorParameter(string parameterName, AnimatorControllerParameterType type)
+    protected virtual void RegisterAnimatorParameter(string parameterName, AnimatorControllerParameterType type,out int parameter)
     {
+        parameter = Animator.StringToHash(parameterName);
+
         if (_animator == null)
         {
             return;
         }
         if (_animator.HasParameterOfType(parameterName, type))
         {
-            _player._animatorParameterList.Add(parameterName);
+            _player._animatorParameters.Add(parameter);
         }
     }
 
@@ -147,7 +149,7 @@ public class PlayerAblity :MonoBehaviour
     /// </summary>
     public virtual void UpdateAnimator()
     {
-        
+      
     }
 
 

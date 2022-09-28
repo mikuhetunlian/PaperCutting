@@ -2,13 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+[System.Serializable]
+public class PaperBrigdeStartPoint
+{
+    //代表这个折纸桥的起点坐标
+    public Vector3 StartPostion;
+}
+
+
 public class PaperBridge : MonoBehaviour
 {
 
 
     private string Path = "Prefab/paperBridge";
-    //第一个桥开始的位置
-    public Vector2 startPos;
+    public PaperBrigdeStartPoint paperBrigdeStartPoint;
+    //折纸桥产生的方向
+    public bool isRight;
     //“小桥”的数量
     public short bridgeNum = 8;
     //每个“小桥”产生间隔的时间
@@ -23,32 +33,46 @@ public class PaperBridge : MonoBehaviour
     private bool isCreate = false;
 
 
+
+    public void CreatePaperBrigde()
+    {
+        StartCoroutine(DoCreatePaperBridge());
+    }
+
     /// <summary>
-    /// 生成折纸桥的携程
+    /// 生成折纸桥的协程
     /// </summary>
     /// <returns></returns>
-    private IEnumerator CreatePaperBridge()
+    private IEnumerator DoCreatePaperBridge()
     {
 
         Debug.Log("开始生成");
-        startPos = this.transform.position;
-        float X = startPos.x;
+     
+        float X = paperBrigdeStartPoint.StartPostion.x;
         for (int i = 0; i < bridgeNum; i++)
         {
             GameObject bridge = ResMgr.GetInstance().LoadRes<GameObject>(Path);
-            bridge.gameObject.transform.position = new Vector2(X, startPos.y - offset_y);
-            X += offset_X;
+            
+            bridge.gameObject.transform.position = new Vector2(X, paperBrigdeStartPoint.StartPostion.y - offset_y);
+
+            if (isRight)
+            {
+                X += offset_X;
+            }
+            else
+            {
+                X -= offset_X;
+            }
             yield return new WaitForSeconds(deltaTime);
         }      
     }
 
 
-    private void OnTriggerEnter2D(Collider2D collision)
+ 
+
+
+    public Vector3 GetStartPositon()
     {
-        if (collision.gameObject.tag.Equals("Player") && !isCreate)
-        {
-            isCreate = true;
-            StartCoroutine(CreatePaperBridge());
-        }
+        return paperBrigdeStartPoint.StartPostion;
     }
 }

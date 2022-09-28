@@ -61,6 +61,10 @@ public class Jump : PlayerAblity
         _playerLadder = GetComponent<PlayerLadder>();
     }
 
+    public override void ProcessAbility()
+    {
+        SetState();
+    }
 
 
     public override void HandleInput()
@@ -80,7 +84,6 @@ public class Jump : PlayerAblity
     /// </summary>
     public void JumpStart()
     {
-
 
         if (_playerController.State.isCollidingBelow
             || _movement.CurrentState == PlayerStates.MovementStates.LadderClimbing)
@@ -104,6 +107,21 @@ public class Jump : PlayerAblity
         }
     }
 
+    public void SetState()
+    {
+
+        if(!_playerController.State.isCollidingBelow
+            && _movement.CurrentState != PlayerStates.MovementStates.LadderClimbing)
+        {
+            _movement.ChangeState(PlayerStates.MovementStates.Jumping);
+        }
+
+        if( _movement.CurrentState == PlayerStates.MovementStates.Jumping 
+            && _playerController.State.isCollidingBelow )
+        {
+            _movement.ChangeState(PlayerStates.MovementStates.Idle);
+        }
+    }
 
 
     /// <summary>
@@ -137,17 +155,11 @@ public class Jump : PlayerAblity
 
     protected override void InitializeAnimatorParameter()
     {
-        base.InitializeAnimatorParameter();
-        RegisterAnimatorParameter("jump_up", AnimatorControllerParameterType.Bool);
-        RegisterAnimatorParameter("jump_fall", AnimatorControllerParameterType.Bool);
-        RegisterAnimatorParameter("touchGround", AnimatorControllerParameterType.Bool);
+     
     }
     public override void UpdateAnimator()
     {
-        base.UpdateAnimator();
-        AnimatorHelper.UpdateAnimatorBool(_animator, "jump_up", isUping, _player._animatorParameterList);
-        AnimatorHelper.UpdateAnimatorBool(_animator, "jump_fall", isFalling, _player._animatorParameterList);
-        AnimatorHelper.UpdateAnimatorBool(_animator, "touchGround", isTouchGround, _player._animatorParameterList);
+        
     }
 
 

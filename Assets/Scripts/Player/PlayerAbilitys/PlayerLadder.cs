@@ -16,6 +16,16 @@ public class PlayerLadder : PlayerAblity
     protected Ladder _currentLadder;
 
 
+    /// animator parameters
+    protected string _ladderIdleAnimatorParameterName = "ladder_idle";
+    protected string _ladderClimbingAnimatorParameterName = "ladder_climbing";
+    protected int _ladderIdleAniamtorParameter;
+    protected int _ladderClimbingAnimatorParameter;
+
+
+
+
+
     public override void Initialization()
     {
         base.Initialization();
@@ -104,6 +114,7 @@ public class PlayerLadder : PlayerAblity
             
             //如果在梯子平台上，可以爬下去
             if (_movement.CurrentState != PlayerStates.MovementStates.LadderClimbing
+                && _movement.CurrentState != PlayerStates.MovementStates.Jumping
                 && AboveLadderPlatform())
             {
                 if (_verticalInput < 0)
@@ -166,7 +177,7 @@ public class PlayerLadder : PlayerAblity
             && BelowLadderPlatform())
         {
             _playerController.CollisonOn();
-            Debug.Log("开启碰撞");
+           
         }
 
         _playerController.SetVerticalForce(_verticalInput * LadderClimbingSpeed);
@@ -181,7 +192,7 @@ public class PlayerLadder : PlayerAblity
     {
         _movement.ChangeState(PlayerStates.MovementStates.Idle);
         _playerController.GravityActive(true);
-        Debug.Log("开启了重力");
+        _playerController.CollisonOn();
     }
 
 
@@ -270,5 +281,38 @@ public class PlayerLadder : PlayerAblity
     }
 
 
+
+
+    protected override void InitializeAnimatorParameter()
+    {
+        RegisterAnimatorParameter(_ladderIdleAnimatorParameterName, AnimatorControllerParameterType.Bool, out _ladderIdleAniamtorParameter);
+        RegisterAnimatorParameter(_ladderClimbingAnimatorParameterName, AnimatorControllerParameterType.Bool, out _ladderClimbingAnimatorParameter);
+    }
+
+    public override void UpdateAnimator()
+    {
+
+        if (_movement.CurrentState != PlayerStates.MovementStates.LadderClimbing)
+        {
+            AnimatorHelper.UpdateAnimatorBool(_animator, _ladderIdleAniamtorParameter, false, _player._animatorParameters);
+            AnimatorHelper.UpdateAnimatorBool(_animator, _ladderClimbingAnimatorParameter, false, _player._animatorParameters);
+        }
+
+        if (_movement.CurrentState == PlayerStates.MovementStates.LadderClimbing
+            && _verticalInput !=0)
+        {
+            AnimatorHelper.UpdateAnimatorBool(_animator, _ladderIdleAniamtorParameter, false, _player._animatorParameters);
+            AnimatorHelper.UpdateAnimatorBool(_animator, _ladderClimbingAnimatorParameter, true, _player._animatorParameters);
+          
+        }
+
+        if (_movement.CurrentState == PlayerStates.MovementStates.LadderClimbing
+            && _verticalInput == 0)
+        {
+            AnimatorHelper.UpdateAnimatorBool(_animator, _ladderIdleAniamtorParameter, true, _player._animatorParameters);
+            AnimatorHelper.UpdateAnimatorBool(_animator, _ladderClimbingAnimatorParameter, false, _player._animatorParameters);
+
+        }
+    }
 
 }

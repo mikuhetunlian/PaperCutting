@@ -1,0 +1,106 @@
+{
+"skeleton": {
+	"hash": "0Vra6CbBn3JS0PP5eS5wEIus8yI",
+	"spine": "3.8",
+	"x": -119.5,
+	"y": -3,
+	"width": 289.15,
+	"height": 737.03,
+	"images": "../../PSD/images/tool/折纸桥操控柄/",
+	"audio": ""
+},
+"bones": [
+	{ "name": "root" },
+	{ "name": "蓝柄", "parent": "root", "length": 439.03, "rotation": 89.35, "x": 5, "y": 28 },
+	{ "name": "已通桥", "parent": "蓝柄", "length": 247.01, "rotation": 0.19, "x": 449.15, "y": -10.89 }
+],
+"slots": [
+	{ "name": "蓝柄", "bone": "蓝柄", "attachment": "蓝柄" },
+	{ "name": "尚未通桥", "bone": "已通桥", "attachment": "尚未通桥" },
+	{ "name": "已通桥", "bone": "已通桥", "attachment": "已通桥" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"蓝柄": {
+				"蓝柄": { "x": 224.52, "y": -0.44, "rotation": -89.35, "width": 52, "height": 511 }
+			},
+			"尚未通桥": {
+				"尚未通桥": { "x": 112.56, "y": -3.24, "rotation": -89.54, "width": 289, "height": 289 }
+			},
+			"已通桥": {
+				"已通桥": { "x": 111.53, "y": -3.1, "rotation": -89.54, "width": 289, "height": 289 }
+			}
+		}
+	}
+],
+"events": {
+	"CreateBrigde": {}
+},
+"animations": {
+	"change": {
+		"slots": {
+			"尚未通桥": {
+				"color": [
+					{ "time": 0.3667, "color": "740101ff", "curve": "stepped" },
+					{ "time": 0.4333, "color": "ffffff00" }
+				]
+			},
+			"已通桥": {
+				"color": [
+					{ "color": "ffffff00", "curve": "stepped" },
+					{ "time": 0.4333, "color": "ffffffff" }
+				]
+			}
+		},
+		"bones": {
+			"已通桥": {
+				"translate": [
+					{ "x": 1.27, "y": 10.4 }
+				],
+				"scale": [
+					{ "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.4333, "x": 0.1 },
+					{ "time": 0.8333 }
+				]
+			}
+		},
+		"events": [
+			{ "time": 0.3667, "name": "CreateBrigde" }
+		]
+	},
+	"haveChange": {
+		"slots": {
+			"尚未通桥": {
+				"color": [
+					{ "color": "ffffff00" }
+				]
+			}
+		},
+		"bones": {
+			"已通桥": {
+				"translate": [
+					{ "x": 1.26, "y": 10.39 }
+				]
+			}
+		}
+	},
+	"idle": {
+		"slots": {
+			"已通桥": {
+				"color": [
+					{ "color": "ffffff00" }
+				]
+			}
+		},
+		"bones": {
+			"已通桥": {
+				"translate": [
+					{ "x": 1.26, "y": 10.4 }
+				]
+			}
+		}
+	}
+}
+}

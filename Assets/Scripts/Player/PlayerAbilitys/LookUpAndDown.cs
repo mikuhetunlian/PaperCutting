@@ -52,13 +52,15 @@ public class LookUpAndDown : PlayerAblity
         switch (key)
         {
             case KeyCode.W:
-                if (!_isTiming && _mainVCamera.enabled)
+                if (!_isTiming && _mainVCamera.enabled
+                    && _movement.CurrentState != PlayerStates.MovementStates.LadderClimbing)
                 {
                     StartCoroutine(LookUpOrDown(LookDirection.Up));
                 }
                 break;
             case KeyCode.S:
-                if (!_isTiming && _mainVCamera.enabled)
+                if (!_isTiming && _mainVCamera.enabled
+                    && _movement.CurrentState != PlayerStates.MovementStates.LadderClimbing)
                 {
                     StartCoroutine(LookUpOrDown(LookDirection.Down));
                 }  
@@ -104,6 +106,7 @@ public class LookUpAndDown : PlayerAblity
     /// <returns></returns>
     private IEnumerator LookUpOrDown(LookDirection direction)
     {
+       
         _isTiming = true;
         float t = 0;
         while (t <= pressTime)

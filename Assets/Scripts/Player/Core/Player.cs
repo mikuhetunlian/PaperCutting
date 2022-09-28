@@ -25,9 +25,13 @@ public class Player : MonoBehaviour
     public PlayerStates State;
     public StateMachine<PlayerStates.MovementStates> Movement;
     public StateMachine<PlayerStates.PlayerConditions> Condition;
-    protected Animator _animator;
+ 
+    public Animator _animator;
+    //用来存储animator中的 参数名 的int哈希值
+    public HashSet<int> _animatorParameters;
+
     protected PlayerAblity[] _playerAbilities;
-    public List<string> _animatorParameterList { get; set; }
+
     protected Rigidbody2D _rbody;
     public InputManager LinkedInputManager { get; protected set; }
     protected virtual void Awake()
@@ -52,6 +56,7 @@ public class Player : MonoBehaviour
         _playerAbilities = GetComponents<PlayerAblity>();
         _rbody = GetComponent<Rigidbody2D>();
         abilitysList = new List<PlayerAblity>();
+        _animatorParameters = new HashSet<int>();
         PlayerAblity[] abilitys = this.gameObject.GetComponents<PlayerAblity>();
         for (int i = 0; i < abilitys.Length; i++)
         {
@@ -164,14 +169,14 @@ public class Player : MonoBehaviour
 
     protected virtual void InitializeAnimatorParameters()
     {
-        if (_animator == null)
-        {
-            return;
-        }
+        //if (_animator == null)
+        //{
+        //    return;
+        //}
 
-        _animatorParameterList = new List<string>();
+        //_animatorParameters = new HashSet<int>();
 
-        AnimatorHelper.AddAnimatorParamaterIfExists(_animator, "isWalk", AnimatorControllerParameterType.Bool, _animatorParameterList);
+        //AnimatorHelper.AddAnimatorParamaterIfExists(_animator, "isWalk", AnimatorControllerParameterType.Bool, );
     }
 
 

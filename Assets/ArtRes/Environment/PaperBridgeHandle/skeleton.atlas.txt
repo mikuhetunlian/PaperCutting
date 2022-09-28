@@ -1,0 +1,27 @@
+
+skeleton.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+尚未通桥
+  rotate: false
+  xy: 0, 291
+  size: 289, 289
+  orig: 289, 289
+  offset: 0, 0
+  index: -1
+已通桥
+  rotate: false
+  xy: 0, 0
+  size: 289, 289
+  orig: 289, 289
+  offset: 0, 0
+  index: -1
+蓝柄
+  rotate: false
+  xy: 291, 70
+  size: 52, 510
+  orig: 52, 511
+  offset: 0, 0
+  index: -1

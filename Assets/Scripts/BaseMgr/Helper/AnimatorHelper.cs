@@ -8,12 +8,13 @@ using UnityEngine;
 /// </summary>
 public class AnimatorHelper 
 {
+
     //如果animator中有这个类型的参数的话，就添加到paramaterList中
-    public static void AddAnimatorParamaterIfExists(Animator animator,string paramaterName,AnimatorControllerParameterType type,List<string> paramaterList)
+    public static void AddAnimatorParamaterIfExists(Animator animator,string paramaterName,AnimatorControllerParameterType type,HashSet<int> paramaters)
     {
         if (animator.HasParameterOfType(paramaterName, type))
         {
-            paramaterList.Add(paramaterName);
+            paramaters.Add(Animator.StringToHash(paramaterName));
         }
     }
     
@@ -25,16 +26,16 @@ public class AnimatorHelper
     /// <param name="parameterName"></param>
     /// <param name="value"></param>
     /// <param name="parameterList"></param>
-    public static void UpdateAnimatorBool(Animator animator, string parameterName, bool value, List<string> parameterList)
+    public static void UpdateAnimatorBool(Animator animator, int parameter, bool value, HashSet<int> parameters)
     {
         if (animator == null)
         {
             return;
         }
 
-        if (parameterList.Contains(parameterName))
+        if (parameters.Contains(parameter))
         {
-            animator.SetBool(parameterName, value);
+            animator.SetBool(parameter, value);
         }
 
     }

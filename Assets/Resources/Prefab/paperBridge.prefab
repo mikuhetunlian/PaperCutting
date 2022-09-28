@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7734292547499786067}
-  m_Layer: 11
+  m_Layer: 6
   m_Name: SkeletonUtility-SkeletonRoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41,7 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7734292548247469868}
   - component: {fileID: 7734292548247469907}
-  m_Layer: 11
+  m_Layer: 6
   m_Name: brigd
   m_TagString: Untagged
   m_Icon: {fileID: 2800000, guid: 97a43f11e00735147a9dc3dff6d68191, type: 3}
@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 7734292548799579252}
   - component: {fileID: 7734292548799579253}
   - component: {fileID: 7734292548799579254}
-  m_Layer: 11
+  m_Layer: 6
   m_Name: paperBridge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -253,7 +253,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7734292548878248483}
   - component: {fileID: 7734292548878248482}
-  m_Layer: 11
+  m_Layer: 6
   m_Name: root
   m_TagString: Untagged
   m_Icon: {fileID: 2800000, guid: d1de1604dfe4cb64c9d31246a8e43c78, type: 3}
@@ -306,7 +306,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7734292549015246868}
   - component: {fileID: 7734292549015246875}
-  m_Layer: 11
+  m_Layer: 6
   m_Name: '[BoundingBox]brigd'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
