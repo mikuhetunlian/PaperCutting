@@ -20,9 +20,11 @@ public class HorizontalMove : PlayerAblity
     protected string _idleAniamtorParameterName = "idle";
     protected string _walkAniamtorParameterName = "walk";
     protected string _touchGroundAnimatorParameterName = "touchGround";
+    protected string _tryToTouchAnimatorParameterName = "tryToTouch";
     protected int _idleAnimatorParameter;
     protected int _walkAniamtorParameter;
     protected int _touchGroundAnimatorParameter;
+    protected int _tryToTouchAnimatorParameter;
 
 
 
@@ -241,10 +243,12 @@ public class HorizontalMove : PlayerAblity
         RegisterAnimatorParameter(_idleAniamtorParameterName, AnimatorControllerParameterType.Bool, out _idleAnimatorParameter);
         RegisterAnimatorParameter(_walkAniamtorParameterName, AnimatorControllerParameterType.Bool, out _walkAniamtorParameter);
         RegisterAnimatorParameter(_touchGroundAnimatorParameterName, AnimatorControllerParameterType.Bool,out _touchGroundAnimatorParameter);
+        RegisterAnimatorParameter(_tryToTouchAnimatorParameterName, AnimatorControllerParameterType.Bool, out _tryToTouchAnimatorParameter);
     }
 
     public override void UpdateAnimator()
     {
+
         if (_movement.CurrentState == PlayerStates.MovementStates.Walking)
         {
             AnimatorHelper.UpdateAnimatorBool(_animator, _walkAniamtorParameter, true, _player._animatorParameters);
@@ -255,14 +259,19 @@ public class HorizontalMove : PlayerAblity
         }
 
 
-        if (_movement.CurrentState == PlayerStates.MovementStates.Idle)
+
+        if (!_touch.CanTouch)
         {
-            AnimatorHelper.UpdateAnimatorBool(_animator, _idleAnimatorParameter, true, _player._animatorParameters);
+            if (_movement.CurrentState == PlayerStates.MovementStates.Idle)
+            {
+                AnimatorHelper.UpdateAnimatorBool(_animator, _idleAnimatorParameter, true, _player._animatorParameters);
+            }
+            else
+            {
+                AnimatorHelper.UpdateAnimatorBool(_animator, _idleAnimatorParameter, false, _player._animatorParameters);
+            }
         }
-        else
-        {
-            AnimatorHelper.UpdateAnimatorBool(_animator, _idleAnimatorParameter, false, _player._animatorParameters);
-        }
+        
     }
 
 }

@@ -2,30 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
+using UnityEngine.Events;
 
 public class CameraMgr : BaseManager<CameraMgr>
 {
-
-
+    ///跟随玩家的虚拟摄像机
+    public CinemachineVirtualCamera PlayerVirtualCamera { get; protected set; }
     public Vector3 DefaultOffset = new Vector2(0,7.6f);
-    private bool set;
     private CinemachineBrain _brain;
-    
+    protected CinemachineVirtualCamera _previousActiveCamera;
 
-    public Dictionary<Camera,float> subCameraDic = new Dictionary<Camera, float>();
     public CameraMgr()
     {
         _brain = Camera.main.gameObject.GetComponent<CinemachineBrain>();
-
-        //获取mainCamera下的所有子摄影机，并且记录下相对于mainCamera的size差值
-        GameObject mainCameraObj = Camera.main.gameObject;
-        float mainSize = Camera.main.orthographicSize;
-        for (int i = 0; i < mainCameraObj.transform.childCount; i++)
-        {
-            Camera cam = mainCameraObj.transform.GetChild(i).gameObject.GetComponent<Camera>();
-            subCameraDic.Add(cam,mainSize - cam.orthographicSize);
-        }
-
+        PlayerVirtualCamera = GameObject.Find("CM vcam1").GetComponent<CinemachineVirtualCamera>();
+        _previousActiveCamera = _brain.ActiveVirtualCamera as CinemachineVirtualCamera;
     }
 
     /// <summary>
@@ -41,46 +32,7 @@ public class CameraMgr : BaseManager<CameraMgr>
         _brain.m_DefaultBlend.m_Time = blendTime;
     }
 
-    /// <summary>
-    /// 让每个子摄像头保持和main cinemachine的相对距离，不使用ResetCameraSize 的话这个相对距离会一直保持下去，也就是会消耗一些性能
-    /// </summary>
-    public void SetCamerasSize()
-    {
-        MonoManager.GetInstance().StartCoroutine(DoSetCamerasSize());
-    }
-    /// <summary>
-    /// 当离开了blend的时间的时候，就可以关闭 DoSetCamerasSize协程从而节约一些性能
-    /// </summary>
-    public void ResetCameraSize()
-    {
-        MonoManager.GetInstance().StartCoroutine(DoResetCameraSize());
-    }
-
-    private IEnumerator DoSetCamerasSize()
-    {
-        set = true;
-        while (set)
-        {
-            Camera maincamera = Camera.main;
-            foreach (Camera camera in subCameraDic.Keys)
-            {
-                camera.orthographicSize = maincamera.orthographicSize + subCameraDic[camera];
-            }
-            yield return  new WaitForFixedUpdate();
-        }
-
-    }
-
-    private IEnumerator DoResetCameraSize()
-    {
-        set = false;
-        yield return new WaitForSeconds(2);
-        Camera maincamera = Camera.main;
-        foreach (Camera camera in subCameraDic.Keys)
-        {
-            camera.orthographicSize = maincamera.orthographicSize + subCameraDic[camera];
-        }
-    }
+    
 
     /// <summary>
     /// 重置当前镜头的 offset 为 默认镜头
@@ -117,7 +69,12 @@ public class CameraMgr : BaseManager<CameraMgr>
         MonoManager.GetInstance().StartCoroutine(DoSetCurrentCameraOffset(transporser, new Vector2(transporser.m_TrackedObjectOffset.x, y)));
     }
 
-
+    /// <summary>
+    /// 实现镜头偏移的协程
+    /// </summary>
+    /// <param name="transporser"></param>
+    /// <param name="offset"></param>
+    /// <returns></returns>
     IEnumerator DoSetCurrentCameraOffset(CinemachineFramingTransposer transporser,Vector2 offset)
     {
         float t = 0;
@@ -128,7 +85,29 @@ public class CameraMgr : BaseManager<CameraMgr>
             t += 0.05f;
             yield return null;
         }
-        Debug.Log("达到完毕");
+    
     }
+
+
+    /// <summary>
+    /// 切换摄像机
+    /// </summary>
+    /// <param name="targetCamera">要切换到的目标摄像机</param>
+    /// <param name="blendTime">过度时间，-1为默认不修改过度时间</param>
+    /// <param name="action">后续行为</param>
+    public void ChangeCamera(CinemachineVirtualCamera targetCamera,float blendTime = -1,UnityAction action = null)
+    {
+        if (blendTime != -1 && blendTime >= 0)
+        {
+            SetDefaultBlednTime(blendTime);
+        }
+        _previousActiveCamera = _brain.ActiveVirtualCamera as CinemachineVirtualCamera;
+        _previousActiveCamera.enabled = false;
+        targetCamera.enabled = true;
+
+        action?.Invoke();
+    }
+
+    
 
 }

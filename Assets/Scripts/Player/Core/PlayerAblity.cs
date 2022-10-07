@@ -19,6 +19,7 @@ public class PlayerAblity :MonoBehaviour
     protected StateMachine<PlayerStates.PlayerConditions> _condition;
     protected InputManager _inputManager;
     protected Transform _transform;
+    protected Touch _touch;
     protected float _verticalInput;
     protected float _horizontalInput;
 
@@ -44,6 +45,7 @@ public class PlayerAblity :MonoBehaviour
         _player = GetComponent<Player>();
         _animator = GetComponent<Animator>();
         _transform = GetComponent<Transform>();
+        _touch = GetComponent<Touch>();
         _movement = _player.Movement;
         _condition = _player.Condition;
         _inputManager = _player.LinkedInputManager;

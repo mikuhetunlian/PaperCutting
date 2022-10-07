@@ -56,7 +56,9 @@ public class PathMovement : MonoBehaviour
 
 
     public float MovementSpeed = 1;
+    ///返回当前平台的移动速度 主要提供给PlayerController使用
     public Vector3 CurrentSpeed { get; protected set; }
+    public float DeltaTime;
     public PossibleAccelerationType AcclerationType = PossibleAccelerationType.ConstantSpeed;
 
     protected bool _active = false;
@@ -70,9 +72,6 @@ public class PathMovement : MonoBehaviour
     protected float _distanceToNextPoint;
     protected bool _endReached = false;
 
-
-
-   
 
 
     protected virtual void Start()
@@ -129,15 +128,29 @@ public class PathMovement : MonoBehaviour
     }
 
 
+
     public void Move()
     {
+
+        _initialPostion = transform.position;
+
         MoveAlongThePath();
 
         float distance = (transform.position - (_originalTransformPostion + _currnetPoint.Current)).magnitude;
+
         if(distance < MinDistanceToGoal)
         {
             _previousPoint = _currnetPoint.Current;
             _currnetPoint.MoveNext();
+        }
+
+        _finalPostion = transform.position;
+
+        // v = x / t
+        if (Time.deltaTime != 0)
+        {
+          
+           CurrentSpeed = (_finalPostion - _initialPostion) / Time.deltaTime;
         }
 
         if (_endReached)
@@ -148,6 +161,7 @@ public class PathMovement : MonoBehaviour
 
 
     /// <summary>
+    /// 平台真正移动的地方
     /// 暂时没有写关于 AnimationCurve 的情况
     /// </summary>
     public virtual void MoveAlongThePath()
@@ -165,7 +179,7 @@ public class PathMovement : MonoBehaviour
                     break;
                 }
         }
-        
+        Physics2D.SyncTransforms();
     }
 
     /// <summary>
@@ -186,6 +200,10 @@ public class PathMovement : MonoBehaviour
         while (true)
         {
             _currentIndex = index;
+            if (index < 0 || index > PathElements.Count - 1)
+            {
+                Debug.Log("yuejie");
+            }
             yield return PathElements[index].PathElementPotion;
 
             if (PathElements.Count <= 1)
@@ -224,9 +242,9 @@ public class PathMovement : MonoBehaviour
             {
                 if (index <= 0)
                 {
-                    _direction = -1;
+                    _direction = 1;
                 }
-                else if (index > PathElements.Count - 1)
+                else if (index >= PathElements.Count - 1)
                 {
                     _direction = 0;
                     CurrentSpeed = Vector3.zero;
@@ -235,10 +253,6 @@ public class PathMovement : MonoBehaviour
 
                 index += _direction;
             }
-
-    
-
-           
         }
 
     }

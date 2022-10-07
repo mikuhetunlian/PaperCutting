@@ -1,0 +1,34 @@
+
+skeleton.png
+size: 2048,2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+conch
+  rotate: true
+  xy: 1033, 1233
+  size: 554, 387
+  orig: 555, 388
+  offset: 0, 0
+  index: -1
+海螺声波1
+  rotate: false
+  xy: 0, 1262
+  size: 594, 525
+  orig: 594, 526
+  offset: 0, 1
+  index: -1
+海螺声波2
+  rotate: true
+  xy: 596, 1262
+  size: 493, 435
+  orig: 493, 437
+  offset: 0, 2
+  index: -1
+海螺声波3
+  rotate: true
+  xy: 1422, 1233
+  size: 413, 365
+  orig: 413, 366
+  offset: 0, 1
+  index: -1

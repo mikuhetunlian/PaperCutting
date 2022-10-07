@@ -1,0 +1,137 @@
+{
+"skeleton": {
+	"hash": "0rqO7CUPSdqSqpcOT6epWZJQZzI",
+	"spine": "3.8",
+	"x": -257.5,
+	"y": -6,
+	"width": 1074.31,
+	"height": 835.93,
+	"images": "../../../PSD/images/海螺号角/",
+	"audio": ""
+},
+"bones": [
+	{ "name": "root" },
+	{ "name": "conch", "parent": "root", "length": 243.42, "rotation": 87.63, "x": 10.2, "y": 29.19 },
+	{ "name": "海螺声波3", "parent": "root", "length": 172.21, "rotation": 90, "x": 312.83, "y": 661.33 },
+	{ "name": "海螺声波1", "parent": "root", "length": 229.65, "rotation": 90.97, "x": 107.07, "y": 382.04 },
+	{ "name": "海螺声波2", "parent": "root", "length": 219.32, "rotation": 89.33, "x": 568.89, "y": 382.69 }
+],
+"slots": [
+	{ "name": "conch", "bone": "conch", "attachment": "conch" },
+	{ "name": "海螺声波1", "bone": "海螺声波1", "attachment": "海螺声波1" },
+	{ "name": "海螺声波2", "bone": "海螺声波2", "attachment": "海螺声波2" },
+	{ "name": "海螺声波3", "bone": "海螺声波3", "attachment": "海螺声波3" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"conch": {
+				"conch": { "x": 159.08, "y": -3.24, "rotation": -87.63, "width": 555, "height": 388 }
+			},
+			"海螺声波1": {
+				"海螺声波1": { "x": -33.86, "y": 4.99, "rotation": -90.97, "width": 594, "height": 526 }
+			},
+			"海螺声波2": {
+				"海螺声波2": { "x": 1.62, "y": -1.41, "rotation": -89.33, "width": 493, "height": 437 }
+			},
+			"海螺声波3": {
+				"海螺声波3": { "x": -14.4, "y": 5.15, "rotation": -90, "width": 413, "height": 366 }
+			}
+		}
+	}
+],
+"animations": {
+	"idle": {
+		"slots": {
+			"海螺声波3": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
+			"海螺声波2": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
+			"海螺声波1": {
+				"attachment": [
+					{ "name": null }
+				]
+			}
+		}
+	},
+	"show": {
+		"slots": {
+			"海螺声波3": {
+				"color": [
+					{ "color": "ffffff00", "curve": "stepped" },
+					{ "time": 1, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 1.3333, "color": "ffffffff", "curve": 0.25, "c3": 0.75 },
+					{ "time": 1.4667, "color": "ffffff00" }
+				]
+			},
+			"海螺声波2": {
+				"color": [
+					{ "color": "ffffff00", "curve": "stepped" },
+					{ "time": 0.7333, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 1.0333, "color": "ffffffff", "curve": 0.25, "c3": 0.75 },
+					{ "time": 1.2333, "color": "ffffff00" }
+				]
+			},
+			"conch": {
+				"attachment": [
+					{ "name": "conch" }
+				]
+			},
+			"海螺声波1": {
+				"color": [
+					{ "color": "ffffff00", "curve": "stepped" },
+					{ "time": 0.5667, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 1, "color": "ffffffff", "curve": 0.25, "c3": 0.75 },
+					{ "time": 1.1667, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 0.5667, "name": "海螺声波1" }
+				]
+			}
+		},
+		"bones": {
+			"conch": {
+				"scale": [
+					{ "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.4, "x": 0.876, "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.9667 }
+				]
+			},
+			"海螺声波1": {
+				"translate": [
+					{ "time": 0.4667, "x": 33.24, "y": -116.72 }
+				],
+				"scale": [
+					{ "time": 0.5333, "curve": 0.25, "c3": 0.75 },
+					{ "time": 1.2667, "x": 3, "y": 3 }
+				]
+			},
+			"海螺声波2": {
+				"translate": [
+					{ "time": 0.7333, "x": -436.74, "y": -156.15 }
+				],
+				"scale": [
+					{ "time": 0.7333, "curve": 0.25, "c3": 0.75 },
+					{ "time": 1.2333, "x": 3, "y": 3 }
+				]
+			},
+			"海螺声波3": {
+				"translate": [
+					{ "time": 0.5667, "x": -169.29, "y": -407.37 }
+				],
+				"scale": [
+					{ "time": 1, "curve": 0.25, "c3": 0.75 },
+					{ "time": 1.4667, "x": 3, "y": 3 }
+				]
+			}
+		}
+	}
+}
+}

@@ -1,0 +1,117 @@
+{
+"skeleton": {
+	"hash": "m5wrDu0qED4WvzBEC5FdAACzJD0",
+	"spine": "3.8",
+	"x": -461.99,
+	"y": -296.5,
+	"width": 1613.34,
+	"height": 1013.46,
+	"images": "D:/PaperCuttings/PSD/images/吹风机下方展开特效/",
+	"audio": ""
+},
+"bones": [
+	{ "name": "root" },
+	{ "name": "翅膀3", "parent": "root", "length": 893.63, "rotation": 46.34, "x": -176.08, "y": -164.49 },
+	{ "name": "翅膀2", "parent": "root", "length": 480.5, "rotation": 61.57, "x": -102.52, "y": -114.24 },
+	{ "name": "翅膀1", "parent": "root", "length": 319.28, "rotation": 33.89, "x": -145.04, "y": -167.81 },
+	{ "name": "触须", "parent": "root", "length": 504.32, "rotation": 126.58, "x": -214.12, "y": -166.31 },
+	{ "name": "尾巴", "parent": "root", "length": 1156.73, "rotation": 33.26, "x": 458.66, "y": 111.42 }
+],
+"slots": [
+	{ "name": "root", "bone": "root" },
+	{ "name": "尾巴", "bone": "尾巴", "attachment": "尾巴" },
+	{ "name": "翅膀3", "bone": "翅膀3", "attachment": "翅膀3" },
+	{ "name": "翅膀2", "bone": "翅膀2", "attachment": "翅膀2" },
+	{ "name": "翅膀1", "bone": "翅膀1", "attachment": "翅膀1" },
+	{ "name": "触须", "bone": "触须", "attachment": "触须" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"触须": {
+				"触须": { "x": 311.95, "y": -15.85, "rotation": -94.66, "width": 204, "height": 625 }
+			},
+			"翅膀1": {
+				"翅膀1": { "x": 377.04, "y": 61.23, "rotation": -31.92, "width": 677, "height": 712 }
+			},
+			"尾巴": {
+				"尾巴": { "x": 239.7, "y": 40.38, "rotation": -32.23, "width": 1036, "height": 875 }
+			},
+			"翅膀2": {
+				"翅膀2": { "x": 273.27, "y": 21.56, "rotation": -51.75, "width": 438, "height": 498 }
+			},
+			"翅膀3": {
+				"翅膀3": { "x": 465.73, "y": 11.69, "rotation": -46.34, "width": 749, "height": 954 }
+			}
+		}
+	}
+],
+"animations": {
+	"show": {
+		"slots": {
+			"尾巴": {
+				"color": [
+					{ "color": "ffffff00", "curve": "stepped" },
+					{ "time": 0.1, "color": "ffffffff" }
+				]
+			}
+		},
+		"bones": {
+			"翅膀1": {
+				"rotate": [
+					{ "angle": -76.72, "curve": 0, "c2": 0.94, "c3": 0.75 },
+					{ "time": 0.4, "angle": -1.09 }
+				],
+				"scale": [
+					{ "x": 0.2, "y": 0.2, "curve": 0, "c2": 1, "c3": 0.75 },
+					{ "time": 0.4 }
+				]
+			},
+			"翅膀3": {
+				"rotate": [
+					{ "angle": 18.61, "curve": 0, "c2": 0.91, "c3": 0.75 },
+					{ "time": 0.4, "angle": -1.8 }
+				],
+				"scale": [
+					{ "x": 0.2, "y": 0.2, "curve": 0, "c2": 0.96, "c3": 0.75 },
+					{ "time": 0.4 }
+				]
+			},
+			"翅膀2": {
+				"rotate": [
+					{ "angle": 12.44, "curve": 0, "c2": 0.9, "c3": 0.75 },
+					{ "time": 0.4, "angle": -5.84 }
+				],
+				"translate": [
+					{ "x": -0.73 }
+				],
+				"scale": [
+					{ "x": 0.2, "y": 0.2, "curve": 0.004, "c2": 0.98, "c3": 0.75 },
+					{ "time": 0.4 }
+				]
+			},
+			"尾巴": {
+				"translate": [
+					{ "time": 0.1, "x": -188.19, "y": -119.76, "curve": 0.07, "c2": 0.77, "c3": 0.75 },
+					{ "time": 0.4667, "x": -4.89, "y": -19.55 }
+				],
+				"scale": [
+					{ "time": 0.1, "x": 0.201, "curve": 0.07, "c2": 0.77, "c3": 0.75 },
+					{ "time": 0.4667 }
+				]
+			},
+			"触须": {
+				"rotate": [
+					{ "angle": -35.05, "curve": 0, "c2": 0.89, "c3": 0.75 },
+					{ "time": 0.2667, "angle": 1.22 }
+				],
+				"scale": [
+					{ "x": 0.2, "y": 0.2, "curve": 0, "c2": 0.82, "c3": 0.75 },
+					{ "time": 0.2667 }
+				]
+			}
+		}
+	}
+}
+}

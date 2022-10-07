@@ -1,0 +1,175 @@
+{
+"skeleton": {
+	"hash": "n3Y1S6I0zk1TTPaKhwSfKvltK68",
+	"spine": "3.8",
+	"x": -537.29,
+	"y": -469.87,
+	"width": 1260.83,
+	"height": 1438.42,
+	"images": "../../../PSD/images/吹风机上方树/",
+	"audio": ""
+},
+"bones": [
+	{ "name": "root" },
+	{ "name": "叶1", "parent": "root", "length": 227.07, "rotation": 51.7, "x": 560.83, "y": 777.22 },
+	{ "name": "花苞", "parent": "root", "length": 454.32, "rotation": -138.98, "x": 288.67, "y": 852.07 },
+	{ "name": "叶2", "parent": "root", "length": 324.4, "rotation": -108.81, "x": 445.55, "y": 618.73 },
+	{ "name": "树干", "parent": "root", "length": 519.84, "rotation": 89.62, "x": 632.33, "y": 24.71 },
+	{ "name": "叶3", "parent": "root", "length": 201.33, "rotation": -141.13, "x": -117.52, "y": 942.38 },
+	{ "name": "叶4", "parent": "root", "length": 249.63, "rotation": -143.37, "x": 259.16, "y": 428.35 },
+	{ "name": "叶5", "parent": "root", "length": 515.57, "rotation": -141.21, "x": -113.04, "y": 592.19 }
+],
+"slots": [
+	{ "name": "叶5", "bone": "叶5", "attachment": "叶5" },
+	{ "name": "叶4", "bone": "叶4", "attachment": "叶4" },
+	{ "name": "花苞", "bone": "花苞", "attachment": "花苞" },
+	{ "name": "树干", "bone": "树干", "attachment": "树干" },
+	{ "name": "叶2", "bone": "叶2", "attachment": "叶2" },
+	{ "name": "叶1", "bone": "叶1", "attachment": "叶1" },
+	{ "name": "叶3", "bone": "叶3", "attachment": "叶3" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"树干": {
+				"树干": { "x": 61.92, "y": 76.45, "rotation": -89.62, "width": 334, "height": 1114 }
+			},
+			"花苞": {
+				"花苞": { "x": 176.37, "y": 57.13, "rotation": 138.98, "width": 678, "height": 550 }
+			},
+			"叶1": {
+				"叶1": { "x": -204.52, "y": 17.22, "rotation": -51.7, "width": 606, "height": 682 }
+			},
+			"叶2": {
+				"叶2": { "x": 174.28, "y": 52.84, "rotation": 108.81, "width": 335, "height": 660 }
+			},
+			"叶3": {
+				"叶3": { "x": 161.46, "y": 51.39, "rotation": 141.13, "width": 542, "height": 335 }
+			},
+			"叶4": {
+				"叶4": { "x": 182.72, "y": 47.1, "rotation": 143.37, "width": 391, "height": 427 }
+			},
+			"叶5": {
+				"叶5": { "x": 154.05, "y": -43.38, "rotation": 141.21, "width": 554, "height": 686 }
+			}
+		}
+	}
+],
+"events": {
+	"Give": {}
+},
+"animations": {
+	"idle": {
+		"bones": {
+			"花苞": {
+				"scale": [
+					{ "curve": 0.25, "c3": 0.75 },
+					{ "time": 1.1, "x": 0.98, "y": 0.98, "curve": 0.25, "c3": 0.75 },
+					{ "time": 2.2 }
+				]
+			},
+			"叶2": {
+				"rotate": [
+					{ "angle": -0.38, "curve": 0.375, "c2": 0.62, "c3": 0.716 },
+					{ "time": 0.2667, "curve": 0.25, "c3": 0.75 },
+					{ "time": 1.6, "angle": -2.89, "curve": 0.243, "c3": 0.68, "c4": 0.71 },
+					{ "time": 2.6667, "angle": -0.38 }
+				],
+				"translate": [
+					{ "x": 1.01, "y": 4.02 }
+				],
+				"scale": [
+					{ "time": 2.6667 }
+				]
+			},
+			"叶4": {
+				"rotate": [
+					{},
+					{ "time": 1.3333, "angle": -1.61 },
+					{ "time": 2.6667 }
+				]
+			},
+			"叶5": {
+				"rotate": [
+					{ "angle": -0.71, "curve": 0.376, "c2": 0.61, "c3": 0.718 },
+					{ "time": 0.2667, "angle": -0.23, "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.3667, "curve": 0.25, "c3": 0.75 },
+					{ "time": 1.7, "angle": -3.51, "curve": 0.243, "c3": 0.676, "c4": 0.7 },
+					{ "time": 2.6667, "angle": -0.71 }
+				],
+				"translate": [
+					{ "x": 12.56, "y": 10.28 }
+				]
+			},
+			"叶3": {
+				"rotate": [
+					{ "curve": 0.25, "c3": 0.75 },
+					{ "time": 1.3333, "angle": -3.57, "curve": 0.25, "c3": 0.75 },
+					{ "time": 2.6667 }
+				]
+			}
+		}
+	},
+	"show": {
+		"bones": {
+			"叶5": {
+				"scale": [
+					{ "curve": 0.25, "c3": 0.75 },
+					{ "time": 1.5, "x": 0.622, "curve": "stepped" },
+					{ "time": 2.1667, "x": 0.622, "curve": 0.25, "c3": 0.75 },
+					{ "time": 4.2 }
+				]
+			},
+			"叶4": {
+				"scale": [
+					{ "x": 0.998, "curve": 0.343, "c2": 0.66, "c3": 0.677 },
+					{ "time": 0.0667, "curve": 0.25, "c3": 0.75 },
+					{ "time": 1.5667, "x": 0.861, "curve": "stepped" },
+					{ "time": 2.2333, "x": 0.861, "curve": 0.248, "c3": 0.736, "c4": 0.94 },
+					{ "time": 4.2, "x": 0.998 }
+				]
+			},
+			"叶3": {
+				"scale": [
+					{ "x": 0.998, "curve": 0.269, "c2": 0.08, "c3": 0.753 },
+					{ "time": 1.4333, "x": 0.858, "curve": "stepped" },
+					{ "time": 2.1, "x": 0.858, "curve": 0.25, "c3": 0.75 },
+					{ "time": 4.1, "curve": "stepped" },
+					{ "time": 4.1333, "curve": 0.32, "c3": 0.653, "c4": 0.34 },
+					{ "time": 4.2, "x": 0.998 }
+				]
+			},
+			"叶2": {
+				"rotate": [
+					{ "curve": 0.25, "c3": 0.75 },
+					{ "time": 1.5667, "angle": 6.51, "curve": "stepped" },
+					{ "time": 2.2333, "angle": 6.51, "curve": 0.25, "c3": 0.75 },
+					{ "time": 4.2 }
+				],
+				"scale": [
+					{ "x": 0.999, "y": 0.999, "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.0333, "curve": "stepped" },
+					{ "time": 0.0667, "curve": 0.25, "c3": 0.75 },
+					{ "time": 1.5667, "x": 0.913, "y": 0.913, "curve": "stepped" },
+					{ "time": 2.2333, "x": 0.913, "y": 0.913, "curve": 0.25, "c3": 0.75 },
+					{ "time": 4.2, "x": 0.999, "y": 0.999 }
+				]
+			},
+			"花苞": {
+				"scale": [
+					{ "x": 0.994, "curve": 0.32, "c2": 0.29, "c3": 0.757 },
+					{ "time": 1.5, "x": 0.954, "curve": 0.25, "c3": 0.75 },
+					{ "time": 2.5, "curve": "stepped" },
+					{ "time": 4.1667, "curve": "stepped" },
+					{ "time": 8.7667, "curve": 0.284, "c3": 0.625, "c4": 0.38 },
+					{ "time": 9.0667, "x": 0.994 }
+				]
+			}
+		},
+		"events": [
+			{ "time": 1.6667, "name": "Give" }
+		]
+	}
+}
+}

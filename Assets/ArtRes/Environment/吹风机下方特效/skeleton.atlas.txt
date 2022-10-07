@@ -1,0 +1,41 @@
+
+skeleton.png
+size: 2048,2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+尾巴
+  rotate: false
+  xy: 0, 911
+  size: 1035, 875
+  orig: 1036, 875
+  offset: 0, 0
+  index: -1
+翅膀1
+  rotate: false
+  xy: 0, 383
+  size: 617, 526
+  orig: 677, 712
+  offset: 0, 0
+  index: -1
+翅膀2
+  rotate: true
+  xy: 619, 392
+  size: 438, 498
+  orig: 438, 498
+  offset: 0, 0
+  index: -1
+翅膀3
+  rotate: false
+  xy: 1037, 832
+  size: 749, 954
+  orig: 749, 954
+  offset: 0, 0
+  index: -1
+触须
+  rotate: true
+  xy: 1119, 626
+  size: 204, 625
+  orig: 204, 625
+  offset: 0, 0
+  index: -1

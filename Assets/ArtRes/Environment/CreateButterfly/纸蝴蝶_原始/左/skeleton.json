@@ -1,0 +1,59 @@
+{
+"skeleton": {
+	"hash": "wN+3MyoH/a3EBagXE/IaEF5jWAM",
+	"spine": "3.8",
+	"x": -552.17,
+	"y": -573.47,
+	"width": 760,
+	"height": 1085,
+	"images": "../../../PSD/images/纸蝴蝶/",
+	"audio": ""
+},
+"bones": [
+	{ "name": "root" },
+	{ "name": "左", "parent": "root", "length": 1146.9, "rotation": 110.03, "x": 201.2, "y": -566.03 }
+],
+"slots": [
+	{ "name": "左", "bone": "左", "attachment": "左" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"左": {
+				"左": { "x": 630.59, "y": 167.53, "rotation": -110.03, "width": 760, "height": 1085 }
+			}
+		}
+	}
+],
+"animations": {
+	"flip": {
+		"bones": {
+			"左": {
+				"scale": [
+					{ "curve": 0.25, "c3": 0.75 },
+					{ "time": 1.3333, "y": -1 }
+				]
+			}
+		}
+	},
+	"state1": {
+		"bones": {
+			"左": {
+				"scale": [
+					{}
+				]
+			}
+		}
+	},
+	"state2": {
+		"bones": {
+			"左": {
+				"scale": [
+					{ "y": -1 }
+				]
+			}
+		}
+	}
+}
+}

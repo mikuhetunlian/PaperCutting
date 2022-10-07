@@ -1,0 +1,79 @@
+{
+"skeleton": {
+	"hash": "ZemHbkF5pcxJTEl2P6V3BiDwI3w",
+	"spine": "3.8",
+	"x": -140,
+	"y": -146.83,
+	"width": 286,
+	"height": 277.35,
+	"images": "../../../PSD/images/会飞的剪刀/",
+	"audio": ""
+},
+"bones": [
+	{ "name": "root", "x": 0.25, "y": -2.72 },
+	{ "name": "挂饰剪刀", "parent": "root", "length": 162.43, "rotation": -135.37, "x": -2.53, "y": -3.73 },
+	{
+		"name": "挂饰剪刀2",
+		"parent": "root",
+		"length": 177.64,
+		"rotation": -38.01,
+		"x": 0.33,
+		"y": 2.85,
+		"scaleY": -1
+	}
+],
+"slots": [
+	{ "name": "挂饰剪刀", "bone": "挂饰剪刀", "attachment": "挂饰剪刀" },
+	{ "name": "挂饰剪刀2", "bone": "挂饰剪刀2", "attachment": "挂饰剪刀" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"挂饰剪刀": {
+				"挂饰剪刀": { "x": 15.09, "y": -3.5, "rotation": 130.5, "width": 229, "height": 246 }
+			},
+			"挂饰剪刀2": {
+				"挂饰剪刀": { "x": 16.4, "y": -4.09, "rotation": 134.27, "width": 229, "height": 246 }
+			}
+		}
+	}
+],
+"animations": {
+	"idle": {
+		"bones": {
+			"挂饰剪刀": {
+				"rotate": [
+					{ "angle": 45.94 }
+				]
+			},
+			"挂饰剪刀2": {
+				"rotate": [
+					{ "angle": -52.99 }
+				]
+			}
+		}
+	},
+	"move": {
+		"bones": {
+			"挂饰剪刀2": {
+				"rotate": [
+					{ "angle": 2.52, "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.2333, "angle": -51.76, "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.5, "angle": 2.52 }
+				],
+				"translate": [
+					{ "y": -4.94 }
+				]
+			},
+			"挂饰剪刀": {
+				"rotate": [
+					{ "angle": -7.86, "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.2333, "angle": 46.88, "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.5, "angle": -7.81 }
+				]
+			}
+		}
+	}
+}
+}

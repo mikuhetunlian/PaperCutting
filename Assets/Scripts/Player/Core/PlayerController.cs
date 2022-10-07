@@ -45,14 +45,9 @@ public class PlayerController : MonoBehaviour
     public short NumberOfVerticalRays = 8;
     ///距离边界一小段的offset
     public float rayOffset;
-    ///从上边界开始向上的射线距离
-    public float aboveRayDistance;
-    ///从下边界开始向下的射线距离
-    public float downRayDistance;
-    ///从左边界开始向左的射线距离
-    public float leftRayDistance;
-    ///从右边界开始向右的射线距离
-    public float rightRayDistance;
+
+    public float RayOffsetVertical;
+    public float RayOffsetHorizontal;
 
     public GameObject StandingOn;
     public Collider2D StandingOnCollider;
@@ -75,6 +70,8 @@ public class PlayerController : MonoBehaviour
     protected Vector2 _speed;
     protected Vector2 _externalForce;
     protected float _currentGravity;
+    protected float _movingPlatformCurrnetGravity;
+    protected const float _movingPlatformGrayvity = -500;
     protected bool _gravityActive = true;
     public Vector2 _newPostion;
     protected Transform _transform;
@@ -90,6 +87,14 @@ public class PlayerController : MonoBehaviour
     protected LayerMask _raysBelowLayerMaskPlatforms;
     protected LayerMask _rayBelowLayerMaskPlatformWithoutOneWay;
     protected LayerMask _platformMaskSave;
+    protected PathMovement _movingPlatformTest;
+    protected PathMovement _movingPlatform;
+
+
+    protected const float _smallValue = 0.0001f;
+    protected const float _movingPlatformGraviy = -500;   // ??? 这个没懂
+
+
 
     private void Awake()
     {
@@ -115,10 +120,10 @@ public class PlayerController : MonoBehaviour
         Parameters = new PlayerControllerParameters();
         State = new PlayerControllerState();
         rayOffset = 0.1f;
-        aboveRayDistance = 0.1f;
-        downRayDistance = 0.4f;
-        leftRayDistance = 0.3f;
-        rightRayDistance = 0.3f;
+
+        RayOffsetVertical = 0.01f;
+        RayOffsetHorizontal = 0.01f;
+
         RaycastNum = 5;
         isDrawRay = true;
         _extentX = Collider.bounds.extents.x;
@@ -129,6 +134,7 @@ public class PlayerController : MonoBehaviour
         _leftHitStorage = new RaycastHit2D[NumberOfHorizontalRays];
         _rightHitStorage = new RaycastHit2D[NumberOfHorizontalRays];
         _inputManager = _player.LinkedInputManager;
+        _platformMaskSave = PlatformMask;
 
         CachePlatformMask();
     }
@@ -187,22 +193,46 @@ public class PlayerController : MonoBehaviour
 
     public void EveryFrame()
     {
+        if (Time.timeScale == 0f)
+        {
+            return;
+        }
+
+
+     
+
         ApplyGravity();
         FrameInitialization();
 
+        HandleMovingPlatforms();
+
         CastRayToLeft();
+       
         CastRayToRight();
+       
         CastRayAbove();
+        
         CastRayBelow();
+
         ComputeNewSpeed();
 
+
+        if (State.IsOnMovingPlatform)
+        {
+            _newPostion.y = 0;
+            Debug.Log(_newPostion.y);
+            _newPostion.y = 0;
+        }
+
+     
         _transform.Translate(_newPostion, Space.Self);
+       
 
         _externalForce.x = 0;
         _externalForce.y = 0;
         
         
-        SetSate();
+        SetSate(); 
     }
 
     public void ApplyGravity()
@@ -210,17 +240,81 @@ public class PlayerController : MonoBehaviour
         _currentGravity = Parameters.Gravity;
         if (_gravityActive)
         {
-            _speed.y += _currentGravity * Time.deltaTime;
+            _speed.y += (_currentGravity + _movingPlatformCurrnetGravity) * Time.deltaTime;
+        }
+    }
+
+
+    /// <summary>
+    /// 如果站在了 onewayPlatfrom 上 保持player 的速度
+    /// </summary>
+    public void HandleMovingPlatforms()
+    {
+        if (_movingPlatform != null)
+        {
+
+            //这一段注释不要删
+            if (!float.IsNaN(_movingPlatform.CurrentSpeed.x) && !float.IsNaN(_movingPlatform.CurrentSpeed.y) && !float.IsNaN(_movingPlatform.CurrentSpeed.z))
+            {
+                //_transform.Translate(transform.rotation * _movingPlatform.CurrentSpeed * Time.deltaTime);
+            }
+
+            //if (DistanceToGround() > 0.1f)
+            //{
+            //    AnchorToGround();
+            //}
+
+            this.transform.SetParent(_movingPlatform.gameObject.transform);
+
+
+            if ((Time.timeScale == 0) || float.IsNaN(_movingPlatform.CurrentSpeed.x) || float.IsNaN(_movingPlatform.CurrentSpeed.y) || float.IsNaN(_movingPlatform.CurrentSpeed.z))
+            {
+                return;
+            }
+
+            if ((Time.deltaTime <= 0))
+            {
+                return;
+            }
+
+ 
+            GravityActive(false);
+
+            State.IsOnMovingPlatform = true;
+
+            _movingPlatformCurrnetGravity = _movingPlatformGraviy;
+
+            _newPostion.y = _movingPlatform.CurrentSpeed.y * Time.deltaTime;
+            _speed = -_newPostion / Time.deltaTime;
+            _speed.x = -_speed.x;
+
+
+        }
+    }
+
+
+    public void DetachFromMovinPlatform()
+    {
+        if (_movingPlatform == null)
+        {
+            return;
         }
 
+        this.transform.SetParent(null);
+        GravityActive(true);
+        State.IsOnMovingPlatform = false;
+        _movingPlatform = null;
+        _movingPlatformCurrnetGravity = 0;
     }
 
     public void CastRayToLeft()
     {
-        float leftRayLength = _extentX + leftRayDistance;
+        float leftRayLength = Mathf.Abs(_speed.x * Time.deltaTime) + Collider.bounds.extents.x;
 
-        _horizontalRayCastFromDown = Collider.bounds.center - new Vector3(0, _extentY - rayOffset);
-        _horizontalRayCastToUp = Collider.bounds.center + new Vector3(0, _extentY - rayOffset);
+        _horizontalRayCastFromDown = Collider.bounds.center - new Vector3(0, _extentY);
+        _horizontalRayCastToUp = Collider.bounds.center + new Vector3(0, _extentY);
+        _horizontalRayCastFromDown = _horizontalRayCastFromDown + (Vector2)transform.up * 0.05f;
+        _horizontalRayCastToUp = _horizontalRayCastToUp - (Vector2)transform.up * 0.05f;
 
         float leftSamllestDistance = float.MaxValue;
         int leftSmallestIndex = 0;
@@ -252,13 +346,14 @@ public class PlayerController : MonoBehaviour
             {
                 float distance = Mathf.Abs(transform.position.x - _extentX - _leftHitStorage[leftSmallestIndex].point.x);
 
-                Debug.Log("distance" + distance);
-                _newPostion.x = -distance;
+                //float distance = Mathf.Abs(Collider.bounds.center.x - _leftHitStorage[leftSmallestIndex].point.x);
 
-                if (Mathf.Abs(_newPostion.x) < 0.5f)
-                {
-                    _newPostion.x = 0;
-                }
+                //float distance = Mathf.Abs(_leftHitStorage[leftSmallestIndex].point.x - _horizontalRayCastFromDown.x);
+
+                _newPostion.x = RayOffsetHorizontal - distance;
+
+                
+                Debug.Log("left" + _newPostion.x);
             }
 
         }
@@ -272,12 +367,13 @@ public class PlayerController : MonoBehaviour
     public void CastRayToRight()
     {
 
-        float rightRayLength = _extentX + rightRayDistance;
+        float rightRayLength = Mathf.Abs(_speed.x * Time.deltaTime) + Collider.bounds.extents.x;
 
 
-        _horizontalRayCastFromDown = Collider.bounds.center - new Vector3(0, _extentY - rayOffset);
-        _horizontalRayCastToUp = Collider.bounds.center + new Vector3(0, _extentY - rayOffset);
-
+        _horizontalRayCastFromDown = Collider.bounds.center - new Vector3(0, _extentY);
+        _horizontalRayCastToUp = Collider.bounds.center + new Vector3(0, _extentY);
+        _horizontalRayCastFromDown = _horizontalRayCastFromDown + (Vector2)transform.up *0.05f;
+        _horizontalRayCastToUp = _horizontalRayCastToUp - (Vector2)transform.up * 0.05f;
 
         float rightSmallestDistance = float.MaxValue;
         int rightSmallestIndex = 0;
@@ -309,11 +405,11 @@ public class PlayerController : MonoBehaviour
             {
                 float distance = Mathf.Abs(_rightHitStorage[rightSmallestIndex].point.x - (transform.position.x + _extentX));
 
-                _newPostion.x = distance;
-                if (distance < 0.5f)
-                {
-                    _newPostion.x = 0;
-                }
+                //float distance = Mathf.Abs(_rightHitStorage[rightSmallestIndex].point.x - Collider.bounds.center.x);
+
+                //float distance = Mathf.Abs(_rightHitStorage[rightSmallestIndex].point.x - _horizontalRayCastFromDown.x);
+
+                _newPostion.x = - (RayOffsetHorizontal - distance);
             }
         }
         else
@@ -334,7 +430,12 @@ public class PlayerController : MonoBehaviour
             State.IsFalling = false;
         }
 
-        float rayLength = _extentY + downRayDistance;
+        float rayLength = _extentY + RayOffsetVertical;
+
+        if (State.IsOnMovingPlatform)
+        {
+            rayLength *= 2;
+        }
 
         //如果正在下落，延长向下检测的射线长度
         if (_newPostion.y < 0)
@@ -347,6 +448,11 @@ public class PlayerController : MonoBehaviour
             _belowHitStorage = new RaycastHit2D[NumberOfVerticalRays];
         }
 
+        if (State.IsOnMovingPlatform && (_newPostion.y > 0))
+        {
+            _raysBelowLayerMaskPlatforms = _raysBelowLayerMaskPlatforms & ~LayerMgr.OneWayPlatformLayerMask;
+        }
+
 
 
         float smallestDistance = float.MaxValue;
@@ -355,7 +461,16 @@ public class PlayerController : MonoBehaviour
 
         _verticalRayCastFromLeft = Collider.bounds.center - new Vector3(_extentX, 0);
         _verticalRayCastToRight = Collider.bounds.center + new Vector3(_extentX, 0);
+        _verticalRayCastFromLeft += (Vector2)transform.up * RayOffsetVertical;
+        _verticalRayCastToRight += (Vector2)transform.up * RayOffsetVertical;
+        _verticalRayCastFromLeft += (Vector2)transform.right * _newPostion.x;
+        _verticalRayCastToRight += (Vector2)transform.right * _newPostion.x;
 
+
+        Vector3 _boundBottom = Collider.bounds.center - new Vector3(0, _extentY);
+
+        StandingOn = null;
+        StandingOnCollider = null;
         for (int i = 0; i < NumberOfVerticalRays; i++)
         {
             Vector2 originPoint = Vector2.Lerp(_verticalRayCastFromLeft, _verticalRayCastToRight, ((float)i / (NumberOfHorizontalRays - 1)));
@@ -404,7 +519,7 @@ public class PlayerController : MonoBehaviour
 
             State.IsFalling = false;
             State.isCollidingBelow = true;
-
+         
 
             //如果有其他外力 比如 跳跃 ，那就直接应用外力计算出来的速度
             if (_externalForce.y > 0 && _speed.y > 0)
@@ -414,20 +529,44 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-                float distance = Mathf.Abs(_belowHitStorage[smallestDistanceIndex].point.y - transform.position.y);
+                //float distance = Mathf.Abs(_belowHitStorage[smallestDistanceIndex].point.y - transform.position.y);
+                //float distance = Mathf.Abs(Collider.bounds.center.y - _belowHitStorage[smallestDistanceIndex].point.y);
 
-                _newPostion.y = -distance;
+                float distance = Mathf.Abs(_verticalRayCastFromLeft.y - _belowHitStorage[smallestDistanceIndex].point.y);
+
+                _newPostion.y = -distance + Collider.bounds.extents.y + RayOffsetVertical;
+
+               
             }
 
-            if (Mathf.Abs(_newPostion.y) < 0.05f)
+
+            if (Mathf.Abs(_newPostion.y) < _smallValue)
             {
                 _newPostion.y = 0;
+            }
+
+
+
+            ////检查是否站在了 oneWayMovingPlatform 上
+            PathMovement _movingPlatformTest = _belowHitStorage[smallestDistanceIndex].collider.GetComponent<PathMovement>();
+            if (_movingPlatformTest != null && State.IsGrounded)
+            {
+                _movingPlatform = _movingPlatformTest.GetComponent<PathMovement>();
+            }
+            else
+            {
+                
+                DetachFromMovinPlatform();
             }
 
         }
         else
         {
             State.isCollidingBelow = false;
+            if (State.IsOnMovingPlatform)
+            {
+                DetachFromMovinPlatform();
+            }
         }
 
 
@@ -440,7 +579,7 @@ public class PlayerController : MonoBehaviour
         _verticalRayCastFromLeft = Collider.bounds.center - new Vector3(_extentX, 0);
         _verticalRayCastToRight = Collider.bounds.center + new Vector3(_extentX, 0);
 
-        float rayLength = _extentY + aboveRayDistance;
+        float rayLength = _extentY + RayOffsetVertical;
 
 
         float smallestDistance = float.MaxValue;
@@ -523,6 +662,7 @@ public class PlayerController : MonoBehaviour
 
     public void FrameInitialization()
     {
+        
         //在这一帧的开始 根据 其他ability设置好的 _speed 来计算_newPostion
         _newPostion = _speed * Time.deltaTime;
         State.WasGroundedLastFrame = State.isCollidingBelow;
@@ -564,13 +704,31 @@ public class PlayerController : MonoBehaviour
     {
         
             float distanceToGround = this.transform.position.y - _belowHitStorage[0].point.y;
-            if (distanceToGround > 0)
+            if (distanceToGround > 0 && distanceToGround <1)
             {
                 SetForce(Vector2.zero);
                 this.transform.position = new Vector3(transform.position.x, _belowHitStorage[0].point.y, transform.position.z);
                 Debug.Log("瞬间贴合了");
             }
-        
+    }
+
+    /// <summary>
+    /// 返回到地面的距离
+    /// </summary>
+    /// <returns>如果没有检测到，返回-1</returns>
+    public float DistanceToGround()
+    {
+        RaycastHit2D hitInfo =  Physics2D.Raycast(_transform.position, Vector2.down,1,PlatformMask);
+
+        if (hitInfo.collider != null)
+        {
+            float distance = _transform.position.y - hitInfo.point.y;
+            return distance;
+        }
+        else
+        {
+            return -1;
+        }
     }
 
 

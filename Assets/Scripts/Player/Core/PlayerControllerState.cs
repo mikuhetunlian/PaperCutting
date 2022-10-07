@@ -36,6 +36,8 @@ public class PlayerControllerState
     public bool IsJumping { get; set; }
     ///是否正在falling
     public bool IsFalling { get; set; }
+    ///是否在movingPlatform上
+    public bool IsOnMovingPlatform { get; set; }
     ///上一帧是不是在地面上
     public bool WasGroundedLastFrame { get; set; }
     ///上一帧是不是撞到了天花板上

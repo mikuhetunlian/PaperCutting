@@ -26,7 +26,6 @@ public class bubble : MonoBehaviour
             actionInBubble.PermitAbility(true);
             actionInBubble.GetInBubble(this.transform, _ferrisTransfrom);
             CameraMgr.GetInstance().SetDefaultBlednTime(2);
-            CameraMgr.GetInstance().SetCamerasSize();
             _VCamera.enabled = true;
         }
     }

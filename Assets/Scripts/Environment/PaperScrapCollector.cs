@@ -4,7 +4,7 @@ using UnityEngine;
 using DG.Tweening;
 public class PaperScrapCollector : MonoBehaviour
 {
-    private SpriteRenderer _spriteRenderer;
+
     //需要收集到的纸碎数
     public short collectNum ;
     //目前的纸碎数
@@ -17,12 +17,6 @@ public class PaperScrapCollector : MonoBehaviour
         collectNum = 3;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    
-    }
 
     /// <summary>
     /// 收集到物品后改变自已颜色 或许交给动画来实现
@@ -50,9 +44,8 @@ public class PaperScrapCollector : MonoBehaviour
 
     private void Transfer()
     {
-  
         _player.transform.position = this.transform.position;
-        _player.layer = LayerMask.NameToLayer("mid1");
+        _player.GetComponent<MeshRenderer>().enabled = true;
         _player.GetComponent<PlayerController>().SetVerticalForce(10f);
     }
 }

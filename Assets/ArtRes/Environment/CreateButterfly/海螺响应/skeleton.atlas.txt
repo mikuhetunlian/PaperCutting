@@ -1,0 +1,20 @@
+
+skeleton.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+海螺声波响应1
+  rotate: false
+  xy: 0, 0
+  size: 243, 243
+  orig: 243, 243
+  offset: 0, 0
+  index: -1
+海螺声波响应2
+  rotate: false
+  xy: 0, 245
+  size: 611, 611
+  orig: 611, 611
+  offset: 0, 0
+  index: -1

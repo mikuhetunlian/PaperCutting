@@ -1,0 +1,90 @@
+
+skeleton.png
+size: 2048,2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+右翅膀
+  rotate: false
+  xy: 0, 1213
+  size: 442, 795
+  orig: 442, 795
+  offset: 0, 0
+  index: -1
+左翅膀
+  rotate: false
+  xy: 0, 416
+  size: 442, 795
+  orig: 442, 795
+  offset: 0, 0
+  index: -1
+纸屑1
+  rotate: false
+  xy: 444, 1599
+  size: 55, 130
+  orig: 55, 130
+  offset: 0, 0
+  index: -1
+纸屑2
+  rotate: false
+  xy: 396, 140
+  size: 109, 122
+  orig: 109, 122
+  offset: 0, 0
+  index: -1
+纸屑3
+  rotate: false
+  xy: 444, 1839
+  size: 51, 169
+  orig: 51, 169
+  offset: 0, 0
+  index: -1
+纸屑4
+  rotate: true
+  xy: 242, 29
+  size: 94, 157
+  orig: 94, 157
+  offset: 0, 0
+  index: -1
+纸屑5
+  rotate: true
+  xy: 366, 264
+  size: 150, 98
+  orig: 151, 98
+  offset: 1, 0
+  index: -1
+纸屑6
+  rotate: false
+  xy: 242, 125
+  size: 152, 115
+  orig: 152, 115
+  offset: 0, 0
+  index: -1
+纸屑7
+  rotate: true
+  xy: 401, 0
+  size: 138, 90
+  orig: 138, 90
+  offset: 0, 0
+  index: -1
+纸屑8
+  rotate: false
+  xy: 444, 1731
+  size: 78, 106
+  orig: 79, 106
+  offset: 1, 0
+  index: -1
+纸屑9
+  rotate: true
+  xy: 0, 6
+  size: 234, 240
+  orig: 236, 240
+  offset: 1, 0
+  index: -1
+身体
+  rotate: true
+  xy: 0, 242
+  size: 172, 364
+  orig: 172, 364
+  offset: 0, 0
+  index: -1

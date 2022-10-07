@@ -37,7 +37,6 @@ public class CameraTriggerBase : MonoBehaviour
     {
         _VCamera.enabled = true;
         CameraMgr.GetInstance().SetDefaultBlednTime(_inBlendTime);
-        CameraMgr.GetInstance().SetCamerasSize();
     }
 
 
@@ -57,7 +56,6 @@ public class CameraTriggerBase : MonoBehaviour
     {
         _VCamera.enabled = false;
         CameraMgr.GetInstance().SetDefaultBlednTime(_exitBlednTime);
-
     }
 
 

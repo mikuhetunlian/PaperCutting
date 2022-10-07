@@ -12,7 +12,9 @@ public class leafBlood : MonoBehaviour
         _animator = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
+    /// <summary>
+    /// 销毁自己 但其实可以用动画事件来做。。？
+    /// </summary>
     void Update()
     {
         if (_animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1)

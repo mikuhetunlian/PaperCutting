@@ -53,15 +53,14 @@ public class Scissor : MonoBehaviour
         Collider2D[] colliders =  Physics2D.OverlapBoxAll(center, radius, 0);
         for (int i = 0; i < colliders.Length; i++)
         {
-            if (colliders[i].gameObject.tag.Equals("Player"))
+            if(colliders[i].gameObject.tag.Equals("Player"))
             {
                 Debug.Log("DetectAndAttack player");
                 GameObject blood =  ResMgr.GetInstance().LoadRes<GameObject>("Prefab/leafBlood");
-                colliders[i].gameObject.GetComponent<ToBeFlower>().BeFlower();
                 blood.transform.position = center;
+                colliders[i].gameObject.GetComponent<ToBeFlower>().BeFlower();
             }
         }
-        
     }
 
 

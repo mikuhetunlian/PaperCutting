@@ -7,6 +7,8 @@ TagManager:
   - PaperScrap
   - rainBubble
   - ground
+  - ScissorFly
+  - DryerAccessories
   layers:
   - Default
   - TransparentFX
@@ -19,8 +21,8 @@ TagManager:
   - Ladder
   - Background
   - Pushables
-  - 
-  - 
+  - OneWayMovingPlatform
+  - MovingPlatform
   - 
   - 
   - 

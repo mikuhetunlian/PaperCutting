@@ -277,7 +277,6 @@ public class PlayerLadder : PlayerAblity
             return;
         } 
         _colliders.Remove(collider);
-        Debug.Log(_colliders.Count);
     }
 
 

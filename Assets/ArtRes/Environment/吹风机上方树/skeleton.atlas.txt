@@ -1,0 +1,55 @@
+
+skeleton.png
+size: 2048,2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+叶1
+  rotate: false
+  xy: 0, 1093
+  size: 606, 682
+  orig: 606, 682
+  offset: 0, 0
+  index: -1
+叶2
+  rotate: true
+  xy: 1116, 753
+  size: 335, 659
+  orig: 335, 660
+  offset: 0, 1
+  index: -1
+叶3
+  rotate: false
+  xy: 0, 417
+  size: 542, 335
+  orig: 542, 335
+  offset: 0, 0
+  index: -1
+叶4
+  rotate: true
+  xy: 544, 361
+  size: 391, 427
+  orig: 391, 427
+  offset: 0, 0
+  index: -1
+叶5
+  rotate: false
+  xy: 608, 1090
+  size: 553, 685
+  orig: 554, 686
+  offset: 0, 0
+  index: -1
+树干
+  rotate: true
+  xy: 0, 754
+  size: 334, 1114
+  orig: 334, 1114
+  offset: 0, 0
+  index: -1
+花苞
+  rotate: true
+  xy: 1163, 1097
+  size: 678, 550
+  orig: 678, 550
+  offset: 0, 0
+  index: -1

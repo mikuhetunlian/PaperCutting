@@ -1,0 +1,342 @@
+{
+"skeleton": {
+	"hash": "l+ZC0dnn8UGSYnpgEFSjBeeJ+04",
+	"spine": "3.8",
+	"x": -461.05,
+	"y": -320.27,
+	"width": 1993.59,
+	"height": 818.84,
+	"images": "../../../PSD/images/活纸蝴蝶/",
+	"audio": ""
+},
+"bones": [
+	{ "name": "root" },
+	{ "name": "身体", "parent": "root", "length": 136.03, "rotation": 90.37, "x": 4.1, "y": 10.52 },
+	{ "name": "右翅膀", "parent": "身体", "length": 353.68, "rotation": -90.14, "x": 43.96, "y": -39.31 },
+	{ "name": "左翅膀", "parent": "身体", "length": 293.89, "rotation": 88.87, "x": 51.34, "y": 50.25 },
+	{ "name": "纸屑1", "parent": "root", "length": 55.02, "rotation": -94.09, "x": 885.29, "y": 465.59 },
+	{ "name": "纸屑4", "parent": "root", "length": 102.51, "rotation": -56.14, "x": 1181.97, "y": 483.23 },
+	{ "name": "纸屑3", "parent": "root", "length": 64.41, "rotation": 89, "x": 1410.57, "y": 287.75 },
+	{ "name": "纸屑5", "parent": "root", "length": 68.03, "rotation": -147.09, "x": 1480.57, "y": 156.15 },
+	{ "name": "纸屑2", "parent": "root", "length": 85.13, "rotation": -89.25, "x": 1367.81, "y": -122.25 },
+	{ "name": "纸屑7", "parent": "root", "length": 105.88, "rotation": 168.1, "x": 1176.13, "y": -279.37 },
+	{ "name": "纸屑6", "parent": "root", "length": 94.72, "rotation": -50.76, "x": 813.77, "y": -141.93 },
+	{ "name": "纸屑9", "parent": "root", "length": 84.46, "rotation": -11.09, "x": 715.85, "y": 33.51 },
+	{ "name": "纸屑8", "parent": "root", "length": 96.48, "rotation": -80.65, "x": 739.13, "y": 291.03 }
+],
+"slots": [
+	{ "name": "右翅膀", "bone": "右翅膀", "attachment": "右翅膀" },
+	{ "name": "左翅膀", "bone": "左翅膀", "attachment": "左翅膀" },
+	{ "name": "身体", "bone": "身体", "attachment": "身体" },
+	{ "name": "纸屑1", "bone": "纸屑1", "attachment": "纸屑1" },
+	{ "name": "纸屑2", "bone": "纸屑2", "attachment": "纸屑2" },
+	{ "name": "纸屑3", "bone": "纸屑3", "attachment": "纸屑3" },
+	{ "name": "纸屑4", "bone": "纸屑4", "attachment": "纸屑4" },
+	{ "name": "纸屑5", "bone": "纸屑5", "attachment": "纸屑5" },
+	{ "name": "纸屑6", "bone": "纸屑6", "attachment": "纸屑6" },
+	{ "name": "纸屑7", "bone": "纸屑7", "attachment": "纸屑7" },
+	{ "name": "纸屑8", "bone": "纸屑8", "attachment": "纸屑8" },
+	{ "name": "纸屑9", "bone": "纸屑9", "attachment": "纸屑9" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"纸屑9": {
+				"纸屑9": { "x": 73.85, "y": 74.58, "rotation": 11.09, "width": 236, "height": 240 }
+			},
+			"左翅膀": {
+				"左翅膀": { "x": 193.91, "y": -23.7, "rotation": -179.23, "width": 442, "height": 795 }
+			},
+			"身体": {
+				"身体": { "x": 68.49, "y": 0.66, "rotation": -90.37, "width": 172, "height": 364 }
+			},
+			"右翅膀": {
+				"右翅膀": { "x": 198.96, "y": 26.51, "rotation": -0.23, "width": 442, "height": 795 }
+			},
+			"纸屑1": {
+				"纸屑1": { "x": 32.5, "y": 14.07, "rotation": 94.09, "width": 55, "height": 130 }
+			},
+			"纸屑2": {
+				"纸屑2": { "x": 45.73, "y": 41.92, "rotation": 89.25, "width": 109, "height": 122 }
+			},
+			"纸屑3": {
+				"纸屑3": { "x": 52.87, "y": -5.76, "rotation": -89, "width": 51, "height": 169 }
+			},
+			"纸屑4": {
+				"纸屑4": { "x": 66.81, "y": -13.79, "rotation": 56.14, "width": 94, "height": 157 }
+			},
+			"纸屑5": {
+				"纸屑5": { "x": 30.3, "y": 3.52, "rotation": 147.09, "width": 151, "height": 98 }
+			},
+			"纸屑6": {
+				"纸屑6": { "x": 61.36, "y": 22.21, "rotation": 50.76, "width": 152, "height": 115 }
+			},
+			"纸屑7": {
+				"纸屑7": { "x": 49.6, "y": 6.26, "rotation": -168.1, "width": 138, "height": 90 }
+			},
+			"纸屑8": {
+				"纸屑8": { "x": 37.64, "y": 5.67, "rotation": 80.65, "width": 79, "height": 106 }
+			}
+		}
+	}
+],
+"animations": {
+	"show": {
+		"slots": {
+			"纸屑2": {
+				"color": [
+					{ "color": "ffffff00", "curve": "stepped" },
+					{ "time": 0.1, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 0.4333, "color": "ffffffff", "curve": 0, "c2": 0.88, "c3": 0.75 },
+					{ "time": 0.7667, "color": "ffffff00" }
+				]
+			},
+			"纸屑1": {
+				"color": [
+					{ "color": "ffffff00", "curve": "stepped" },
+					{ "time": 0.1, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 0.5333, "color": "ffffffff", "curve": 0, "c2": 0.85, "c3": 0.75 },
+					{ "time": 0.7, "color": "ffffff00" }
+				]
+			},
+			"纸屑6": {
+				"color": [
+					{ "color": "ffffff00", "curve": "stepped" },
+					{ "time": 0.1, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 0.5333, "color": "ffffffff", "curve": 0.019, "c2": 0.78, "c3": 0.75 },
+					{ "time": 0.7667, "color": "ffffff00" }
+				]
+			},
+			"纸屑5": {
+				"color": [
+					{ "color": "ffffff00", "curve": "stepped" },
+					{ "time": 0.1, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 0.3333, "color": "ffffffff", "curve": 0.015, "c2": 0.91, "c3": 0.75 },
+					{ "time": 0.7667, "color": "ffffff00" }
+				]
+			},
+			"纸屑9": {
+				"color": [
+					{ "color": "ffffff00", "curve": "stepped" },
+					{ "time": 0.1, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 0.5, "color": "ffffffff", "curve": 0, "c2": 0.96, "c3": 0.75 },
+					{ "time": 0.7667, "color": "ffffff00" }
+				]
+			},
+			"纸屑8": {
+				"color": [
+					{ "color": "ffffff00", "curve": "stepped" },
+					{ "time": 0.1, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 0.4333, "color": "ffffffff", "curve": 0, "c2": 0.85, "c3": 0.75 },
+					{ "time": 0.7667, "color": "ffffff00" }
+				]
+			},
+			"纸屑3": {
+				"color": [
+					{ "color": "ffffff00", "curve": "stepped" },
+					{ "time": 0.1, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 0.3667, "color": "ffffffff", "curve": 0.063, "c2": 0.73, "c3": 0.75 },
+					{ "time": 0.6333, "color": "ffffff00", "curve": "stepped" },
+					{ "time": 0.7667, "color": "ffffff00" }
+				]
+			},
+			"纸屑7": {
+				"color": [
+					{ "color": "ffffff00", "curve": "stepped" },
+					{ "time": 0.1, "color": "ffffffff" },
+					{ "time": 0.5333, "color": "ffffff25", "curve": 0.008, "c2": 0.76, "c3": 0.75 },
+					{ "time": 0.7667, "color": "ffffff00" }
+				]
+			},
+			"纸屑4": {
+				"color": [
+					{ "color": "ffffff00", "curve": "stepped" },
+					{ "time": 0.1, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 0.3667, "color": "ffffffff", "curve": 0.061, "c2": 0.89, "c3": 0.75 },
+					{ "time": 0.7667, "color": "ffffff00" }
+				]
+			}
+		},
+		"bones": {
+			"右翅膀": {
+				"scale": [
+					{ "x": 0.109, "curve": 0, "c2": 0.56, "c3": 0.75 },
+					{ "time": 0.2333, "x": 1.1 },
+					{ "time": 0.4, "x": 0.621, "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.4667, "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.5333, "x": 0.621, "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.6, "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.7, "x": 0.621, "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.8333, "x": 1.1 }
+				]
+			},
+			"左翅膀": {
+				"scale": [
+					{ "x": 0.079, "curve": 0, "c2": 0.83, "c3": 0.75 },
+					{ "time": 0.2333, "x": 1.1 },
+					{ "time": 0.4, "x": 0.738, "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.4667, "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.5333, "x": 0.738, "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.6, "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.7, "x": 0.738, "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.8333, "x": 1.1 }
+				]
+			},
+			"身体": {
+				"translate": [
+					{ "curve": 0, "c2": 0.76, "c3": 0.75 },
+					{ "time": 0.4, "x": -1.05, "y": 163.28 }
+				],
+				"scale": [
+					{ "x": 0.3, "y": 0.3, "curve": 0.14, "c2": 0.55, "c3": 0.75 },
+					{ "time": 0.2667, "x": 1.1, "y": 1.1, "curve": 0.14, "c2": 0.55, "c3": 0.75 },
+					{ "time": 0.8333 }
+				]
+			},
+			"纸屑6": {
+				"rotate": [
+					{ "time": 0.1, "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.7667, "angle": -63.62 }
+				],
+				"translate": [
+					{ "time": 0.1, "x": -933.41, "y": 85.86, "curve": 0, "c2": 1, "c3": 0.75 },
+					{ "time": 0.6667, "x": -1327.39, "y": -357.61 }
+				],
+				"scale": [
+					{ "time": 0.1, "x": 0.2, "y": 0.2, "curve": 0, "c2": 1, "c3": 0.75 },
+					{ "time": 0.6667, "x": 2, "y": 2 }
+				]
+			},
+			"纸屑7": {
+				"rotate": [
+					{ "time": 0.5333, "angle": 34.74 }
+				],
+				"translate": [
+					{
+						"time": 0.1,
+						"x": -1015.52,
+						"y": 192.69,
+						"curve": 0,
+						"c2": 0.79,
+						"c3": 0.592,
+						"c4": 0.96
+					},
+					{ "time": 0.5333, "x": -484.73, "y": -180.53, "curve": "stepped" },
+					{ "time": 0.6667, "x": -484.73, "y": -180.53 }
+				],
+				"scale": [
+					{
+						"time": 0.1,
+						"x": 0.2,
+						"y": 0.2,
+						"curve": 0,
+						"c2": 0.79,
+						"c3": 0.592,
+						"c4": 0.96
+					},
+					{ "time": 0.5333, "x": 1.5, "y": 1.5, "curve": "stepped" },
+					{ "time": 0.6667, "x": 1.5, "y": 1.5 }
+				]
+			},
+			"纸屑9": {
+				"rotate": [
+					{ "time": 0.1, "curve": 0.044, "c2": 0.93, "c3": 0.75 },
+					{ "time": 0.7667, "angle": -134.48 }
+				],
+				"translate": [
+					{ "time": 0.1, "x": -725.52, "y": -203.83, "curve": 0, "c2": 1, "c3": 0.75 },
+					{ "time": 0.6667, "x": -298.11, "y": -692.81 }
+				],
+				"scale": [
+					{ "time": 0.1, "x": 0.2, "y": 0.2, "curve": 0, "c2": 1, "c3": 0.75 },
+					{ "time": 0.6667, "x": 3, "y": 1.5 }
+				]
+			},
+			"纸屑8": {
+				"rotate": [
+					{ "time": 0.1, "curve": 0, "c2": 0.72, "c3": 0.75 },
+					{ "time": 0.6667, "angle": -114.44 }
+				],
+				"translate": [
+					{ "time": 0.1, "x": -940.47, "y": -124.73, "curve": 0, "c2": 1, "c3": 0.75 },
+					{ "time": 0.6667, "x": -1507.71, "y": 84.6 }
+				],
+				"scale": [
+					{ "time": 0.1, "x": 0.2, "y": 0.2, "curve": 0, "c2": 1, "c3": 0.75 },
+					{ "time": 0.6667, "x": 1.5, "y": 1.5 }
+				]
+			},
+			"纸屑1": {
+				"rotate": [
+					{ "time": 0.1, "curve": 0, "c2": 0.92, "c3": 0.75 },
+					{ "time": 0.6667, "angle": -79.37 }
+				],
+				"translate": [
+					{ "time": 0.1, "x": -1110.23, "y": -444.61, "curve": 0, "c2": 1, "c3": 0.75 },
+					{ "time": 0.6667, "x": -1613.6, "y": -599.71 }
+				],
+				"scale": [
+					{ "time": 0.1, "x": 0.2, "y": 0.2, "curve": 0, "c2": 1, "c3": 0.75 },
+					{ "time": 0.6667, "x": 1.5, "y": 1.5 }
+				]
+			},
+			"纸屑4": {
+				"rotate": [
+					{ "time": 0.1 }
+				],
+				"translate": [
+					{ "time": 0.1, "x": -1135.6, "y": -204.61, "curve": 0, "c2": 1, "c3": 0.75 },
+					{ "time": 0.6667, "x": -925.6, "y": 438.17 }
+				],
+				"scale": [
+					{ "time": 0.1, "x": 0.2, "y": 0.2, "curve": 0, "c2": 1, "c3": 0.75 },
+					{ "time": 0.6667, "x": 1.5, "y": 1.5 }
+				]
+			},
+			"纸屑2": {
+				"rotate": [
+					{ "time": 0.1, "curve": 0.026, "c2": 0.72, "c3": 0.75 },
+					{ "time": 0.6667, "angle": -91.67 }
+				],
+				"translate": [
+					{ "time": 0.1, "x": -1168.62, "y": 178.4, "curve": 0, "c2": 1, "c3": 0.75 },
+					{ "time": 0.6667, "x": -670.77, "y": 66.84 }
+				],
+				"scale": [
+					{ "time": 0.1, "x": 0.2, "y": 0.2, "curve": 0, "c2": 1, "c3": 0.75 },
+					{ "time": 0.6667, "x": 1.5, "y": 1.5 }
+				]
+			},
+			"纸屑5": {
+				"rotate": [
+					{ "time": 0.1 },
+					{ "time": 0.6667, "angle": -99.86 }
+				],
+				"translate": [
+					{ "time": 0.1, "x": -1275.63, "y": 24.71, "curve": 0, "c2": 1, "c3": 0.75 },
+					{ "time": 0.6667, "x": -606.28, "y": 187.76 }
+				],
+				"scale": [
+					{ "time": 0.1, "x": 0.2, "y": 0.2, "curve": 0, "c2": 1, "c3": 0.75 },
+					{ "time": 0.6667, "x": 1.5, "y": 1.5 }
+				]
+			},
+			"纸屑3": {
+				"rotate": [
+					{ "time": 0.1, "curve": 0, "c2": 0.66, "c3": 0.75 },
+					{ "time": 0.6667, "angle": 75.51 }
+				],
+				"translate": [
+					{ "time": 0.1, "x": -1494.6, "y": -100.61, "curve": 0, "c2": 1, "c3": 0.75 },
+					{ "time": 0.6667, "x": -1958.38, "y": 522.1 }
+				],
+				"scale": [
+					{ "time": 0.1, "x": 0.2, "y": 0.2, "curve": 0, "c2": 1, "c3": 0.75 },
+					{ "time": 0.6667, "x": 1.5, "y": 1.5 }
+				]
+			}
+		}
+	}
+}
+}

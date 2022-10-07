@@ -1,0 +1,86 @@
+{
+"skeleton": {
+	"hash": "7MggkbVfEmUxEZT8I3Trw5Fc+P8",
+	"spine": "3.8",
+	"x": -315,
+	"y": -293,
+	"width": 611,
+	"height": 611,
+	"images": "../../../PSD/images/海螺声波响应/",
+	"audio": ""
+},
+"bones": [
+	{ "name": "root" },
+	{ "name": "海螺声波响应1", "parent": "root", "length": 112.57, "rotation": 90.68, "x": -0.9, "y": 9.83 },
+	{ "name": "海螺声波响应2", "parent": "root", "length": 310.21, "rotation": 90.25, "x": -4.92, "y": 7.82 }
+],
+"slots": [
+	{ "name": "海螺声波响应1", "bone": "海螺声波响应1", "attachment": "海螺声波响应1" },
+	{ "name": "海螺声波响应2", "bone": "海螺声波响应2", "attachment": "海螺声波响应2" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"海螺声波响应1": {
+				"海螺声波响应1": { "x": 10.65, "y": -1.52, "rotation": -90.68, "width": 243, "height": 243 }
+			},
+			"海螺声波响应2": {
+				"海螺声波响应2": { "x": 4.7, "y": 4.56, "rotation": -90.25, "width": 611, "height": 611 }
+			}
+		}
+	}
+],
+"animations": {
+	"idle": {
+		"slots": {
+			"海螺声波响应1": {
+				"attachment": [
+					{ "name": null }
+				]
+			},
+			"海螺声波响应2": {
+				"attachment": [
+					{ "name": null }
+				]
+			}
+		}
+	},
+	"show": {
+		"slots": {
+			"海螺声波响应1": {
+				"color": [
+					{ "color": "ffffff00", "curve": "stepped" },
+					{ "time": 0.4, "color": "ffffffff", "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.6667, "color": "ffffff00" }
+				]
+			},
+			"海螺声波响应2": {
+				"color": [
+					{ "color": "ffffffff", "curve": "stepped" },
+					{ "time": 0.4333, "color": "ffffffff", "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.5667, "color": "ffffff00" }
+				]
+			}
+		},
+		"bones": {
+			"海螺声波响应2": {
+				"scale": [
+					{ "x": 0.2, "y": 0.2, "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.5667 }
+				]
+			},
+			"海螺声波响应1": {
+				"translate": [
+					{ "x": -1.94, "y": -11.36 }
+				],
+				"scale": [
+					{ "x": 0.2, "y": 0.2, "curve": "stepped" },
+					{ "time": 0.3333, "x": 0.2, "y": 0.2, "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.5667, "x": 2, "y": 2 }
+				]
+			}
+		}
+	}
+}
+}

@@ -92,6 +92,11 @@ public class Jump : PlayerAblity
             {
                 _playerLadder.GetOffTheLadder();
             }
+
+            if (_playerController.State.IsOnMovingPlatform)
+            {
+                _playerController.DetachFromMovinPlatform();
+            }
             _movement.ChangeState(PlayerStates.MovementStates.Jumping);
             _playerController.SetVerticalForce(Mathf.Sqrt(2f * Mathf.Abs(_playerController.Parameters.Gravity) * JumpHeight));
         }

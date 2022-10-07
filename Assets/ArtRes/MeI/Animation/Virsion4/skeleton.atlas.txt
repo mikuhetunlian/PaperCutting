@@ -1,0 +1,62 @@
+
+skeleton.png
+size: 2048,2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Ladder/body
+  rotate: false
+  xy: 0, 1389
+  size: 724, 659
+  orig: 725, 895
+  offset: 1, 235
+  index: -1
+Ladder/hair
+  rotate: false
+  xy: 35, 414
+  size: 1102, 881
+  orig: 1104, 886
+  offset: 0, 5
+  index: -1
+normal/body
+  rotate: true
+  xy: 1389, 1168
+  size: 669, 659
+  orig: 725, 895
+  offset: 56, 236
+  index: -1
+normal/hair
+  rotate: 270
+  xy: 1168, 193
+  size: 1101, 878
+  orig: 1101, 878
+  offset: 0, 0
+  index: -1
+shadowPlay/body
+  rotate: false
+  xy: 726, 1369
+  size: 692, 679
+  orig: 692, 679
+  offset: 0, 0
+  index: -1
+shadowPlay/eye
+  rotate: false
+  xy: 0, 1170
+  size: 128, 217
+  orig: 128, 217
+  offset: 0, 0
+  index: -1
+shadowPlay/eye-1
+  rotate: false
+  xy: 130, 1170
+  size: 127, 217
+  orig: 128, 218
+  offset: 0, 0
+  index: -1
+shadowPlay/hair
+  rotate: 180
+  xy: 274, 517
+  size: 1111, 883
+  orig: 1111, 883
+  offset: 0, 0
+  index: -1

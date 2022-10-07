@@ -1,0 +1,77 @@
+{
+"skeleton": {
+	"hash": "D5ZbtYOTNUPfq3Ay3sAT7HXSV34",
+	"spine": "3.8",
+	"x": -753.24,
+	"y": -450.67,
+	"width": 1102.82,
+	"height": 804.67,
+	"images": "../../../PSD/images/吹风机上方树特效提示特效/",
+	"audio": ""
+},
+"bones": [
+	{ "name": "root" },
+	{ "name": "叶子2", "parent": "root", "length": 1076.62, "rotation": -145.05, "x": 277.82, "y": 240.86 },
+	{ "name": "叶子1", "parent": "root", "length": 860.29, "rotation": -146.2, "x": 290.57, "y": 212.99 }
+],
+"slots": [
+	{ "name": "叶子2", "bone": "叶子2", "attachment": "叶子2" },
+	{ "name": "叶子1", "bone": "叶子1", "attachment": "叶子1" },
+	{ "name": "提示", "bone": "叶子1", "attachment": "提示" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"叶子1": {
+				"叶子1": { "x": 418.4, "y": -11.53, "rotation": 139.61, "width": 756, "height": 646 }
+			},
+			"叶子2": {
+				"叶子2": { "x": 560.02, "y": -35.99, "rotation": 142.3, "width": 1068, "height": 750 }
+			},
+			"提示": {
+				"提示": { "x": 477.22, "y": 0.96, "rotation": 129.89, "width": 386, "height": 462 }
+			}
+		}
+	}
+],
+"animations": {
+	"idle": {
+		"bones": {
+			"叶子2": {
+				"rotate": [
+					{ "angle": -21.61 }
+				],
+				"translate": [
+					{ "x": 122.86, "y": 47.98 }
+				]
+			},
+			"叶子1": {
+				"rotate": [
+					{ "angle": -35.3 }
+				]
+			}
+		}
+	},
+	"show": {
+		"bones": {
+			"叶子2": {
+				"rotate": [
+					{ "angle": -21.61 },
+					{ "time": 0.8333, "angle": 5.56 }
+				],
+				"translate": [
+					{ "x": 122.86, "y": 47.98 }
+				]
+			},
+			"叶子1": {
+				"rotate": [
+					{ "angle": -34.99, "curve": "stepped" },
+					{ "time": 0.3333, "angle": -34.99, "curve": 0.25, "c3": 0.75 },
+					{ "time": 1.1333, "angle": 8.97 }
+				]
+			}
+		}
+	}
+}
+}

@@ -15,12 +15,27 @@ public class test : MonoBehaviour
         //skeletonMecanim = GetComponent<SkeletonMecanim>();
         //skeleton = skeletonMecanim.skeleton;
         //skeleton.SetSkin("shadowPlay");
- 
+        StartCoroutine(desu());
     }
 
     // Update is called once per frame
     void Update()
     {
-        this.transform.Translate(new Vector2(1,0) * Time.deltaTime, Space.Self);
+      
+    }
+
+
+    private IEnumerator desu()
+    {
+        while (true)
+        {
+          
+            yield return new WaitForSeconds(1);
+            Debug.Log("1");
+            yield return new WaitForSeconds(1);
+            Debug.Log("2");
+            yield return new WaitForSeconds(1);
+            Debug.Log("3");
+        }
     }
 }

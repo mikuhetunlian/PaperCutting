@@ -7,7 +7,6 @@ using DG.Tweening;
 public class ToBeFlower : PlayerAblity
 {
 
-
     public Transform from;
     public Transform effect;
     public Transform to;
@@ -24,7 +23,9 @@ public class ToBeFlower : PlayerAblity
         bezierNum = 12;
     }
 
-
+    /// <summary>
+    /// 被剪刀剪刀后 产生能够跨越距离的 花朵
+    /// </summary>
     public void BeFlower()
     {
         ToTransparency();
@@ -51,16 +52,23 @@ public class ToBeFlower : PlayerAblity
     }
 
 
-
+    /// <summary>
+    /// 设置初始点和影响点
+    /// </summary>
+    /// <param name="effect"></param>
+    /// <param name="to"></param>
     public void SetPathPoint(Transform effect,Transform to)
     {
         this.effect = effect;
         this.to =to;
     }
 
+    /// <summary>
+    /// 变透明
+    /// </summary>
     private void ToTransparency()
     {
-        this.gameObject.layer = LayerMask.NameToLayer("Default");
+        GetComponent<MeshRenderer>().enabled = false;
     }
 
 
