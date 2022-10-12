@@ -58,6 +58,12 @@ public class AtkLine : MonoBehaviour
         {
             Debug.Log(" ‹…À");
             _isAtkDetect = true;
+            Health health = collision.gameObject.GetComponent<Health>();
+            if (health.CurrentHealth > 0)
+            {
+                health.Damage(health.MaximumHealth);
+            }    
+          
         }
     }
 

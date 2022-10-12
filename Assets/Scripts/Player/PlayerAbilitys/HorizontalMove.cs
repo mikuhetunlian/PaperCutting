@@ -32,7 +32,7 @@ public class HorizontalMove : PlayerAblity
     public override void Initialization()
     {
         base.Initialization();
-        speed = 18f;
+        speed = 16f;
     }
 
     public override void GetComponents()
@@ -213,6 +213,7 @@ public class HorizontalMove : PlayerAblity
                 }
             }
             
+
             _playerController.SetHorizontalForce(_horizontalMovement * speed);
         }
        

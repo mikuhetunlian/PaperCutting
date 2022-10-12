@@ -8,7 +8,7 @@ public class CameraMgr : BaseManager<CameraMgr>
 {
     ///跟随玩家的虚拟摄像机
     public CinemachineVirtualCamera PlayerVirtualCamera { get; protected set; }
-    public Vector3 DefaultOffset = new Vector2(0,7.6f);
+    public Vector3 DefaultOffset = new Vector2(0, 7.6f);
     private CinemachineBrain _brain;
     protected CinemachineVirtualCamera _previousActiveCamera;
 
@@ -32,7 +32,7 @@ public class CameraMgr : BaseManager<CameraMgr>
         _brain.m_DefaultBlend.m_Time = blendTime;
     }
 
-    
+
 
     /// <summary>
     /// 重置当前镜头的 offset 为 默认镜头
@@ -61,11 +61,11 @@ public class CameraMgr : BaseManager<CameraMgr>
     /// 设置当前镜头的 offsetY
     /// </summary>
     /// <param name="y"></param>
-    public void SetCurrentCameraOffsetY( float y)
+    public void SetCurrentCameraOffsetY(float y)
     {
         CinemachineVirtualCamera currentCamera = _brain.ActiveVirtualCamera as CinemachineVirtualCamera;
         CinemachineFramingTransposer transporser = currentCamera.GetCinemachineComponent<CinemachineFramingTransposer>();
-        
+
         MonoManager.GetInstance().StartCoroutine(DoSetCurrentCameraOffset(transporser, new Vector2(transporser.m_TrackedObjectOffset.x, y)));
     }
 
@@ -75,17 +75,17 @@ public class CameraMgr : BaseManager<CameraMgr>
     /// <param name="transporser"></param>
     /// <param name="offset"></param>
     /// <returns></returns>
-    IEnumerator DoSetCurrentCameraOffset(CinemachineFramingTransposer transporser,Vector2 offset)
+    IEnumerator DoSetCurrentCameraOffset(CinemachineFramingTransposer transporser, Vector2 offset)
     {
         float t = 0;
         Vector3 originPoint = transporser.m_TrackedObjectOffset;
-        while (t<=1)
+        while (t <= 1)
         {
             transporser.m_TrackedObjectOffset = Vector3.Lerp(originPoint, offset, t);
             t += 0.05f;
             yield return null;
         }
-    
+
     }
 
 
@@ -95,7 +95,7 @@ public class CameraMgr : BaseManager<CameraMgr>
     /// <param name="targetCamera">要切换到的目标摄像机</param>
     /// <param name="blendTime">过度时间，-1为默认不修改过度时间</param>
     /// <param name="action">后续行为</param>
-    public void ChangeCamera(CinemachineVirtualCamera targetCamera,float blendTime = -1,UnityAction action = null)
+    public void ChangeCamera(CinemachineVirtualCamera targetCamera, float blendTime = -1, UnityAction action = null)
     {
         if (blendTime != -1 && blendTime >= 0)
         {
@@ -108,6 +108,25 @@ public class CameraMgr : BaseManager<CameraMgr>
         action?.Invoke();
     }
 
-    
+    /// <summary>
+    ///设置默认的镜头切换模式
+    /// </summary>
+    public void SetDefaultBlendType(CinemachineBlendDefinition.Style style)
+    {
+        CinemachineBlendDefinition blendDefinition = _brain.m_DefaultBlend;
+        blendDefinition.m_Style = style;
+        _brain.m_DefaultBlend = blendDefinition;
+    }
 
+    /// <summary>
+    /// 设置当前摄像机的跟随阻尼
+    /// </summary>
+    /// <param name="damping"></param>
+    public void SetDamping(Vector2 damping)
+    {
+        CinemachineVirtualCamera camera  = _brain.ActiveVirtualCamera as CinemachineVirtualCamera;
+        CinemachineFramingTransposer ft =  camera.GetCinemachineComponent<CinemachineFramingTransposer>();
+        ft.m_XDamping = damping.x;
+        ft.m_YDamping = damping.y;
+    }
 }

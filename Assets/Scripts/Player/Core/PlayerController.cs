@@ -51,6 +51,8 @@ public class PlayerController : MonoBehaviour
 
     public GameObject StandingOn;
     public Collider2D StandingOnCollider;
+    //可以push或pull的物体
+    public GameObject ControlAbleObject;
     public RaycastHit2D LeftHitInfo;
     public RaycastHit2D RighthHitInfo;
 
@@ -122,7 +124,7 @@ public class PlayerController : MonoBehaviour
         rayOffset = 0.1f;
 
         RayOffsetVertical = 0.01f;
-        RayOffsetHorizontal = 0.01f;
+        RayOffsetHorizontal = 0.1f;
 
         RaycastNum = 5;
         isDrawRay = true;
@@ -205,6 +207,8 @@ public class PlayerController : MonoBehaviour
         FrameInitialization();
 
         HandleMovingPlatforms();
+
+        DetectControlAble();
 
         CastRayToLeft();
        
@@ -309,7 +313,7 @@ public class PlayerController : MonoBehaviour
 
     public void CastRayToLeft()
     {
-        float leftRayLength = Mathf.Abs(_speed.x * Time.deltaTime) + Collider.bounds.extents.x;
+        float leftRayLength = Mathf.Abs(_speed.x * Time.deltaTime) + Collider.bounds.extents.x  + RayOffsetHorizontal*2;
 
         _horizontalRayCastFromDown = Collider.bounds.center - new Vector3(0, _extentY);
         _horizontalRayCastToUp = Collider.bounds.center + new Vector3(0, _extentY);
@@ -319,10 +323,10 @@ public class PlayerController : MonoBehaviour
         float leftSamllestDistance = float.MaxValue;
         int leftSmallestIndex = 0;
         bool leftHitConnect = false;
-
+        Vector2 originPoint = Vector2.zero;
         for (int i = 0; i < NumberOfHorizontalRays; i++)
         {
-            Vector2 originPoint = Vector2.Lerp(_horizontalRayCastFromDown, _horizontalRayCastToUp, (float)i / (NumberOfHorizontalRays - 1));
+            originPoint = Vector2.Lerp(_horizontalRayCastFromDown, _horizontalRayCastToUp, (float)i / (NumberOfHorizontalRays - 1));
 
             _leftHitStorage[i] = DebugHelper.RaycastAndDrawLine(originPoint, Vector2.left, leftRayLength, PlatformMask);
             if (_leftHitStorage[i].collider != null)
@@ -338,8 +342,11 @@ public class PlayerController : MonoBehaviour
 
         }
 
+
+
         if (leftHitConnect)
         {
+
             State.isCollidingLeft = true;
             LeftHitInfo = _leftHitStorage[leftSmallestIndex];
             if (_inputManager.PrimaryMovement.x < 0)
@@ -350,9 +357,19 @@ public class PlayerController : MonoBehaviour
 
                 //float distance = Mathf.Abs(_leftHitStorage[leftSmallestIndex].point.x - _horizontalRayCastFromDown.x);
 
-                _newPostion.x = RayOffsetHorizontal - distance;
 
-                
+                //如果没在推箱子
+
+                if ( _inputManager.PrimaryMovement.x < 0 &&
+                    _inputManager.ControlButton.State.CurrentState == InputHelper.ButtonState.ButtonPressed)
+                {
+                    return;
+                }
+
+                _newPostion.x = RayOffsetHorizontal - distance;
+             
+
+
                 Debug.Log("left" + _newPostion.x);
             }
 
@@ -367,7 +384,7 @@ public class PlayerController : MonoBehaviour
     public void CastRayToRight()
     {
 
-        float rightRayLength = Mathf.Abs(_speed.x * Time.deltaTime) + Collider.bounds.extents.x;
+        float rightRayLength = Mathf.Abs(_speed.x * Time.deltaTime) + Collider.bounds.extents.x + +RayOffsetHorizontal;
 
 
         _horizontalRayCastFromDown = Collider.bounds.center - new Vector3(0, _extentY);
@@ -378,10 +395,10 @@ public class PlayerController : MonoBehaviour
         float rightSmallestDistance = float.MaxValue;
         int rightSmallestIndex = 0;
         bool rightHitConnect = false;
-
+        Vector2 originPoint = Vector2.zero;
         for (int i = 0; i < NumberOfHorizontalRays; i++)
         {
-            Vector2 originPoint = Vector2.Lerp(_horizontalRayCastFromDown, _horizontalRayCastToUp, (float)i / (NumberOfHorizontalRays - 1));
+            originPoint = Vector2.Lerp(_horizontalRayCastFromDown, _horizontalRayCastToUp, (float)i / (NumberOfHorizontalRays - 1));
 
             _rightHitStorage[i] = DebugHelper.RaycastAndDrawLine(originPoint, Vector2.right, rightRayLength, PlatformMask);
             if (_rightHitStorage[i].collider != null)
@@ -397,6 +414,8 @@ public class PlayerController : MonoBehaviour
             }
         }
 
+
+
         if (rightHitConnect)
         {
             State.isCollidingRight = true;
@@ -409,7 +428,13 @@ public class PlayerController : MonoBehaviour
 
                 //float distance = Mathf.Abs(_rightHitStorage[rightSmallestIndex].point.x - _horizontalRayCastFromDown.x);
 
-                _newPostion.x = - (RayOffsetHorizontal - distance);
+                if (/*State.isDetectControlableObject && */_inputManager.PrimaryMovement.x > 0 &&
+                   _inputManager.ControlButton.State.CurrentState == InputHelper.ButtonState.ButtonPressed)
+                {
+                    return;
+                }
+
+                _newPostion.x = -(RayOffsetHorizontal - distance);
             }
         }
         else
@@ -617,6 +642,28 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    //单独检测一次有没有接触到controlable的物体
+    public void DetectControlAble()
+    {
+        float rayLength = Collider.bounds.extents.x + RayOffsetHorizontal;
+
+        Vector2 originPointLeft = Collider.bounds.center - new Vector3(Collider.bounds.extents.x, 0);
+        RaycastHit2D hitInfoleft = DebugHelper.RaycastAndDrawLine(originPointLeft, Vector2.left, rayLength * 1.1f, 1 << LayerMask.NameToLayer("Pushables"));
+      
+        Vector2 originPointRight = Collider.bounds.center + new Vector3(Collider.bounds.extents.x, 0);
+        RaycastHit2D hitInfoRight = DebugHelper.RaycastAndDrawLine(originPointRight, Vector2.right, rayLength * 1.1f, 1 << LayerMask.NameToLayer("Pushables"));
+
+        if (hitInfoleft.collider != null || hitInfoRight.collider != null)
+        {
+            State.isDetectControlableObject = true;
+            ControlAbleObject = hitInfoRight.collider != null ? hitInfoRight.collider.gameObject : hitInfoleft.collider.gameObject;
+        }
+        else
+        {
+            State.isDetectControlableObject = false;
+            ControlAbleObject = null;
+        }
+    }
     public void SetSate()
     {
         //if (State.IsGrounded  && _inputManager.PrimaryMovement.x == 0)

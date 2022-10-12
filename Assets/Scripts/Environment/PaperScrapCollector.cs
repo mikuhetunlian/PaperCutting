@@ -45,7 +45,7 @@ public class PaperScrapCollector : MonoBehaviour
     private void Transfer()
     {
         _player.transform.position = this.transform.position;
-        _player.GetComponent<MeshRenderer>().enabled = true;
+        _player.GetComponent<Player>().ToVisiable();
         _player.GetComponent<PlayerController>().SetVerticalForce(10f);
     }
 }

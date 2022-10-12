@@ -131,10 +131,12 @@ public class BookSewer : MonoBehaviour
                 if (hitInfos[i].gameObject.tag.Equals("Player"))
                 {
                     Debug.Log("¼ì²âµ½player");
-                    GameObject blood = ResMgr.GetInstance().LoadRes<GameObject>("Prefab/leafBlood");
-                    blood.transform.position = hitInfos[i].gameObject.transform.position;
                     Health health = hitInfos[i].gameObject.GetComponent<Health>();
-                    health.Damage(10);
+                    if (health.CurrentHealth > 0)
+                    {
+                        health.Damage(health.MaximumHealth);
+                    }
+                    
                 }
             }
         }

@@ -1,0 +1,42 @@
+{
+"skeleton": {
+	"hash": "gn4FgosLIK75yDpvCczwMk9/hy4",
+	"spine": "3.8",
+	"x": -688.31,
+	"y": -5.5,
+	"width": 1638,
+	"height": 176,
+	"images": "../../../PSD/images/海浪/",
+	"audio": ""
+},
+"bones": [
+	{ "name": "root" },
+	{ "name": "海1", "parent": "root", "length": 135.88, "rotation": 87.4, "x": 76.58, "y": 25.88 }
+],
+"slots": [
+	{ "name": "海1", "bone": "海1", "attachment": "海1" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"海1": {
+				"海1": { "x": 59.02, "y": -51.49, "rotation": -87.4, "width": 1638, "height": 176 }
+			}
+		}
+	}
+],
+"animations": {
+	"animation": {
+		"bones": {
+			"海1": {
+				"translate": [
+					{ "y": -7.4, "curve": 0.25, "c3": 0.75 },
+					{ "time": 2, "x": -132.04, "y": -7.4, "curve": 0.25, "c3": 0.75 },
+					{ "time": 4, "y": -7.4 }
+				]
+			}
+		}
+	}
+}
+}

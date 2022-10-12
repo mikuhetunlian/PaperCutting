@@ -13,7 +13,7 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
   - Platforms
@@ -23,7 +23,7 @@ TagManager:
   - Pushables
   - OneWayMovingPlatform
   - MovingPlatform
-  - 
+  - Umbrella
   - 
   - 
   - 

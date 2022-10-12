@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class Jump : PlayerAblity
 {
-    private Rigidbody2D rbody;
-    private Transform transform;
+
     public float JumpHeight;
     //上升的速度
     public float upSpeed;
@@ -53,9 +52,6 @@ public class Jump : PlayerAblity
     public override void GetComponents()
     {
         base.GetComponents();
-        rbody = GetComponent<Rigidbody2D>();
-     
-        transform = GetComponent<Transform>();
         State = _playerController.State;
         parameter = _playerController.Parameters;
         _playerLadder = GetComponent<PlayerLadder>();

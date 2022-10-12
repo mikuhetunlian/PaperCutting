@@ -40,12 +40,42 @@ public class Flip : PlayerAblity
     /// </summary>
     private void FlipDo()
     {
-        if (_horizontalInput > 0)
+
+        if (_horizontalInput == 0)
         {
+            return;
+        }
+
+        if (_horizontalInput > 0 )
+        {
+            if (_playerController.ControlAbleObject != null)
+            {
+                //箱子在player左边
+                if (_playerController.ControlAbleObject.transform.position.x < transform.position.x)
+                {
+                    //面朝左 拉
+                    this.transform.localScale = new Vector2(-Mathf.Abs(transform.localScale.x), Mathf.Abs(transform.localScale.y));
+                    return;
+                }
+            }
+
             this.transform.localScale = new Vector2(Mathf.Abs(transform.localScale.x) ,Mathf.Abs(transform.localScale.y));
         }
+
+
         if(_horizontalInput < 0)
         {
+            if (_playerController.ControlAbleObject != null)
+            {
+                //箱子在player右
+                if (_playerController.ControlAbleObject.transform.position.x > transform.position.x)
+                {
+                    //面朝右 拉
+                    this.transform.localScale = new Vector2(Mathf.Abs(transform.localScale.x), Mathf.Abs(transform.localScale.y));
+                    return;
+                }
+            }
+
             this.transform.localScale = new Vector2(-Mathf.Abs(transform.localScale.x), Mathf.Abs(transform.localScale.y));
         }
     }

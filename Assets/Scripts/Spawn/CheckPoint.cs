@@ -7,7 +7,7 @@ public class CheckPoint : MonoBehaviour
 
     public CheckPointData checkPointData;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         checkPointData = new CheckPointData();
         checkPointData.checkPointName = this.gameObject.name;
@@ -30,7 +30,7 @@ public class CheckPoint : MonoBehaviour
     /// 玩家进入 checkPoint 更新 LevelManager中的 currentCheckPoint
     /// </summary>
     /// <param name="collision"></param>
-    private void OnTriggerEnter2D(Collider2D collision)
+    protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag.Equals("Player"))
         {

@@ -2,10 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class rain : MonoBehaviour
+public class Rain : MonoBehaviour
 {
     public GameObject FallRain;
-
     /// <summary>
     /// 动画事件 当下雨结束的时候激活下落雨滴
     /// </summary>

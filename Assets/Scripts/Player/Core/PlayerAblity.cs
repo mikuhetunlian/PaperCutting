@@ -20,6 +20,7 @@ public class PlayerAblity :MonoBehaviour
     protected InputManager _inputManager;
     protected Transform _transform;
     protected Touch _touch;
+    protected Health _health;
     protected float _verticalInput;
     protected float _horizontalInput;
 
@@ -46,6 +47,7 @@ public class PlayerAblity :MonoBehaviour
         _animator = GetComponent<Animator>();
         _transform = GetComponent<Transform>();
         _touch = GetComponent<Touch>();
+        _health = GetComponent<Health>();
         _movement = _player.Movement;
         _condition = _player.Condition;
         _inputManager = _player.LinkedInputManager;

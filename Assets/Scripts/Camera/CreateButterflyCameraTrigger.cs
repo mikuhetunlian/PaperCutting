@@ -54,6 +54,10 @@ public class CreateButterflyCameraTrigger : CameraTriggerBase
     /// <returns></returns>
     protected IEnumerator DoCameraShake(int shakeTime)
     {
+
+        CinemachineTrackedDolly trackedDolly = _VCamera.GetCinemachineComponent<CinemachineTrackedDolly>();
+        trackedDolly.m_AutoDolly.m_Enabled = false;
+        trackedDolly.m_PathPosition = 0.58f;
         float t = 0;
 
         _multiChannelPerlin = _VCamera.AddCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
@@ -97,7 +101,7 @@ public class CreateButterflyCameraTrigger : CameraTriggerBase
             yield return null;
         }
 
-
+        trackedDolly.m_AutoDolly.m_Enabled = true;
     }
 
 }

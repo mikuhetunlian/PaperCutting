@@ -20,6 +20,7 @@ public class PlayerControllerInspector : Editor
             EditorGUILayout.LabelField("isCollidingAbove", controller.State.isCollidingAbove.ToString());
             EditorGUILayout.LabelField("isCollidingLeft", controller.State.isCollidingLeft.ToString());
             EditorGUILayout.LabelField("isCollidingRight", controller.State.isCollidingRight.ToString());
+            EditorGUILayout.LabelField("isDetectControlableObject", controller.State.isDetectControlableObject.ToString());
         }
 
 

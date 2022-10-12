@@ -1,0 +1,64 @@
+{
+"skeleton": {
+	"hash": "pH77lPbG1xbJGEpKM8+ZX64Lx60",
+	"spine": "3.8",
+	"x": -90.9,
+	"y": -64.38,
+	"width": 207,
+	"height": 227,
+	"images": "../tool/叶子血/",
+	"audio": ""
+},
+"bones": [
+	{ "name": "root" },
+	{ "name": "稻1", "parent": "root", "length": 217.79, "rotation": 137.31, "x": 85.6, "y": -11.97 }
+],
+"slots": [
+	{ "name": "稻1", "bone": "稻1", "attachment": "稻1" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"稻1": {
+				"稻1": { "x": 95.08, "y": 4.58, "rotation": -137.31, "width": 207, "height": 227 }
+			}
+		}
+	}
+],
+"events": {
+	"Destory": {}
+},
+"animations": {
+	"animation": {
+		"slots": {
+			"稻1": {
+				"color": [
+					{ "time": 0.5333, "color": "ffffffff", "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.7, "color": "000000ff", "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.8333, "color": "00000000" }
+				]
+			}
+		},
+		"bones": {
+			"稻1": {
+				"rotate": [
+					{ "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.8333, "angle": 50.13 }
+				],
+				"translate": [
+					{ "x": -10.29, "y": -19.55, "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.8333, "x": -553.6, "y": 326.19 }
+				],
+				"scale": [
+					{ "x": 0.8, "y": 0.8, "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.8333, "x": 0.5, "y": 0.5 }
+				]
+			}
+		},
+		"events": [
+			{ "time": 0.8333, "name": "Destory" }
+		]
+	}
+}
+}

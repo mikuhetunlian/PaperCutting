@@ -9,6 +9,8 @@ public class PlayerControllerState
     public bool isCollidingLeft { get; set; }
     public bool isCollidingAbove { get; set; }
     public bool isCollidingBelow { get; set; }
+    ///是否靠近到能够操控物体的程度
+    public bool isDetectControlableObject { get; set; }
     ///有没有碰到什么
     public bool HasCollision 
     {

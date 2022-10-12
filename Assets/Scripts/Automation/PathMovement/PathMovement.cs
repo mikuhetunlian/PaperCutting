@@ -44,7 +44,8 @@ public class PathMovement : MonoBehaviour
     public CycleOptions CycleOption;
     public MovementDirection LoopInitiaMovementDirection = MovementDirection.Ascending;
     public List<PathMovementElement> PathElements;
-
+    ///游戏开始时是否自动移动
+    public bool isMoveAtStart;
     ///当 距离差小于这个范围时，判断为达到了路径点
     public float MinDistanceToGoal = 0.1f;
     ///要移动的物体的初始transformposion
@@ -83,7 +84,14 @@ public class PathMovement : MonoBehaviour
     {
         _active = true;
         _endReached = false;
-        CanMove = true;
+        if (isMoveAtStart)
+        {
+            CanMove = true;
+        }
+        else 
+        {
+            CanMove = false;
+        }
 
         if (PathElements == null || PathElements.Count < 1)
         {
@@ -116,6 +124,15 @@ public class PathMovement : MonoBehaviour
         transform.position = _originalTransformPostion + _currnetPoint.Current;
     }
 
+    /// <summary>
+    /// 重置移动物体在path的开始点
+    /// </summary>
+    public virtual void ResetPath()
+    {
+        Initialization();
+        
+        transform.position = _originalTransformPostion + PathElements[0].PathElementPotion;
+    }
 
     protected virtual void Update()
     {
@@ -131,32 +148,33 @@ public class PathMovement : MonoBehaviour
 
     public void Move()
     {
+     
+            _initialPostion = transform.position;
 
-        _initialPostion = transform.position;
+            MoveAlongThePath();
 
-        MoveAlongThePath();
+            float distance = (transform.position - (_originalTransformPostion + _currnetPoint.Current)).magnitude;
 
-        float distance = (transform.position - (_originalTransformPostion + _currnetPoint.Current)).magnitude;
+            if (distance < MinDistanceToGoal)
+            {
+                _previousPoint = _currnetPoint.Current;
+                _currnetPoint.MoveNext();
+            }
 
-        if(distance < MinDistanceToGoal)
-        {
-            _previousPoint = _currnetPoint.Current;
-            _currnetPoint.MoveNext();
-        }
+            _finalPostion = transform.position;
 
-        _finalPostion = transform.position;
+            // v = x / t
+            if (Time.deltaTime != 0)
+            {
 
-        // v = x / t
-        if (Time.deltaTime != 0)
-        {
-          
-           CurrentSpeed = (_finalPostion - _initialPostion) / Time.deltaTime;
-        }
+                CurrentSpeed = (_finalPostion - _initialPostion) / Time.deltaTime;
+            }
 
         if (_endReached)
         {
             CurrentSpeed = Vector3.zero;
         }
+        
     }
 
 

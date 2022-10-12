@@ -22,6 +22,7 @@ public class InputManager : SingeltonAutoManager<InputManager>
     public InputHelper.IMButton LeftMove { get; protected set; }
     public InputHelper.IMButton RightMove { get; protected set; }
     public InputHelper.IMButton JumpButton { get; protected set; }
+    public InputHelper.IMButton ControlButton { get; protected set; }
 
     protected void Start()
     {
@@ -39,9 +40,7 @@ public class InputManager : SingeltonAutoManager<InputManager>
         //ButtonList.Add(RightMove = new InputHelper.IMButton(playerID, "RightMove",RightMoveDown,RightMovePresswd,RightMoveUp));
 
         ButtonList.Add(JumpButton = new InputHelper.IMButton(playerID, "Jump", JumpButtonDown, JumpButtonPresswd, JumpButtonUp));
-    
-    
-    
+        ButtonList.Add(ControlButton = new InputHelper.IMButton(playerID, "Control", ControlButtonDown, ControlButtonPresswd, ControlButtonUp));
     
     }
 
@@ -56,13 +55,27 @@ public class InputManager : SingeltonAutoManager<InputManager>
 
     protected void LateUpdate()
     {
-        ProcessButtonStates();
+        if (InputDetectionActive)
+        {
+            ProcessButtonStates();
+        }
+        else 
+        {
+            ResetButtonState();
+        }
     }
 
     protected void Update()
     {
-        SetMovement();
-        SetButtons();
+        if (InputDetectionActive)
+        {
+            SetMovement();
+            SetButtons();
+        }
+        else
+        {
+            ResetMovement();
+        }
     }
 
     /// <summary>
@@ -81,6 +94,11 @@ public class InputManager : SingeltonAutoManager<InputManager>
             _primaryMovement.y = Input.GetAxisRaw(_axisVertical);
         }
 
+    }
+
+    public void ResetMovement()
+    {
+        _primaryMovement = Vector2.zero;
     }
 
     /// <summary>
@@ -124,6 +142,16 @@ public class InputManager : SingeltonAutoManager<InputManager>
         }
     }
     /// <summary>
+    /// 当静止输入的时候，重置所有按钮的状态
+    /// </summary>
+    public virtual void ResetButtonState()
+    {
+        foreach (InputHelper.IMButton button in ButtonList)
+        {
+            button.State.ChangeState(InputHelper.ButtonState.Off);
+        }
+    }
+    /// <summary>
     /// 如果该帧是 buttonDown 下一帧延续保持为 buttonPressed 的状态
     /// </summary>
     /// <param name="button"></param>
@@ -142,6 +170,13 @@ public class InputManager : SingeltonAutoManager<InputManager>
         JumpButton.State.ChangeState(InputHelper.ButtonState.ButtonUp);
     }
 
+    public void ControlButtonDown() { ControlButton.State.ChangeState(InputHelper.ButtonState.ButtonDown); }
+    public void ControlButtonPresswd() { ControlButton.State.ChangeState(InputHelper.ButtonState.ButtonPressed); }
+    public void ControlButtonUp()
+    {
+        ControlButton.State.ChangeState(InputHelper.ButtonState.ButtonUp);
+    }
+
 
     public void LeftMoveDown() { LeftMove.State.ChangeState(InputHelper.ButtonState.ButtonDown); }
     public void LeftMovePresswd() { LeftMove.State.ChangeState(InputHelper.ButtonState.ButtonPressed); }
@@ -157,10 +192,6 @@ public class InputManager : SingeltonAutoManager<InputManager>
     {
         RightMove.State.ChangeState(InputHelper.ButtonState.ButtonUp);
     }
-
-
-
-
 
 
 }

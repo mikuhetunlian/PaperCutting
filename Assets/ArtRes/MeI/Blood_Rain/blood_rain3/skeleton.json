@@ -1,0 +1,66 @@
+{
+"skeleton": {
+	"hash": "NRvQB12kArjQrxnK/RHCps0o1lo",
+	"spine": "3.8",
+	"x": -68.56,
+	"y": -66.56,
+	"width": 127.12,
+	"height": 131.12,
+	"images": "../tool/叶子血/",
+	"audio": ""
+},
+"bones": [
+	{ "name": "root" },
+	{ "name": "叶3", "parent": "root", "length": 72.66, "rotation": 140.68, "x": -9.28, "y": 1.55 }
+],
+"slots": [
+	{ "name": "叶3", "bone": "叶3", "attachment": "叶3" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"叶3": {
+				"叶3": { "x": -4.93, "y": -0.74, "rotation": -140.73, "width": 127, "height": 131 }
+			}
+		}
+	}
+],
+"events": {
+	"Destory": {}
+},
+"animations": {
+	"animation": {
+		"slots": {
+			"叶3": {
+				"color": [
+					{ "time": 0.4333, "color": "ffffffff", "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.6, "color": "000000ff", "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.7333, "color": "00000000" }
+				]
+			}
+		},
+		"bones": {
+			"叶3": {
+				"rotate": [
+					{ "angle": -53.89, "curve": 0.319, "c3": 0.653, "c4": 0.34 },
+					{ "time": 0.0333, "angle": -55.43, "curve": 0.26, "c2": 0.07, "c3": 0.689, "c4": 0.75 },
+					{ "time": 0.6, "angle": -146.89, "curve": 0.373, "c2": 0.62, "c3": 0.713 },
+					{ "time": 0.7333, "angle": -157.12 }
+				],
+				"translate": [
+					{ "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.7333, "x": -416.99, "y": 249.32 }
+				],
+				"scale": [
+					{ "x": 0.7, "y": 0.7, "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.7333, "x": 0.48, "y": 0.5 }
+				]
+			}
+		},
+		"events": [
+			{ "time": 0.7333, "name": "Destory" }
+		]
+	}
+}
+}

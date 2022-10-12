@@ -19,13 +19,15 @@ public class Player : MonoBehaviour
     public FacingDirections CurrentFaceingDir = FacingDirections.Right;
     public FacingDirections InitialFacingDir = FacingDirections.Right;
     public SpawnFacingDirections SpawnDir = SpawnFacingDirections.Right;
+    ///所有abilitys的总开关
+    public bool DisableAllAbility;
     //player的abilitys
     protected List<PlayerAblity> abilitysList;
     //包括player的状态（正常，冰冻，眩晕等） 和 player的移动状态
     public PlayerStates State;
     public StateMachine<PlayerStates.MovementStates> Movement;
     public StateMachine<PlayerStates.PlayerConditions> Condition;
- 
+
     public Animator _animator;
     //用来存储animator中的 参数名 的int哈希值
     public HashSet<int> _animatorParameters;
@@ -44,6 +46,7 @@ public class Player : MonoBehaviour
     public void Initialization()
     {
         //初始化两个状态机
+        DisableAllAbility = false;
         Movement = new StateMachine<PlayerStates.MovementStates>(this.gameObject, false);
         Condition = new StateMachine<PlayerStates.PlayerConditions>(this.gameObject, false);
 
@@ -62,7 +65,7 @@ public class Player : MonoBehaviour
         {
             abilitysList.Add(abilitys[i]);
         }
-       
+
     }
 
 
@@ -88,7 +91,7 @@ public class Player : MonoBehaviour
     {
         foreach (PlayerAblity ability in abilitysList)
         {
-            if (ability.AbilityPermitted)
+            if (ability.AbilityPermitted && !DisableAllAbility)
             {
                 ability.EarlyProcessAblity();
             }
@@ -104,7 +107,7 @@ public class Player : MonoBehaviour
     {
         foreach (PlayerAblity ability in abilitysList)
         {
-            if (ability.AbilityPermitted)
+            if (ability.AbilityPermitted && !DisableAllAbility)
             {
                 ability.ProcessAbility();
                 ability.UpdateAnimator();
@@ -120,14 +123,13 @@ public class Player : MonoBehaviour
     {
         foreach (PlayerAblity ability in abilitysList)
         {
-            if (ability.AbilityPermitted)
+            if (ability.AbilityPermitted && !DisableAllAbility)
             {
                 ability.LateProcessAbility();
             }
 
         }
     }
-
 
 
 
@@ -223,7 +225,7 @@ public class Player : MonoBehaviour
         {
             face = -1;
         }
-        transform.localScale = new Vector3(face *Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+        transform.localScale = new Vector3(face * Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
     }
 
 
@@ -236,7 +238,20 @@ public class Player : MonoBehaviour
         _rbody.velocity = Vector2.zero;
     }
 
+    /// <summary>
+    /// 变透明
+    /// </summary>
+    public void ToTransparency()
+    {
+        GetComponent<MeshRenderer>().enabled = false;
+    }
 
-   
-  
+    /// <summary>
+    /// 变看得见
+    /// </summary>
+    public void ToVisiable()
+    {
+        GetComponent<MeshRenderer>().enabled = true;
+    }
+
 }

@@ -28,7 +28,7 @@ public class ToBeFlower : PlayerAblity
     /// </summary>
     public void BeFlower()
     {
-        ToTransparency();
+        _player.ToTransparency();
         float durationTime = 1;
         for (int i = 0; i < flowers.Length; i++)
         {
@@ -63,13 +63,6 @@ public class ToBeFlower : PlayerAblity
         this.to =to;
     }
 
-    /// <summary>
-    /// ±äÍ¸Ã÷
-    /// </summary>
-    private void ToTransparency()
-    {
-        GetComponent<MeshRenderer>().enabled = false;
-    }
 
 
     /// <summary>

@@ -12,6 +12,7 @@ public class rainStopTest : MonoBehaviour
     private bool stopRain;
     //获得子物体的所有animator
     private Animator[] _animators;
+    private RainRoot _rains;
     //是否停止下雨了
     private bool _isStop;
 
@@ -19,6 +20,7 @@ public class rainStopTest : MonoBehaviour
     void Start()
     {
         _animators = this.GetComponentsInChildren<Animator>();
+        _rains = this.GetComponent<RainRoot>();
     }
 
 
@@ -31,6 +33,7 @@ public class rainStopTest : MonoBehaviour
             for (int i = 0; i < _animators.Length; i++)
             {
                 _animators[i].SetBool("stop", true);
+                _rains.StopDetect();
             }
 
         }
@@ -50,7 +53,7 @@ public class rainStopTest : MonoBehaviour
     }
 
     /// <summary>
-    /// 执行停止下雨的协程
+    /// 执行停止下雨的声音协程
     /// </summary>
     /// <param name="source"></param>
     /// <param name="stopTime"></param>

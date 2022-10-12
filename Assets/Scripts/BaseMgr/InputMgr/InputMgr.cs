@@ -58,14 +58,14 @@ public class InputMgr : BaseManager<InputMgr>
     /// </summary>
     private void PlayerUpdate()
     {
-        CheckKeyCode(KeyCode.W, KeyType.Getkey);
-        CheckKeyCode(KeyCode.S, KeyType.Getkey);
+        CheckKeyCode(KeyCode.UpArrow, KeyType.Getkey);
+        CheckKeyCode(KeyCode.DownArrow, KeyType.Getkey);
         CheckKeyCode(KeyCode.D,KeyType.Getkey);
         CheckKeyCode(KeyCode.A,KeyType.Getkey);
         CheckKeyCode(KeyCode.Space, KeyType.Getkey);
 
-        CheckKeyCode(KeyCode.W, KeyType.GetkeyUp);
-        CheckKeyCode(KeyCode.S, KeyType.GetkeyUp);
+        CheckKeyCode(KeyCode.UpArrow, KeyType.GetkeyUp);
+        CheckKeyCode(KeyCode.DownArrow, KeyType.GetkeyUp);
         CheckKeyCode(KeyCode.D, KeyType.GetkeyUp);
         CheckKeyCode(KeyCode.A, KeyType.GetkeyUp);
         CheckKeyCode(KeyCode.Space, KeyType.GetkeyUp);
