@@ -1,0 +1,69 @@
+{
+"skeleton": {
+	"hash": "cNfxNko4TD65R1DKiQbVdHwwC1w",
+	"spine": "3.8",
+	"x": -57.5,
+	"y": -162.5,
+	"width": 81,
+	"height": 352,
+	"images": "../../../PSD/images/开头场景/开头_观光车/",
+	"audio": ""
+},
+"bones": [
+	{ "name": "root" },
+	{ "name": "右门", "parent": "root", "length": 329.5, "rotation": 90.1, "x": -0.51, "y": -144.93 }
+],
+"slots": [
+	{ "name": "右门", "bone": "右门", "attachment": "右门" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"右门": {
+				"右门": { "x": 158.46, "y": 16.2, "rotation": -90.1, "width": 81, "height": 352 }
+			}
+		}
+	}
+],
+"animations": {
+	"Down": {
+		"bones": {
+			"右门": {
+				"translate": [
+					{ "y": 141.43, "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.3333, "y": -183.71 }
+				]
+			}
+		}
+	},
+	"Down_idle": {
+		"bones": {
+			"右门": {
+				"translate": [
+					{ "y": -185.17 }
+				]
+			}
+		}
+	},
+	"Up": {
+		"bones": {
+			"右门": {
+				"translate": [
+					{ "y": -185.17, "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.3333, "y": 141.43 }
+				]
+			}
+		}
+	},
+	"Up_idle": {
+		"bones": {
+			"右门": {
+				"translate": [
+					{ "y": 141.43 }
+				]
+			}
+		}
+	}
+}
+}

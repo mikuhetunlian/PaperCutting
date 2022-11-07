@@ -6,7 +6,7 @@ using UnityEngine.Events;
 public class MusicMgr : BaseManager<MusicMgr>
 {
     //≤•∑≈±≥æ∞“Ù¿÷µƒAudioSource
-    private AudioSource bkMusic;
+    public AudioSource bkMusic;
     //±≥æ∞“Ù¿÷µƒ¥Û–° 0-1÷Æº‰
     public float bkValue;
 
@@ -51,7 +51,7 @@ public class MusicMgr : BaseManager<MusicMgr>
     /// ≤•∑≈±≥æ∞“Ù¿÷
     /// </summary>
     /// <param name="musicName">±≥æ∞“Ù¿÷√˚</param>
-    public void PlayBkMusic(string musicName)
+    public void PlayBkMusic(string musicName,bool isLoop)
     {
         if (bkMusic == null)
         {
@@ -64,6 +64,7 @@ public class MusicMgr : BaseManager<MusicMgr>
          {
              bkMusic.clip = clip;
              bkMusic.volume = bkValue;
+             bkMusic.loop = isLoop;
              bkMusic.Play();
          });
 
@@ -73,7 +74,7 @@ public class MusicMgr : BaseManager<MusicMgr>
     /// ≤•∑≈±≥æ∞“Ù¿÷
     /// </summary>
     /// <param name="clip">±≥æ∞“Ù¿÷µƒclip</param>
-    public void PlayBkMusic(AudioClip clip)
+    public void PlayBkMusic(AudioClip clip, bool isLoop)
     {
         if (bkMusic == null)
         {
@@ -83,6 +84,7 @@ public class MusicMgr : BaseManager<MusicMgr>
 
         bkMusic.clip = clip;
         bkMusic.volume = bkValue;
+        bkMusic.loop = isLoop;
         bkMusic.Play();
     }
 

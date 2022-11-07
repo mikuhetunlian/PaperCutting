@@ -1,0 +1,54 @@
+{
+"skeleton": {
+	"hash": "L35EDuEfJk4bFbRxHM3AYMCJbvg",
+	"spine": "3.8",
+	"x": -147.5,
+	"y": -151,
+	"width": 307,
+	"height": 329,
+	"images": "../../../PSD/images/开头场景/深色剪刀(带描边)/",
+	"audio": ""
+},
+"bones": [
+	{ "name": "root" },
+	{ "name": "深色剪刀(带描边)", "parent": "root", "length": 238.6, "rotation": 129.06, "x": 12.51, "y": -7.41 },
+	{ "name": "深色剪刀(带描边)2", "parent": "root", "length": 236.07, "rotation": 49.24, "x": -3.07, "y": -5.8 }
+],
+"slots": [
+	{ "name": "深色剪刀(带描边)", "bone": "深色剪刀(带描边)", "attachment": "深色剪刀(带描边)" },
+	{ "name": "深色剪刀(带描边)2", "bone": "深色剪刀(带描边)2", "attachment": "深色剪刀(带描边)" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"深色剪刀(带描边)": {
+				"深色剪刀(带描边)": { "x": 20.34, "y": -8.13, "rotation": -129.06, "width": 307, "height": 329 }
+			},
+			"深色剪刀(带描边)2": {
+				"深色剪刀(带描边)": { "x": 20.54, "y": 5.73, "scaleX": -1, "rotation": -49.24, "width": 307, "height": 329 }
+			}
+		}
+	}
+],
+"animations": {
+	"idle": {
+		"bones": {
+			"深色剪刀(带描边)2": {
+				"rotate": [
+					{ "angle": -28.52, "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.3333, "angle": 39.7, "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.6667, "angle": -28.52 }
+				]
+			},
+			"深色剪刀(带描边)": {
+				"rotate": [
+					{ "angle": 29.69, "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.3333, "angle": -38.14, "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.6667, "angle": 29.69 }
+				]
+			}
+		}
+	}
+}
+}

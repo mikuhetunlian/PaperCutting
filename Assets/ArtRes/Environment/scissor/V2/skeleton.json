@@ -1,0 +1,102 @@
+{
+"skeleton": {
+	"hash": "regtAb/s7RSGBgTEM/H3tOSgITg",
+	"spine": "3.8",
+	"x": -1198.5,
+	"y": -674.5,
+	"width": 2401,
+	"height": 1170.14,
+	"images": "../../PSD/images/tool/",
+	"audio": ""
+},
+"bones": [
+	{ "name": "root" },
+	{ "name": "scissor_Left", "parent": "root", "length": 419.13, "rotation": -136.57, "x": 10.59, "y": 7.34 },
+	{ "name": "scissor_Right", "parent": "root", "length": 506.97, "rotation": -41.51, "x": -0.45, "y": 3.42 }
+],
+"slots": [
+	{ "name": "剪刀1", "bone": "scissor_Right", "attachment": "剪刀1" },
+	{ "name": "剪刀2", "bone": "scissor_Left", "attachment": "剪刀2" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"剪刀1": {
+				"剪刀1": { "x": -134.02, "y": -244.72, "rotation": 41.51, "width": 1871, "height": 1167 }
+			},
+			"剪刀2": {
+				"剪刀2": { "x": -120.76, "y": 245.41, "rotation": 136.57, "width": 1871, "height": 1167 }
+			}
+		}
+	}
+],
+"events": {
+	"CutOver": {},
+	"DetectAndAttack": {},
+	"TwineOver": {}
+},
+"animations": {
+	"cut": {
+		"bones": {
+			"scissor_Right": {
+				"rotate": [
+					{ "angle": 15.55, "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.3333, "angle": 25.26, "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.5667, "angle": -45.26, "curve": "stepped" },
+					{ "time": 1, "angle": -45.26, "curve": 0.25, "c3": 0.75 },
+					{ "time": 2.3, "angle": 15.55 }
+				]
+			},
+			"scissor_Left": {
+				"rotate": [
+					{ "angle": -14.98, "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.3333, "angle": -24.95, "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.5667, "angle": 44.24, "curve": "stepped" },
+					{ "time": 1, "angle": 44.24, "curve": 0.25, "c3": 0.75 },
+					{ "time": 2.3, "angle": -14.98 }
+				]
+			}
+		},
+		"events": [
+			{ "time": 0.5333, "name": "DetectAndAttack", "string": "detectAndAttack" },
+			{ "time": 2.3, "name": "CutOver" }
+		]
+	},
+	"idle": {
+		"bones": {
+			"scissor_Right": {
+				"rotate": [
+					{ "angle": 15.55 }
+				]
+			},
+			"scissor_Left": {
+				"rotate": [
+					{ "angle": -14.98 }
+				]
+			}
+		}
+	},
+	"twine": {
+		"bones": {
+			"scissor_Right": {
+				"rotate": [
+					{ "angle": 15.55, "curve": 0, "c2": 0.37, "c3": 0.75 },
+					{ "time": 0.1333, "angle": 23.13, "curve": 0, "c2": 0.37, "c3": 0.75 },
+					{ "time": 0.2333, "angle": 15.55 }
+				]
+			},
+			"scissor_Left": {
+				"rotate": [
+					{ "angle": -14.98, "curve": 0, "c2": 0.37, "c3": 0.75 },
+					{ "time": 0.1333, "angle": -25.99, "curve": 0, "c2": 0.37, "c3": 0.75 },
+					{ "time": 0.2333, "angle": -14.98 }
+				]
+			}
+		},
+		"events": [
+			{ "time": 0.2333, "name": "TwineOver" }
+		]
+	}
+}
+}

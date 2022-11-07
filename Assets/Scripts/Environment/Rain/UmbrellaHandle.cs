@@ -9,6 +9,7 @@ public class UmbrellaHandle : MonoBehaviour
     ///拉下handle后延迟激活雨伞的时间
     public float DeyalyTime;
     protected Animator _animator;
+
     private bool canBeControl;
     private bool isControlActive;
 
@@ -22,7 +23,7 @@ public class UmbrellaHandle : MonoBehaviour
     {
         if (canBeControl && !isControlActive)
         {
-            if (Input.GetKeyDown(KeyCode.LeftControl))
+            if (InputManager.GetInstance().ControlButton.State.CurrentState == InputHelper.ButtonState.ButtonDown)
             {
                 Invoke("ActiveUmbrella", DeyalyTime);
                 _animator.SetBool("on", true);
@@ -31,9 +32,13 @@ public class UmbrellaHandle : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 激活雨伞移动
+    /// </summary>
     public void ActiveUmbrella()
     {
         Umbrella.GetComponent<PathMovement>().CanMove = true;
+        Debug.Log("激活了伞");
     }
 
     /// <summary>
@@ -52,6 +57,7 @@ public class UmbrellaHandle : MonoBehaviour
         if (collision.gameObject.tag.Equals("Player"))
         {
             canBeControl = true;
+            
         }
     }
 

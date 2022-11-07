@@ -17,7 +17,7 @@ public enum E_UI_Layer
 public class UIMgr : BaseManager<UIMgr>
 {
     
-    private Dictionary<string,BasePanel> panelDic = new Dictionary<string,BasePanel>();
+    public Dictionary<string,BasePanel> panelDic = new Dictionary<string,BasePanel>();
 
     private Transform Canvas;
 
@@ -25,15 +25,20 @@ public class UIMgr : BaseManager<UIMgr>
     {
         //在调用GetInstance的时候找到canvas的Transform ,并让其在切换场景的时候不移除
         //ResMgr中如果是加载GameObject的话直接返回的就是GameObject
-        GameObject canvasObj = ResMgr.GetInstance().LoadRes<GameObject>("UI/Canvas");
-        canvasObj.name = "Canvas";
-        GameObject.DontDestroyOnLoad(canvasObj);
-         Canvas = canvasObj.transform;
 
 
-        GameObject eventObj = ResMgr.GetInstance().LoadRes<GameObject>("UI/EventSystem");
-        eventObj.name = "EventSystem";
-        GameObject.DontDestroyOnLoad(eventObj);
+
+        //GameObject canvasObj = ResMgr.GetInstance().LoadRes<GameObject>("UI/Canvas");
+        //canvasObj.name = "Canvas";
+        //GameObject.DontDestroyOnLoad(canvasObj);
+        
+        //如果场景中自带Canvas和EventSytem的话，那就直接找到就行了
+         Canvas = GameObject.Find("Canvas").transform;
+
+
+        //GameObject eventObj = ResMgr.GetInstance().LoadRes<GameObject>("UI/EventSystem");
+        //eventObj.name = "EventSystem";
+        //GameObject.DontDestroyOnLoad(eventObj);
     }
 
 
@@ -46,10 +51,15 @@ public class UIMgr : BaseManager<UIMgr>
             return;
         }
 
-        GameObject panel =  ResMgr.GetInstance().LoadRes<GameObject>("UI/panel/" + panelName);
+        GameObject panel =  ResMgr.GetInstance().LoadRes<GameObject>("GameJam/Prefab/Panel/" + panelName);
         panel.name = panelName;
         Debug.Log("成功加载了" + panel.name + "对象");
+
         //放到对应的canvas层级下
+        if (Canvas == null)
+        {
+            Canvas = GameObject.Find("Canvas").transform;
+        }
         panel.transform.parent = Canvas;
 
         //设置相对Canvas的位置和自己panel的缩放
@@ -82,7 +92,12 @@ public class UIMgr : BaseManager<UIMgr>
         string panelName = typeof(T).Name;
         if (panelDic.ContainsKey(panelName))
         {
-            GameObject.Destroy(panelDic[panelName].gameObject);
+            Debug.Log("destory" + "找到了panel");
+
+            if (panelDic[panelName].gameObject != null)
+            {
+                GameObject.Destroy(panelDic[panelName].gameObject);
+            }
             panelDic.Remove(panelName);
         }
     }
@@ -96,6 +111,11 @@ public class UIMgr : BaseManager<UIMgr>
         return null;
     }
 
+
+    public void Clear()
+    {
+        panelDic.Clear();
+    }
 
     /// <summary>
     /// 为组件添加自定义的UI互动事件

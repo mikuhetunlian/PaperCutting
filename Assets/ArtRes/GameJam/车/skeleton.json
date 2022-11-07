@@ -1,0 +1,62 @@
+{
+"skeleton": {
+	"hash": "zCqf/fVqX2bPXRjUO/4KwqP6kb0",
+	"spine": "3.8",
+	"x": -359,
+	"y": -156.39,
+	"width": 718,
+	"height": 450.89,
+	"images": "../图片导出/车/",
+	"audio": ""
+},
+"bones": [
+	{ "name": "root" },
+	{ "name": "图层 17", "parent": "root", "length": 76.68, "rotation": 88.88, "x": -219.61, "y": -74.89 },
+	{ "name": "图层 18", "parent": "root", "length": 61.43, "rotation": 88.48, "x": 209.29, "y": -74.89 },
+	{ "name": "图层 19", "parent": "root", "length": 205.08, "rotation": 91.46, "x": 16.8, "y": -28.64 }
+],
+"slots": [
+	{ "name": "图层 16", "bone": "图层 19", "attachment": "图层 16" },
+	{ "name": "图层 17", "bone": "图层 17", "attachment": "图层 17" },
+	{ "name": "图层 18", "bone": "图层 18", "attachment": "图层 18" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"图层 16": {
+				"图层 16": { "x": 154.02, "y": 12.88, "rotation": -91.46, "width": 718, "height": 339 }
+			},
+			"图层 17": {
+				"图层 17": { "rotation": -88.88, "width": 163, "height": 163 }
+			},
+			"图层 18": {
+				"图层 18": { "x": -0.01, "y": 0.24, "rotation": -88.48, "width": 163, "height": 163 }
+			}
+		}
+	}
+],
+"animations": {
+	"move": {
+		"bones": {
+			"图层 18": {
+				"rotate": [
+					{ "angle": -88.48 },
+					{ "time": 0.2333, "angle": 151.52 },
+					{ "time": 0.4333, "angle": 31.52 },
+					{ "time": 0.6667, "angle": -88.48 }
+				]
+			},
+			"图层 17": {
+				"rotate": [
+					{ "angle": -88.88 },
+					{ "time": 0.2333, "angle": 151.12 },
+					{ "time": 0.4333, "angle": 31.12 },
+					{ "time": 0.6667, "angle": -88.88 }
+				]
+			}
+		}
+	},
+	"stop": {}
+}
+}

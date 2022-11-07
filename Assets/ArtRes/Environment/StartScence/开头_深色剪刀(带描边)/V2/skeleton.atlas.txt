@@ -1,0 +1,55 @@
+
+skeleton.png
+size: 512,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+深色剪刀(带描边)/深色剪刀(带描边)
+  rotate: false
+  xy: 0, 132
+  size: 307, 329
+  orig: 307, 329
+  offset: 0, 0
+  index: -1
+纸屑特效(浅)/纸屑特效(浅)1
+  rotate: true
+  xy: 263, 6
+  size: 57, 46
+  orig: 57, 46
+  offset: 0, 0
+  index: -1
+纸屑特效(浅)/纸屑特效(浅)2
+  rotate: false
+  xy: 0, 33
+  size: 106, 97
+  orig: 106, 98
+  offset: 0, 0
+  index: -1
+纸屑特效(浅)/纸屑特效(浅)3
+  rotate: false
+  xy: 187, 0
+  size: 74, 63
+  orig: 88, 63
+  offset: 0, 0
+  index: -1
+纸屑特效(深)/纸屑特效(深)1
+  rotate: false
+  xy: 108, 15
+  size: 77, 62
+  orig: 78, 62
+  offset: 0, 0
+  index: -1
+纸屑特效(深)/纸屑特效(深)2
+  rotate: false
+  xy: 108, 79
+  size: 112, 51
+  orig: 113, 51
+  offset: 1, 0
+  index: -1
+纸屑特效(深)/纸屑特效(深)3
+  rotate: false
+  xy: 222, 65
+  size: 75, 65
+  orig: 83, 66
+  offset: 7, 1
+  index: -1

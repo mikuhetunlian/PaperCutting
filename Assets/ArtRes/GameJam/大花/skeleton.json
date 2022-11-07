@@ -1,0 +1,106 @@
+{
+"skeleton": {
+	"hash": "0gtE0T6lDj5G4hZ2lYx/fQmeIb8",
+	"spine": "3.8",
+	"x": -796.65,
+	"y": -319.77,
+	"width": 1583.8,
+	"height": 1041.96,
+	"images": "../图片导出/大花/",
+	"audio": ""
+},
+"bones": [
+	{ "name": "root" },
+	{ "name": "图层 26", "parent": "root", "length": 309.75, "rotation": 98.28, "x": -251.25, "y": 296.69 },
+	{ "name": "图层 27", "parent": "root", "length": 198.12, "rotation": 87.19, "x": 116.38, "y": 80.38 },
+	{ "name": "图层 24", "parent": "root", "length": 445.86, "rotation": -147.35, "x": -344.37, "y": 315.12 },
+	{ "name": "图层 30", "parent": "root", "length": 603.33, "rotation": 8.6, "x": 149.36, "y": 149.25 }
+],
+"slots": [
+	{ "name": "图层 24", "bone": "图层 24", "attachment": "图层 24" },
+	{ "name": "图层 26", "bone": "图层 26", "attachment": "图层 26" },
+	{ "name": "图层 27", "bone": "图层 27", "attachment": "图层 27" },
+	{ "name": "图层 30", "bone": "图层 30", "attachment": "图层 29" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"图层 24": {
+				"图层 24": { "x": 123.07, "y": -45.7, "rotation": 147.35, "width": 648, "height": 870 }
+			},
+			"图层 26": {
+				"图层 26": { "x": 22.42, "y": 21.51, "rotation": -98.28, "width": 537, "height": 644 }
+			},
+			"图层 27": {
+				"图层 27": { "x": 9.1, "y": -6.19, "rotation": -87.19, "width": 521, "height": 441 }
+			},
+			"图层 30": {
+				"图层 29": { "x": 246.57, "y": -26.68, "rotation": -8.6, "width": 780, "height": 959 }
+			}
+		}
+	}
+],
+"animations": {
+	"show": {
+		"slots": {
+			"图层 24": {
+				"color": [
+					{ "color": "ffffff00", "curve": "stepped" },
+					{ "time": 1.2667, "color": "ffffff00", "curve": 0.25, "c3": 0.75 },
+					{ "time": 2.2333, "color": "ffffffff" }
+				]
+			},
+			"图层 26": {
+				"color": [
+					{ "color": "ffffff00", "curve": 0.25, "c3": 0.75 },
+					{ "time": 1.4333, "color": "ffffffff" }
+				]
+			},
+			"图层 27": {
+				"color": [
+					{ "color": "ffffff00", "curve": 0.25, "c3": 0.75 },
+					{ "time": 1.4667, "color": "ffffffff" }
+				]
+			},
+			"图层 30": {
+				"color": [
+					{ "color": "ffffff00", "curve": "stepped" },
+					{ "time": 1.0667, "color": "ffffff00" },
+					{ "time": 2.1, "color": "ffffffff" }
+				]
+			}
+		},
+		"bones": {
+			"图层 26": {
+				"scale": [
+					{ "x": 0.5, "y": 0.5, "curve": 0, "c2": 0.01, "c3": 0, "c4": 0.89 },
+					{ "time": 2.3667 }
+				]
+			},
+			"图层 27": {
+				"scale": [
+					{ "x": 0.5, "y": 0.5, "curve": 0, "c2": 0.67, "c3": 0.75 },
+					{ "time": 2.3667 }
+				]
+			},
+			"图层 30": {
+				"rotate": [
+					{ "time": 1.0667, "angle": 11.95, "curve": "stepped" },
+					{ "time": 1.2333, "angle": 11.95, "curve": 0.25, "c3": 0.75 },
+					{ "time": 2.1, "angle": 8.16 }
+				],
+				"scale": [
+					{}
+				]
+			},
+			"图层 24": {
+				"rotate": [
+					{ "time": 1.2667, "angle": -11.12, "curve": 0.25, "c3": 0.75 },
+					{ "time": 2.2333, "angle": -4.21 }
+				]
+			}
+		}
+	}
+}
+}

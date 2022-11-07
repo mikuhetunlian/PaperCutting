@@ -39,7 +39,6 @@ public class PlayerLadder : PlayerAblity
        
         ComputeClosetLadder();
         HandleLadderClimbing();
-
       
     }
 

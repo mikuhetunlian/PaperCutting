@@ -1,0 +1,100 @@
+{
+"skeleton": {
+	"hash": "rSzTsdlq4srFJWmsf3IFGNI+Z2M",
+	"spine": "3.8",
+	"x": -401.19,
+	"y": -149.77,
+	"width": 805.25,
+	"height": 513.18,
+	"images": "../../../PSD/images/开头场景/上升蝴蝶/",
+	"audio": ""
+},
+"bones": [
+	{ "name": "root", "rotation": -31.52 },
+	{
+		"name": "翅膀_后_right",
+		"parent": "root",
+		"length": 316.94,
+		"rotation": 30.83,
+		"x": -30.47,
+		"y": -14.93,
+		"scaleX": -1
+	},
+	{ "name": "翅膀_后_left", "parent": "root", "length": 316.94, "rotation": 38.29, "x": 54.96, "y": 42.97 }
+],
+"slots": [
+	{ "name": "body", "bone": "root", "attachment": "body" },
+	{ "name": "翅膀_后_right", "bone": "翅膀_后_right", "attachment": "wing_back" },
+	{ "name": "翅膀_后_left", "bone": "翅膀_后_left", "attachment": "wing_back" }
+],
+"skins": [
+	{
+		"name": "butterfly_back",
+		"attachments": {
+			"翅膀_后_right": {
+				"wing_back": { "name": "翅膀_后", "x": 151.64, "y": 97.11, "rotation": -30.53, "width": 249, "height": 438 }
+			},
+			"body": {
+				"body": { "name": "身体_后", "x": -30.85, "y": 66.91, "width": 175, "height": 211 }
+			},
+			"翅膀_后_left": {
+				"wing_back": { "name": "翅膀_后", "x": 144.01, "y": 88.56, "rotation": -30.53, "width": 249, "height": 438 }
+			}
+		}
+	},
+	{
+		"name": "butterfly_front",
+		"attachments": {
+			"翅膀_后_right": {
+				"wing_back": { "name": "翅膀_前", "x": 146.11, "y": 77.56, "rotation": -30.53, "width": 254, "height": 435 }
+			},
+			"body": {
+				"body": { "name": "身体_前", "x": -20.53, "y": 45.76, "width": 167, "height": 206 }
+			},
+			"翅膀_后_left": {
+				"wing_back": { "name": "翅膀_前", "x": 133.09, "y": 70.2, "rotation": -30.53, "width": 254, "height": 435 }
+			}
+		}
+	},
+	{
+		"name": "butterfly_mid",
+		"attachments": {
+			"翅膀_后_right": {
+				"wing_back": { "name": "翅膀_中", "x": 133.52, "y": 86.71, "rotation": -25.82, "width": 234, "height": 413 }
+			},
+			"body": {
+				"body": { "name": "身体_中", "x": -26.2, "y": 48.45, "rotation": 8.2, "width": 162, "height": 200 }
+			},
+			"翅膀_后_left": {
+				"wing_back": { "name": "翅膀_中", "x": 137.48, "y": 65.78, "rotation": -30.53, "width": 234, "height": 413 }
+			}
+		}
+	}
+],
+"animations": {
+	"idle": {
+		"bones": {
+			"翅膀_后_left": {
+				"translate": [
+					{ "x": -7.88, "y": -4.83 }
+				],
+				"scale": [
+					{ "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.3667, "x": 0.279, "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.6667 }
+				]
+			},
+			"翅膀_后_right": {
+				"translate": [
+					{ "x": 7.75, "y": 4.75 }
+				],
+				"scale": [
+					{ "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.3667, "x": 0.26, "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.6667 }
+				]
+			}
+		}
+	}
+}
+}

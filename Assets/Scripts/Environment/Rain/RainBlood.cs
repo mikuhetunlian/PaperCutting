@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using Spine;
 using Spine.Unity;
-public class 
-    
-    Blood : MonoBehaviour
+
+
+public class  RainBlood : MonoBehaviour
 {
 
     /// <summary>

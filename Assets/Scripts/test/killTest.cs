@@ -12,8 +12,7 @@ public class killTest : MonoBehaviour
     {
         if (collision.gameObject.tag.Equals("Player"))
         {
-            Health health = collision.gameObject.GetComponent<Health>();
-            health.Damage(10);
+            LevelManager.GetInstance().RespawnPlayer();
         }
     }
 }

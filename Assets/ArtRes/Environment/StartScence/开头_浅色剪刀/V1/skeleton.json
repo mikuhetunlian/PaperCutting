@@ -1,0 +1,54 @@
+{
+"skeleton": {
+	"hash": "SAHouYXv0xNA+fpE/ZDBoc0Av8c",
+	"spine": "3.8",
+	"x": -172.8,
+	"y": -132.78,
+	"width": 346.13,
+	"height": 359,
+	"images": "../../../PSD/images/开头场景/浅色剪刀/",
+	"audio": ""
+},
+"bones": [
+	{ "name": "root" },
+	{ "name": "浅色剪刀2", "parent": "root", "length": 281.51, "rotation": 52.52, "x": -6.05, "y": -2.52 },
+	{ "name": "浅色剪刀", "parent": "root", "length": 281.51, "rotation": 126.39, "x": -1.75, "y": -3.6 }
+],
+"slots": [
+	{ "name": "浅色剪刀", "bone": "浅色剪刀", "attachment": "浅色剪刀" },
+	{ "name": "浅色剪刀2", "bone": "浅色剪刀2", "attachment": "浅色剪刀" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"浅色剪刀": {
+				"浅色剪刀": { "x": 50.61, "y": -16.13, "rotation": -126.39, "width": 308, "height": 359 }
+			},
+			"浅色剪刀2": {
+				"浅色剪刀": { "x": 54.52, "y": 9.82, "scaleX": -1, "rotation": -52.52, "width": 308, "height": 359 }
+			}
+		}
+	}
+],
+"animations": {
+	"idle": {
+		"bones": {
+			"浅色剪刀2": {
+				"rotate": [
+					{ "angle": -32.09, "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.3333, "angle": 35.84, "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.6667, "angle": -32.09 }
+				]
+			},
+			"浅色剪刀": {
+				"rotate": [
+					{ "angle": 33.51, "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.3333, "angle": -39.79, "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.6667, "angle": 26.86 }
+				]
+			}
+		}
+	}
+}
+}

@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+/// <summary>
+/// 这个类是用来帮助执行一些 有Mono生命周期 的脚本的
+/// </summary>
 public class MonoManager : BaseManager<MonoManager>
 {
     private MonoController controller;

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
@@ -8,10 +9,12 @@ public class BasePanel : MonoBehaviour
 {
 
 
-
     private Dictionary<string, List<UIBehaviour>> controlDic = new Dictionary<string, List<UIBehaviour>>();
     protected List<Text> textList = new List<Text>();
 
+    [Header("Image")]
+    public List<Image> imgList;
+    public float fadeTime;
 
     /// <summary>
     /// 所有面板在Awake的时候会自动寻找面板上存在的组件,减少手动拖曳的工作量,默认寻找Button和Text组件
@@ -156,8 +159,34 @@ public class BasePanel : MonoBehaviour
        
     }
 
+    /// <summary>
+    /// 默认自带一个淡入淡出的协程
+    /// </summary>
+    /// <param name="originAlpha">初始Alpha</param>
+    /// <param name="targetAlpha">目标Alpha</param>
+    /// <param name="callBack">结束Fade后的回调，默认为null</param>
+    /// <returns></returns>
+    protected virtual IEnumerator Fade(float originAlpha, float targetAlpha, UnityAction callBack = null)
+    {
+        float t = 0;
+        Color color = imgList[0].color;
+        while (t <= fadeTime)
+        {
+            float a = Mathf.Lerp(originAlpha, targetAlpha, t / fadeTime);
+            foreach (Image img in imgList)
+            {
+                img.color = new Color(color.r, color.g, color.b, a);
+            }
+            t += Time.fixedDeltaTime;
+            yield return new WaitForFixedUpdate();
+        }
 
-
+        foreach (Image img in imgList)
+        {
+            img.color = new Color(color.r, color.g, color.b, targetAlpha);
+        }
+        callBack?.Invoke();
+    }
 
 
 }

@@ -1,0 +1,226 @@
+{
+"skeleton": {
+	"hash": "w7KR5KMELCxESbgJWMXWy/pAVDw",
+	"spine": "3.8",
+	"x": -421.5,
+	"y": -363.5,
+	"width": 843,
+	"height": 727,
+	"images": "../../../PSD/images/开头场景/开头_操作提示/",
+	"audio": ""
+},
+"bones": [
+	{ "name": "root" },
+	{ "name": "space台", "parent": "root", "length": 670.61, "rotation": 88.9, "x": -10.49, "y": -328.38 },
+	{ "name": "提示台特效1", "parent": "root", "length": 82.6, "rotation": 49.29, "x": 3.26, "y": -94.65 },
+	{ "name": "提示台特效2", "parent": "root", "length": 70.13, "rotation": -80.44, "x": 81.88, "y": 65.51 },
+	{ "name": "提示台特效3", "parent": "root", "length": 55.44, "rotation": 60.07, "x": -11.3, "y": 40.76 },
+	{ "name": "提示台特效4", "parent": "root", "length": 82.6, "rotation": 49.29, "x": 3.26, "y": -94.65 },
+	{ "name": "提示台特效5", "parent": "root", "length": 70.13, "rotation": -80.44, "x": 81.88, "y": 65.51 },
+	{ "name": "提示台特效6", "parent": "root", "length": 55.44, "rotation": 60.07, "x": -11.3, "y": 40.76 }
+],
+"slots": [
+	{ "name": "提示台特效1", "bone": "提示台特效1", "attachment": "提示台特效1" },
+	{ "name": "提示台特效4", "bone": "提示台特效4", "attachment": "提示台特效1" },
+	{ "name": "提示台特效2", "bone": "提示台特效2", "attachment": "提示台特效2" },
+	{ "name": "提示台特效5", "bone": "提示台特效5", "attachment": "提示台特效2" },
+	{ "name": "提示台特效3", "bone": "提示台特效3", "attachment": "提示台特效3" },
+	{ "name": "提示台特效6", "bone": "提示台特效6", "attachment": "提示台特效3" },
+	{ "name": "control台", "bone": "space台", "attachment": "control台" },
+	{ "name": "space台", "bone": "space台", "attachment": "space台" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"提示台特效1": {
+				"提示台特效1": { "x": 18.15, "y": -17.03, "rotation": -49.29, "width": 92, "height": 168 }
+			},
+			"提示台特效2": {
+				"提示台特效2": { "x": 19.93, "y": 0.82, "rotation": 80.44, "width": 64, "height": 98 }
+			},
+			"提示台特效3": {
+				"提示台特效3": { "x": 32.21, "y": -12.38, "rotation": -60.07, "width": 67, "height": 65 }
+			},
+			"提示台特效4": {
+				"提示台特效1": { "x": 18.15, "y": -17.03, "rotation": -49.29, "width": 92, "height": 168 }
+			},
+			"提示台特效5": {
+				"提示台特效2": { "x": 19.93, "y": 0.82, "rotation": 80.44, "width": 64, "height": 98 }
+			},
+			"提示台特效6": {
+				"提示台特效3": { "x": 32.21, "y": -12.38, "rotation": -60.07, "width": 67, "height": 65 }
+			},
+			"space台": {
+				"space台": { "x": 328.52, "y": -4.21, "rotation": -88.9, "width": 843, "height": 727 }
+			},
+			"control台": {
+				"control台": { "x": 328.52, "y": -4.21, "rotation": -88.9, "width": 843, "height": 727 }
+			}
+		}
+	}
+],
+"animations": {
+	"change": {
+		"slots": {
+			"提示台特效1": {
+				"color": [
+					{ "time": 0.2333, "color": "ffffffff", "curve": 0, "c2": 0.85, "c3": 0.75 },
+					{ "time": 0.6333, "color": "ffffff00" }
+				]
+			},
+			"提示台特效4": {
+				"color": [
+					{ "time": 0.2333, "color": "ffffffff", "curve": 0, "c2": 0.85, "c3": 0.75 },
+					{ "time": 0.6333, "color": "ffffff00" }
+				]
+			},
+			"提示台特效5": {
+				"color": [
+					{ "time": 0.2333, "color": "ffffffff", "curve": 0, "c2": 0.85, "c3": 0.75 },
+					{ "time": 0.6333, "color": "ffffff00" }
+				]
+			},
+			"control台": {
+				"color": [
+					{ "color": "ffffff00", "curve": 0.145, "c2": 0.95, "c3": 0.75 },
+					{ "time": 0.0667, "color": "ffffffff" }
+				]
+			},
+			"提示台特效2": {
+				"color": [
+					{ "time": 0.2333, "color": "ffffffff", "curve": 0, "c2": 0.85, "c3": 0.75 },
+					{ "time": 0.6333, "color": "ffffff00" }
+				]
+			},
+			"space台": {
+				"color": [
+					{ "color": "ffffffff", "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.0667, "color": "ffffff00" }
+				]
+			},
+			"提示台特效3": {
+				"color": [
+					{ "time": 0.2333, "color": "ffffffff", "curve": 0, "c2": 0.85, "c3": 0.75 },
+					{ "time": 0.6333, "color": "ffffff00" }
+				]
+			},
+			"提示台特效6": {
+				"color": [
+					{ "time": 0.2333, "color": "ffffffff", "curve": 0, "c2": 0.85, "c3": 0.75 },
+					{ "time": 0.6333, "color": "ffffff00" }
+				]
+			}
+		},
+		"bones": {
+			"提示台特效6": {
+				"translate": [
+					{ "curve": 0, "c2": 0.86, "c3": 0.399 },
+					{ "time": 0.5, "x": 874.88, "y": 565.92 }
+				],
+				"scale": [
+					{ "x": 2, "y": 2 }
+				]
+			},
+			"提示台特效5": {
+				"translate": [
+					{ "curve": 0, "c2": 0.86, "c3": 0.399 },
+					{ "time": 0.5, "x": 1214.64, "y": 148.45 }
+				],
+				"scale": [
+					{ "x": 2, "y": 2 }
+				]
+			},
+			"提示台特效4": {
+				"translate": [
+					{ "curve": 0, "c2": 0.86, "c3": 0.399 },
+					{ "time": 0.5, "x": 1343.42, "y": 611.88 }
+				],
+				"scale": [
+					{ "x": 2, "y": 2 }
+				]
+			},
+			"提示台特效3": {
+				"translate": [
+					{ "curve": 0, "c2": 0.86, "c3": 0.399 },
+					{ "time": 0.5, "x": 523.68, "y": 1004.59 }
+				],
+				"scale": [
+					{ "x": 2, "y": 2 }
+				]
+			},
+			"提示台特效2": {
+				"translate": [
+					{ "curve": 0, "c2": 0.86, "c3": 0.399 },
+					{ "time": 0.5, "x": 1611.9, "y": 490.75 }
+				],
+				"scale": [
+					{ "x": 2, "y": 2 }
+				]
+			},
+			"提示台特效1": {
+				"translate": [
+					{ "curve": 0, "c2": 0.86, "c3": 0.399 },
+					{ "time": 0.5, "x": 1285.32, "y": 1118.22 }
+				],
+				"scale": [
+					{ "x": 2, "y": 2 }
+				]
+			}
+		}
+	},
+	"control": {
+		"slots": {
+			"space台": {
+				"color": [
+					{ "color": "ffffff00" }
+				]
+			}
+		}
+	},
+	"space": {
+		"slots": {
+			"提示台特效1": {
+				"color": [
+					{ "color": "ffffff00" }
+				]
+			},
+			"提示台特效6": {
+				"color": [
+					{ "color": "ffffff00" }
+				]
+			},
+			"提示台特效4": {
+				"color": [
+					{ "color": "ffffff00" }
+				]
+			},
+			"提示台特效5": {
+				"color": [
+					{ "color": "ffffff00" }
+				]
+			},
+			"提示台特效2": {
+				"color": [
+					{ "color": "ffffff00" }
+				]
+			},
+			"space台": {
+				"color": [
+					{ "color": "ffffffff" }
+				]
+			},
+			"提示台特效3": {
+				"color": [
+					{ "color": "ffffff00" }
+				]
+			},
+			"control台": {
+				"color": [
+					{ "color": "ffffff00" }
+				]
+			}
+		}
+	}
+}
+}

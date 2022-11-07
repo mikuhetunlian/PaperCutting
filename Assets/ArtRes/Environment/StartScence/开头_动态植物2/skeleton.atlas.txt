@@ -1,0 +1,13 @@
+
+skeleton.png
+size: 512,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+开头_动态植物2
+  rotate: false
+  xy: 0, 0
+  size: 174, 390
+  orig: 174, 390
+  offset: 0, 0
+  index: -1

@@ -34,7 +34,7 @@ public class ParallaxElement : MonoBehaviour
 
 
 
-    // Update is called once per frame
+
     void Update()
     {
         MovePrallax();

@@ -121,6 +121,7 @@ public class PlayerController : MonoBehaviour
         LevelManager.GetInstance();
         Parameters = new PlayerControllerParameters();
         State = new PlayerControllerState();
+        State.Reset();
         rayOffset = 0.1f;
 
         RayOffsetVertical = 0.01f;
@@ -190,6 +191,8 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         EveryFrame();
+
+
     }
 
 
@@ -224,13 +227,10 @@ public class PlayerController : MonoBehaviour
         if (State.IsOnMovingPlatform)
         {
             _newPostion.y = 0;
-            Debug.Log(_newPostion.y);
             _newPostion.y = 0;
         }
 
-     
         _transform.Translate(_newPostion, Space.Self);
-       
 
         _externalForce.x = 0;
         _externalForce.y = 0;
@@ -260,15 +260,9 @@ public class PlayerController : MonoBehaviour
             //这一段注释不要删
             if (!float.IsNaN(_movingPlatform.CurrentSpeed.x) && !float.IsNaN(_movingPlatform.CurrentSpeed.y) && !float.IsNaN(_movingPlatform.CurrentSpeed.z))
             {
-                //_transform.Translate(transform.rotation * _movingPlatform.CurrentSpeed * Time.deltaTime);
+                _transform.Translate(_movingPlatform.CurrentSpeed * Time.deltaTime);
             }
 
-            //if (DistanceToGround() > 0.1f)
-            //{
-            //    AnchorToGround();
-            //}
-
-            this.transform.SetParent(_movingPlatform.gameObject.transform);
 
 
             if ((Time.timeScale == 0) || float.IsNaN(_movingPlatform.CurrentSpeed.x) || float.IsNaN(_movingPlatform.CurrentSpeed.y) || float.IsNaN(_movingPlatform.CurrentSpeed.z))
@@ -358,19 +352,17 @@ public class PlayerController : MonoBehaviour
                 //float distance = Mathf.Abs(_leftHitStorage[leftSmallestIndex].point.x - _horizontalRayCastFromDown.x);
 
 
-                //如果没在推箱子
-
-                if ( _inputManager.PrimaryMovement.x < 0 &&
-                    _inputManager.ControlButton.State.CurrentState == InputHelper.ButtonState.ButtonPressed)
+                //如果 右推 不进行墙壁检测
+                if (State.IsControlingRight &&
+                    _inputManager.PrimaryMovement.x < 0 &&
+                    _inputManager.ControlButton.State.CurrentState == InputHelper.ButtonState.ButtonPressed
+                    && ControlAbleObject.GetComponent<Rigidbody2D>().velocity.x > 0.5f)
                 {
                     return;
                 }
 
                 _newPostion.x = RayOffsetHorizontal - distance;
-             
-
-
-                Debug.Log("left" + _newPostion.x);
+     
             }
 
         }
@@ -428,12 +420,16 @@ public class PlayerController : MonoBehaviour
 
                 //float distance = Mathf.Abs(_rightHitStorage[rightSmallestIndex].point.x - _horizontalRayCastFromDown.x);
 
-                if (/*State.isDetectControlableObject && */_inputManager.PrimaryMovement.x > 0 &&
-                   _inputManager.ControlButton.State.CurrentState == InputHelper.ButtonState.ButtonPressed)
+                //如果 左推 不进行墙壁检测
+                if (State.IsControlingLeft &&
+                    _inputManager.PrimaryMovement.x > 0 &&
+                    _inputManager.ControlButton.State.CurrentState == InputHelper.ButtonState.ButtonPressed &&
+                     ControlAbleObject.GetComponent<Rigidbody2D>().velocity.x <  -0.5f)
                 {
                     return;
                 }
 
+             
                 _newPostion.x = -(RayOffsetHorizontal - distance);
             }
         }
@@ -647,15 +643,15 @@ public class PlayerController : MonoBehaviour
     {
         float rayLength = Collider.bounds.extents.x + RayOffsetHorizontal;
 
-        Vector2 originPointLeft = Collider.bounds.center - new Vector3(Collider.bounds.extents.x, 0);
-        RaycastHit2D hitInfoleft = DebugHelper.RaycastAndDrawLine(originPointLeft, Vector2.left, rayLength * 1.1f, 1 << LayerMask.NameToLayer("Pushables"));
+        Vector2 origin = Collider.bounds.center;
+        RaycastHit2D hitInfoleft = DebugHelper.RaycastAndDrawLine(origin, Vector2.left, rayLength * 2f, 1 << LayerMask.NameToLayer("Pushables"));
       
-        Vector2 originPointRight = Collider.bounds.center + new Vector3(Collider.bounds.extents.x, 0);
-        RaycastHit2D hitInfoRight = DebugHelper.RaycastAndDrawLine(originPointRight, Vector2.right, rayLength * 1.1f, 1 << LayerMask.NameToLayer("Pushables"));
+        RaycastHit2D hitInfoRight = DebugHelper.RaycastAndDrawLine(origin, Vector2.right, rayLength * 2f, 1 << LayerMask.NameToLayer("Pushables"));
 
         if (hitInfoleft.collider != null || hitInfoRight.collider != null)
         {
             State.isDetectControlableObject = true;
+
             ControlAbleObject = hitInfoRight.collider != null ? hitInfoRight.collider.gameObject : hitInfoleft.collider.gameObject;
         }
         else

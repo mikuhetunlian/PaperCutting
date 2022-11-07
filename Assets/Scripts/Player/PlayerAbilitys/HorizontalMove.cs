@@ -197,6 +197,10 @@ public class HorizontalMove : PlayerAblity
     {
         if (AbilityPermitted)
         {
+            if (_playerController.State == null)
+            {
+                Debug.Log(this.gameObject);
+            }
             if (_playerController.State.isCollidingBelow
                 && _movement.CurrentState != PlayerStates.MovementStates.LadderClimbing //不在爬梯子
                 && _movement.CurrentState != PlayerStates.MovementStates.Jumping //不在跳跃
@@ -212,9 +216,17 @@ public class HorizontalMove : PlayerAblity
                        
                 }
             }
-            
 
-            _playerController.SetHorizontalForce(_horizontalMovement * speed);
+            //在  推 或 拉 的时候自己的移动速度要降低和pushable物体匹配
+            if (_playerController.State.IsControlingRight ||_playerController.State.IsControlingLeft)
+            {
+                _playerController.SetHorizontalForce(_horizontalMovement * _playerController.Parameters.Physic2DPushOrPullForce);
+            }
+            else
+            {
+                _playerController.SetHorizontalForce(_horizontalMovement * speed);
+            }
+
         }
        
     }

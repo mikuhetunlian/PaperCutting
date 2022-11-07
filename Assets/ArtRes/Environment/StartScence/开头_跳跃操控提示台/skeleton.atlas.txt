@@ -1,0 +1,41 @@
+
+skeleton.png
+size: 2048,2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+control台
+  rotate: false
+  xy: 0, 823
+  size: 843, 727
+  orig: 843, 727
+  offset: 0, 0
+  index: -1
+space台
+  rotate: false
+  xy: 0, 94
+  size: 843, 727
+  orig: 843, 727
+  offset: 0, 0
+  index: -1
+提示台特效1
+  rotate: true
+  xy: 0, 0
+  size: 92, 167
+  orig: 92, 168
+  offset: 0, 0
+  index: -1
+提示台特效2
+  rotate: true
+  xy: 169, 29
+  size: 63, 96
+  orig: 64, 98
+  offset: 0, 1
+  index: -1
+提示台特效3
+  rotate: false
+  xy: 267, 27
+  size: 65, 65
+  orig: 67, 65
+  offset: 1, 0
+  index: -1

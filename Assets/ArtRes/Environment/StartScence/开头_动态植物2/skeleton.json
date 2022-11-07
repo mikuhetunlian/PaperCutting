@@ -1,0 +1,64 @@
+{
+"skeleton": {
+	"hash": "ZgpuMXUtvqJoarDCpSmdHZK9Ums",
+	"spine": "3.8",
+	"x": -72,
+	"y": -10,
+	"width": 174,
+	"height": 390,
+	"images": "../../../PSD/images/开头场景/开头_静态草/",
+	"audio": ""
+},
+"bones": [
+	{ "name": "root" },
+	{ "name": "开头_动态植物2", "parent": "root", "length": 259.2, "rotation": 84.04, "x": -4.87, "y": -3.22 }
+],
+"slots": [
+	{ "name": "开头_动态植物2", "bone": "开头_动态植物2", "attachment": "开头_动态植物2" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"开头_动态植物2": {
+				"开头_动态植物2": { "x": 189.27, "y": -0.21, "rotation": -84.04, "width": 174, "height": 390 }
+			}
+		}
+	}
+],
+"animations": {
+	"idle": {
+		"bones": {
+			"开头_动态植物2": {
+				"rotate": [
+					{ "curve": 0.25, "c3": 0.75 },
+					{ "time": 1.3333, "angle": 3.71, "curve": 0.25, "c3": 0.75 },
+					{ "time": 2.6667 }
+				]
+			}
+		}
+	},
+	"left": {
+		"bones": {
+			"开头_动态植物2": {
+				"rotate": [
+					{ "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.2, "angle": 11.28, "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.8333, "angle": -0.43 }
+				]
+			}
+		}
+	},
+	"right": {
+		"bones": {
+			"开头_动态植物2": {
+				"rotate": [
+					{ "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.1667, "angle": -11.63, "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.8333 }
+				]
+			}
+		}
+	}
+}
+}

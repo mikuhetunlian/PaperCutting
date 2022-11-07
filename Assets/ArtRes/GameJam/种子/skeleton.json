@@ -1,0 +1,72 @@
+{
+"skeleton": {
+	"hash": "4ZgPHyGFjDyNrzYctKn3ikoKkag",
+	"spine": "3.8",
+	"x": -155.86,
+	"y": -149.38,
+	"width": 305,
+	"height": 305,
+	"images": "../图片导出/",
+	"audio": ""
+},
+"bones": [
+	{ "name": "root" },
+	{ "name": "种子", "parent": "root", "length": 16.09, "rotation": 60.78, "x": -0.51, "y": -2.47 },
+	{ "name": "特效/声环", "parent": "root", "length": 145.87, "rotation": 89.41, "x": -0.54, "y": 1.21 }
+],
+"slots": [
+	{ "name": "种子", "bone": "种子", "attachment": "种子" },
+	{ "name": "特效/声环", "bone": "特效/声环", "attachment": "特效/声环" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"特效/声环": {
+				"特效/声环": { "x": 1.88, "y": 2.84, "rotation": -89.41, "width": 305, "height": 305 }
+			},
+			"种子": {
+				"种子": { "x": -0.31, "y": 2.01, "rotation": -60.78, "width": 42, "height": 46 }
+			}
+		}
+	}
+],
+"animations": {
+	"idle": {
+		"slots": {
+			"特效/声环": {
+				"attachment": [
+					{ "name": null }
+				]
+			}
+		}
+	},
+	"shake": {
+		"slots": {
+			"特效/声环": {
+				"color": [
+					{ "time": 0.4, "color": "ffffffff", "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.5333, "color": "ffffff00" }
+				]
+			}
+		},
+		"bones": {
+			"种子": {
+				"rotate": [
+					{ "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.1, "angle": 67.35, "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.2333, "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.3, "angle": 67.35, "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.4333 }
+				]
+			},
+			"特效/声环": {
+				"scale": [
+					{ "x": 0.1, "y": 0.1, "curve": 0.361, "c2": 0.63, "c3": 0.75 },
+					{ "time": 0.5333, "x": 1.5, "y": 1.5 }
+				]
+			}
+		}
+	}
+}
+}

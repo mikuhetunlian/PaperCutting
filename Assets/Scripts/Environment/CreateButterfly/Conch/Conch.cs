@@ -46,7 +46,7 @@ public class Conch : MonoBehaviour
     {
         if (collision.gameObject.tag.Equals("Player"))
         {
-            if (Input.GetKeyDown(KeyCode.LeftControl))
+            if (InputManager.GetInstance().ControlButton.State.CurrentState == InputHelper.ButtonState.ButtonDown)
             {
                 DoWhenPlayerTouch();
             }

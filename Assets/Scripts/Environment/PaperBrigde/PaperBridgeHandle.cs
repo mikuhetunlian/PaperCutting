@@ -7,7 +7,7 @@ public class PaperBridgeHandle : MonoBehaviour
     private List<PaperBridge> paperBrigdeList;
     private bool hasCreate;
     private Animator _animator;
-  
+
     void Start()
     {
         paperBrigdeList = new List<PaperBridge>();
@@ -57,7 +57,8 @@ public class PaperBridgeHandle : MonoBehaviour
     {
         if (collision.gameObject.tag.Equals("Player"))
         {
-            if (Input.GetKeyDown(KeyCode.LeftControl) && !hasCreate)
+            if (InputManager.GetInstance().ControlButton.State.CurrentState == InputHelper.ButtonState.ButtonDown &&
+                !hasCreate)
             {
                 ChangeHandleState();
             }

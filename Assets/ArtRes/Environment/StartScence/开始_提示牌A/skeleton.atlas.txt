@@ -1,0 +1,27 @@
+
+skeleton.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+开头_指示牌叶子/开头_指示牌叶子1
+  rotate: true
+  xy: 660, 637
+  size: 66, 43
+  orig: 66, 43
+  offset: 0, 0
+  index: -1
+开头_指示牌叶子/开头_指示牌叶子2
+  rotate: true
+  xy: 660, 554
+  size: 81, 32
+  orig: 81, 32
+  offset: 0, 0
+  index: -1
+开头_操作提示/A指示牌
+  rotate: false
+  xy: 0, 117
+  size: 658, 586
+  orig: 658, 586
+  offset: 0, 0
+  index: -1

@@ -27,8 +27,10 @@ public class LevelManager : SingeltonAutoManager<LevelManager>
         _player = GameObject.FindObjectOfType<Player>();
         //在初始加载时，读取上一个checkPoint
         currentCheckPointData = DataMgr.Instance.Load(typeof(CheckPointData), KEY_NAME) as CheckPointData;
-        //Debug.Log(currentCheckPointData.checkPointName);
-        //currentCheckPointData.checkPointName = "CheckPoint";
+        if (currentCheckPointData == null)
+        {
+            currentCheckPointData.checkPointName = "CheckPoint";
+        }
         GameObject obj  = GameObject.Find(currentCheckPointData.checkPointName).gameObject;
         currentCheckPoint = obj.GetComponent<CheckPoint>();
         //这里因为rainhandle很特殊所以找不到的话单独找一次，后面有优化再弄这里

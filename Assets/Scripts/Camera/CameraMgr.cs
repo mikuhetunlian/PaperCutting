@@ -7,7 +7,7 @@ using UnityEngine.Events;
 public class CameraMgr : BaseManager<CameraMgr>
 {
     ///¸úËæÍæ¼ÒµÄĞéÄâÉãÏñ»ú
-    public CinemachineVirtualCamera PlayerVirtualCamera { get; protected set; }
+    public CinemachineVirtualCamera PlayerVirtualCamera { get;  set; }
     public Vector3 DefaultOffset = new Vector2(0, 7.6f);
     private CinemachineBrain _brain;
     protected CinemachineVirtualCamera _previousActiveCamera;

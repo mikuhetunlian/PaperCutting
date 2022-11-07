@@ -11,4 +11,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Resources/Scenes/testScene.unity
     guid: c7e6b63ed2a86d946a84af6aeec0ab42
+  - enabled: 0
+    path: Assets/Resources/Scenes/GameJamUI.unity
+    guid: 080942f997c708248851491638c2e0af
+  - enabled: 0
+    path: Assets/Resources/Scenes/GameJamScene.unity
+    guid: 3ec82e3f8b2b2114db7769ded4327633
+  - enabled: 0
+    path: Assets/Resources/Scenes/GameJamScene2.unity
+    guid: 5cf34b4da6549b642ab16c928033b463
   m_configObjects: {}

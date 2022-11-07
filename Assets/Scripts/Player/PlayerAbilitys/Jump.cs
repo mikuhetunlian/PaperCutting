@@ -65,7 +65,7 @@ public class Jump : PlayerAblity
 
     public override void HandleInput()
     {
-        if (_inputManager.JumpButton.State.CurrentState == InputHelper.ButtonState.ButtonDown)
+        if(_inputManager.JumpButton.State.CurrentState == InputHelper.ButtonState.ButtonDown)
         {
             JumpStart();
         }
@@ -93,6 +93,13 @@ public class Jump : PlayerAblity
             {
                 _playerController.DetachFromMovinPlatform();
             }
+
+            //如果已经跳跃状态就不能在跳跃
+            if (_playerController.Speed.y > 0 || !_playerController.State.isCollidingBelow || _movement.CurrentState == PlayerStates.MovementStates.Jumping)
+            {
+                return;
+            }
+
             _movement.ChangeState(PlayerStates.MovementStates.Jumping);
             _playerController.SetVerticalForce(Mathf.Sqrt(2f * Mathf.Abs(_playerController.Parameters.Gravity) * JumpHeight));
         }

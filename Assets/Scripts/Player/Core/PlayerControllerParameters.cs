@@ -32,7 +32,7 @@ public class PlayerControllerParameters
     ///如果为ture，mei碰撞到物体会给它施加力
     public bool Physics2DInteraction = true;
     ///碰撞到物体施加的力
-    public float Physic2DPushForce = 2f;
+    public float Physic2DPushOrPullForce = 10f;
 
     [Header("Gizmos")]
     ///是否画出射线的示意图

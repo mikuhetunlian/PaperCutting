@@ -9,6 +9,7 @@ public class  RainControlHandle : MonoBehaviour
     protected Animator _animator;
     private bool canBeControl;
     private bool isControlActive;
+
     void Start()
     {
         _animator = GetComponent<Animator>();
@@ -19,7 +20,7 @@ public class  RainControlHandle : MonoBehaviour
     {
         if (canBeControl && !isControlActive)
         {
-            if (Input.GetKeyDown(KeyCode.LeftControl))
+            if (InputManager.GetInstance().ControlButton.State.CurrentState == InputHelper.ButtonState.ButtonDown)
             {
                 RainStop.GetComponent<rainStopTest>().StopRain();
                 _animator.SetBool("on", true);

@@ -46,6 +46,8 @@ public class PathMovement : MonoBehaviour
     public List<PathMovementElement> PathElements;
     ///游戏开始时是否自动移动
     public bool isMoveAtStart;
+    ///每个节点的移动判断都都有对应的情况判断
+    public bool isConditionMove;
     ///当 距离差小于这个范围时，判断为达到了路径点
     public float MinDistanceToGoal = 0.1f;
     ///要移动的物体的初始transformposion
@@ -60,6 +62,7 @@ public class PathMovement : MonoBehaviour
     ///返回当前平台的移动速度 主要提供给PlayerController使用
     public Vector3 CurrentSpeed { get; protected set; }
     public float DeltaTime;
+    public bool EndReached { get { return _endReached; } }
     public PossibleAccelerationType AcclerationType = PossibleAccelerationType.ConstantSpeed;
 
     protected bool _active = false;
@@ -78,12 +81,19 @@ public class PathMovement : MonoBehaviour
     protected virtual void Start()
     {
         Initialization();
+        EventMgr.GetInstance().AddLinstener<bool>("ConditionMove", SetCondition);
     }
 
     protected virtual void Initialization()
     {
         _active = true;
         _endReached = false;
+
+        if (this.gameObject.name.Equals("左门"))
+        {
+            Debug.Log("desu");
+        }
+
         if (isMoveAtStart)
         {
             CanMove = true;
@@ -134,10 +144,11 @@ public class PathMovement : MonoBehaviour
         transform.position = _originalTransformPostion + PathElements[0].PathElementPotion;
     }
 
-    protected virtual void Update()
+    protected virtual void FixedUpdate()
     {
         if (PathElements == null || PathElements.Count < 1 ||  _endReached || !CanMove)
         {
+            CurrentSpeed = Vector2.zero;
             return;
         }
 
@@ -148,7 +159,8 @@ public class PathMovement : MonoBehaviour
 
     public void Move()
     {
-     
+
+            
             _initialPostion = transform.position;
 
             MoveAlongThePath();
@@ -158,7 +170,12 @@ public class PathMovement : MonoBehaviour
             if (distance < MinDistanceToGoal)
             {
                 _previousPoint = _currnetPoint.Current;
-                _currnetPoint.MoveNext();
+            //这里没写好，写写成这个样子，需要移动的就把isConditionMove设置为true好了
+            if (isConditionMove)
+                {
+                  _currnetPoint.MoveNext();
+                }
+             
             }
 
             _finalPostion = transform.position;
@@ -177,6 +194,18 @@ public class PathMovement : MonoBehaviour
         
     }
 
+    public void SetCondition(bool state)
+    {
+        StartCoroutine(SetConditionCoroutine(state));
+    }
+
+    protected IEnumerator SetConditionCoroutine(bool state)
+    {
+        isConditionMove = state;
+        yield return new  WaitForSeconds(0.5f);
+        isConditionMove = !state;
+    }
+
 
     /// <summary>
     /// 平台真正移动的地方
@@ -188,7 +217,7 @@ public class PathMovement : MonoBehaviour
         {
             case PossibleAccelerationType.ConstantSpeed:
                 {
-                    transform.position = Vector3.MoveTowards(transform.position, _originalTransformPostion + _currnetPoint.Current, MovementSpeed * Time.deltaTime);
+                    transform.position =  Vector3.MoveTowards(transform.position, _originalTransformPostion + _currnetPoint.Current, MovementSpeed * Time.deltaTime);
                     break;
                 }
             case PossibleAccelerationType.EaseOut:

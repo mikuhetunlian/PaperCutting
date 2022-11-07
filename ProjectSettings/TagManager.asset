@@ -9,6 +9,7 @@ TagManager:
   - ground
   - ScissorFly
   - DryerAccessories
+  - butterflyUp
   layers:
   - Default
   - TransparentFX

@@ -1,0 +1,60 @@
+{
+"skeleton": {
+	"hash": "okLhp6/zGKqPfDi8OYqcRkMhJtc",
+	"spine": "3.8",
+	"x": -103.28,
+	"y": -158.6,
+	"width": 231,
+	"height": 372,
+	"images": "D:/PaperCuttings/PSD/images/开头场景/缠绕树枝/",
+	"audio": ""
+},
+"bones": [
+	{ "name": "root" },
+	{ "name": "缠绕破碎树枝_3", "parent": "root", "length": 177.85, "rotation": -69.72, "x": -3.86, "y": 22.04 }
+],
+"slots": [
+	{ "name": "缠绕破碎树枝_3", "bone": "缠绕破碎树枝_3", "attachment": "缠绕破碎树枝_3" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"缠绕破碎树枝_3": {
+				"缠绕破碎树枝_3": { "x": 0.55, "y": 16.94, "rotation": 69.72, "width": 231, "height": 372 }
+			}
+		}
+	}
+],
+"events": {
+	"Destory": {}
+},
+"animations": {
+	"broken": {
+		"slots": {
+			"缠绕破碎树枝_3": {
+				"color": [
+					{ "time": 0.1333, "color": "ffffffff" },
+					{ "time": 0.6667, "color": "ffffff00" }
+				]
+			}
+		},
+		"bones": {
+			"缠绕破碎树枝_3": {
+				"rotate": [
+					{ "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.6667, "angle": 37.98 }
+				],
+				"translate": [
+					{ "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.6667, "y": -495.04 }
+				]
+			}
+		},
+		"events": [
+			{ "time": 0.6667, "name": "Destory" }
+		]
+	},
+	"idle": {}
+}
+}

@@ -1,0 +1,424 @@
+{
+"skeleton": {
+	"hash": "sHYTZnu8We/nHc6KpHDa0xzP4dc",
+	"spine": "3.8",
+	"x": -284.34,
+	"y": -190.08,
+	"width": 572.73,
+	"height": 673.85,
+	"images": "../图片导出/",
+	"audio": ""
+},
+"bones": [
+	{ "name": "root" },
+	{ "name": "flower_3/图层 4", "parent": "root", "length": 240.58, "rotation": 89.62, "x": 14.75, "y": -127.85 },
+	{ "name": "flower_3/图层 5", "parent": "flower_3/图层 4", "length": 169.28, "rotation": -14.94, "x": 185.27, "y": -6.07 },
+	{ "name": "flower_3/图层 7", "parent": "flower_3/图层 4", "length": 153.36, "rotation": -46.92, "x": 166.15, "y": -28.54 },
+	{ "name": "flower_3/图层 8", "parent": "flower_3/图层 4", "length": 68.78, "rotation": -170.87, "x": 330.01, "y": 71.02 },
+	{ "name": "flower_3/图层 10", "parent": "flower_3/图层 4", "length": 106.36, "rotation": 24.57, "x": 93.3, "y": 20.04 },
+	{ "name": "flower_3/图层 6", "parent": "flower_3/图层 4", "length": 108.47, "rotation": -43.75, "x": 90.49, "y": -10.01 },
+	{ "name": "flower_3/图层 12", "parent": "flower_3/图层 4", "length": 49.79, "rotation": 168.94, "x": 634.78, "y": -338.65 },
+	{ "name": "flower_3/图层 13", "parent": "flower_3/图层 4", "length": 35.1, "rotation": -150.93, "x": 412, "y": 45.07 }
+],
+"slots": [
+	{ "name": "flower_3/图层 10", "bone": "flower_3/图层 10", "attachment": "flower_3/图层 10" },
+	{ "name": "flower_3/图层 11", "bone": "flower_3/图层 10", "attachment": "flower_3/图层 11" },
+	{ "name": "flower_3/图层 12", "bone": "flower_3/图层 12", "attachment": "flower_3/图层 12" },
+	{ "name": "flower_3/图层 13", "bone": "flower_3/图层 13", "attachment": "flower_3/图层 13" },
+	{ "name": "flower_3/图层 4", "bone": "flower_3/图层 4", "attachment": "flower_3/图层 4" },
+	{ "name": "flower_3/图层 5", "bone": "flower_3/图层 5", "attachment": "flower_3/图层 5" },
+	{ "name": "flower_3/图层 6", "bone": "flower_3/图层 6", "attachment": "flower_3/图层 6" },
+	{ "name": "flower_3/图层 7", "bone": "flower_3/图层 7", "attachment": "flower_3/图层 7" },
+	{ "name": "flower_3/图层 8", "bone": "flower_3/图层 8", "attachment": "flower_3/图层 8" },
+	{ "name": "flower_3/图层 9", "bone": "flower_3/图层 8", "attachment": "flower_3/图层 9" },
+	{ "name": "背景/花盆", "bone": "root", "attachment": "背景/花盆" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"flower_3/图层 4": {
+				"flower_3/图层 4": { "x": 298.11, "y": 77.08, "rotation": -89.62, "width": 249, "height": 626 }
+			},
+			"flower_3/图层 5": {
+				"flower_3/图层 5": { "x": 162.36, "y": -43.22, "rotation": -74.68, "width": 175, "height": 320 }
+			},
+			"flower_3/图层 6": {
+				"flower_3/图层 6": { "x": 86.81, "y": -31.64, "rotation": -45.87, "width": 176, "height": 113 }
+			},
+			"flower_3/图层 7": {
+				"flower_3/图层 7": { "x": 136.27, "y": -7.86, "rotation": -42.7, "width": 277, "height": 256 }
+			},
+			"flower_3/图层 8": {
+				"flower_3/图层 8": { "x": 21.28, "y": 0.56, "rotation": 81.25, "width": 243, "height": 141 }
+			},
+			"flower_3/图层 9": {
+				"flower_3/图层 9": { "x": -106.64, "y": -131.61, "rotation": 81.25, "width": 168, "height": 134 }
+			},
+			"背景/花盆": {
+				"背景/花盆": { "x": 10.48, "y": -102.08, "width": 231, "height": 176 }
+			},
+			"flower_3/图层 10": {
+				"flower_3/图层 10": { "x": 61.94, "y": 47.77, "rotation": -114.18, "width": 186, "height": 167 }
+			},
+			"flower_3/图层 11": {
+				"flower_3/图层 11": { "x": 163.44, "y": 47.66, "rotation": -114.18, "width": 199, "height": 107 }
+			},
+			"flower_3/图层 12": {
+				"flower_3/图层 12": { "x": 467.63, "y": -194.91, "rotation": 101.44, "width": 147, "height": 94 }
+			},
+			"flower_3/图层 13": {
+				"flower_3/图层 13": { "x": 13.34, "y": 14.05, "rotation": 61.31, "width": 99, "height": 71 }
+			}
+		}
+	}
+],
+"events": {
+	"Revive": {},
+	"ShowBigFlower": {}
+},
+"animations": {
+	"broken": {
+		"slots": {
+			"flower_3/图层 13": {
+				"color": [
+					{ "time": 0.1, "color": "ffffffff" },
+					{ "time": 0.6, "color": "ffffff00" }
+				]
+			},
+			"flower_3/图层 11": {
+				"color": [
+					{ "time": 0.1667, "color": "ffffffff", "curve": 0.057, "c2": 0.69, "c3": 0.75 },
+					{ "time": 0.6, "color": "ffffff00" }
+				]
+			},
+			"flower_3/图层 8": {
+				"color": [
+					{ "time": 0.2, "color": "ffffffff", "curve": 1, "c2": 0.08, "c3": 0.75 },
+					{ "time": 0.6, "color": "ffffff00" }
+				]
+			},
+			"flower_3/图层 10": {
+				"color": [
+					{ "time": 0.1667, "color": "ffffffff", "curve": 0.057, "c2": 0.69, "c3": 0.75 },
+					{ "time": 0.6, "color": "ffffff00" }
+				]
+			},
+			"flower_3/图层 4": {
+				"color": [
+					{ "time": 0.2333, "color": "ffffffff", "curve": 0.016, "c2": 0.71, "c3": 0.75 },
+					{ "time": 0.6, "color": "ffffff00" }
+				]
+			},
+			"flower_3/图层 5": {
+				"color": [
+					{ "time": 0.2667, "color": "ffffffff", "curve": 1, "c2": 0.63, "c3": 0.75 },
+					{ "time": 0.6, "color": "ffffff00" }
+				]
+			},
+			"flower_3/图层 9": {
+				"color": [
+					{ "time": 0.2, "color": "ffffffff", "curve": 1, "c2": 0.08, "c3": 0.75 },
+					{ "time": 0.6, "color": "ffffff00" }
+				]
+			},
+			"flower_3/图层 7": {
+				"color": [
+					{ "time": 0.2333, "color": "ffffffff" },
+					{ "time": 0.6, "color": "ffffff00" }
+				]
+			},
+			"flower_3/图层 12": {
+				"color": [
+					{ "time": 0.2667, "color": "ffffffff", "curve": 0.028, "c2": 0.41, "c3": 0.75 },
+					{ "time": 0.6, "color": "ffffff00" }
+				]
+			},
+			"flower_3/图层 6": {
+				"color": [
+					{ "time": 0.1667, "color": "ffffffff", "curve": 0.25, "c3": 0.066, "c4": 0.76 },
+					{ "time": 0.6, "color": "ffffff00" }
+				]
+			}
+		},
+		"bones": {
+			"flower_3/图层 8": {
+				"rotate": [
+					{},
+					{ "time": 0.6, "angle": -150.73 }
+				],
+				"translate": [
+					{ "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.6, "x": 238.88, "y": 479.98 }
+				]
+			},
+			"flower_3/图层 10": {
+				"rotate": [
+					{ "angle": 0.26, "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.6, "angle": 108.1 }
+				],
+				"translate": [
+					{},
+					{ "time": 0.6, "x": 114.07, "y": 778.66 }
+				]
+			},
+			"flower_3/图层 5": {
+				"rotate": [
+					{ "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.6, "angle": -93.09 }
+				],
+				"translate": [
+					{ "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.6, "x": 154.01, "y": 411.7 }
+				]
+			},
+			"flower_3/图层 6": {
+				"rotate": [
+					{ "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.6, "angle": -113.15 }
+				],
+				"translate": [
+					{ "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.6, "x": 107.16, "y": 538.34 }
+				]
+			},
+			"flower_3/图层 7": {
+				"rotate": [
+					{ "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.6, "angle": 162.48 }
+				],
+				"translate": [
+					{ "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.6, "x": 103.99, "y": 374.73 }
+				]
+			},
+			"flower_3/图层 4": {
+				"rotate": [
+					{},
+					{ "time": 0.6, "angle": 13.19 }
+				],
+				"translate": [
+					{ "x": -4.26, "y": -2.56 }
+				]
+			}
+		},
+		"events": [
+			{ "time": 0.6, "name": "Revive" }
+		]
+	},
+	"fade": {
+		"slots": {
+			"flower_3/图层 13": {
+				"color": [
+					{ "time": 0.9667, "color": "ffffffff" },
+					{ "time": 2.1333, "color": "ffffff00" }
+				]
+			},
+			"flower_3/图层 11": {
+				"color": [
+					{ "time": 0.9667, "color": "ffffffff" },
+					{ "time": 2.1333, "color": "ffffff00" }
+				]
+			},
+			"flower_3/图层 8": {
+				"color": [
+					{ "time": 0.9667, "color": "ffffffff" },
+					{ "time": 2.1333, "color": "ffffff00" }
+				]
+			},
+			"flower_3/图层 10": {
+				"color": [
+					{ "time": 0.9667, "color": "ffffffff" },
+					{ "time": 2.1333, "color": "ffffff00" }
+				]
+			},
+			"flower_3/图层 4": {
+				"color": [
+					{ "time": 0.9667, "color": "ffffffff" },
+					{ "time": 2.1333, "color": "ffffff00" }
+				]
+			},
+			"背景/花盆": {
+				"color": [
+					{ "time": 1.9, "color": "ffffffff" },
+					{ "time": 3.0667, "color": "ffffff00" }
+				]
+			},
+			"flower_3/图层 5": {
+				"color": [
+					{ "time": 0.9667, "color": "ffffffff" },
+					{ "time": 2.1333, "color": "ffffff00" }
+				]
+			},
+			"flower_3/图层 9": {
+				"color": [
+					{ "time": 0.9667, "color": "ffffffff" },
+					{ "time": 2.1333, "color": "ffffff00" }
+				]
+			},
+			"flower_3/图层 7": {
+				"color": [
+					{ "time": 0.9667, "color": "ffffffff" },
+					{ "time": 2.1333, "color": "ffffff00" }
+				]
+			},
+			"flower_3/图层 12": {
+				"color": [
+					{ "time": 0.9667, "color": "ffffffff" },
+					{ "time": 2.1333, "color": "ffffff00" }
+				]
+			},
+			"flower_3/图层 6": {
+				"color": [
+					{ "time": 0.9667, "color": "ffffffff" },
+					{ "time": 2.1333, "color": "ffffff00" }
+				]
+			}
+		},
+		"bones": {
+			"flower_3/图层 6": {
+				"rotate": [
+					{ "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.8333, "angle": -14.21, "curve": 0.25, "c3": 0.75 },
+					{ "time": 2.1333 }
+				]
+			},
+			"flower_3/图层 10": {
+				"rotate": [
+					{ "angle": 0.39, "curve": 0.364, "c2": 0.64, "c3": 0.7 },
+					{ "time": 0.1, "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.9333, "angle": 6.72, "curve": 0.244, "c3": 0.704, "c4": 0.81 },
+					{ "time": 2.1333, "angle": 0.39 }
+				]
+			},
+			"flower_3/图层 8": {
+				"rotate": [
+					{ "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.8333, "angle": 6.61, "curve": 0.25, "c3": 0.75 },
+					{ "time": 2.1333 }
+				]
+			},
+			"flower_3/图层 5": {
+				"rotate": [
+					{ "angle": -0.27, "curve": 0.282, "c2": 0.14, "c3": 0.754 },
+					{ "time": 0.7667, "angle": -9.81, "curve": 0.25, "c3": 0.75 },
+					{ "time": 1.9667, "curve": 0.31, "c3": 0.645, "c4": 0.35 },
+					{ "time": 2.1333, "angle": -0.27 }
+				]
+			},
+			"flower_3/图层 13": {
+				"rotate": [
+					{ "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.8333, "angle": 17.72, "curve": 0.25, "c3": 0.75 },
+					{ "time": 2.1333 }
+				]
+			},
+			"flower_3/图层 4": {
+				"rotate": [
+					{ "angle": -0.05, "curve": 0.355, "c2": 0.65, "c3": 0.69 },
+					{ "time": 0.0667, "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.9, "angle": -1.94, "curve": 0.246, "c3": 0.718, "c4": 0.86 },
+					{ "time": 2.1333, "angle": -0.05 }
+				]
+			}
+		}
+	},
+	"idle": {
+		"bones": {
+			"flower_3/图层 6": {
+				"rotate": [
+					{ "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.8333, "angle": -14.21, "curve": 0.25, "c3": 0.75 },
+					{ "time": 1.6667 }
+				]
+			},
+			"flower_3/图层 10": {
+				"rotate": [
+					{ "angle": 0.39, "curve": 0.364, "c2": 0.64, "c3": 0.7 },
+					{ "time": 0.1, "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.9333, "angle": 6.72, "curve": 0.244, "c3": 0.704, "c4": 0.81 },
+					{ "time": 1.6667, "angle": 0.39 }
+				]
+			},
+			"flower_3/图层 8": {
+				"rotate": [
+					{ "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.8333, "angle": 6.61, "curve": 0.25, "c3": 0.75 },
+					{ "time": 1.6667 }
+				]
+			},
+			"flower_3/图层 5": {
+				"rotate": [
+					{ "angle": -0.27, "curve": 0.282, "c2": 0.14, "c3": 0.754 },
+					{ "time": 0.7667, "angle": -9.81, "curve": 0.25, "c3": 0.75 },
+					{ "time": 1.6, "curve": 0.31, "c3": 0.645, "c4": 0.35 },
+					{ "time": 1.6667, "angle": -0.27 }
+				]
+			},
+			"flower_3/图层 13": {
+				"rotate": [
+					{ "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.8333, "angle": 17.72, "curve": 0.25, "c3": 0.75 },
+					{ "time": 1.6667 }
+				]
+			},
+			"flower_3/图层 4": {
+				"rotate": [
+					{ "angle": -0.05, "curve": 0.355, "c2": 0.65, "c3": 0.69 },
+					{ "time": 0.0667, "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.9, "angle": -1.94, "curve": 0.246, "c3": 0.718, "c4": 0.86 },
+					{ "time": 1.6667, "angle": -0.05 }
+				]
+			}
+		}
+	},
+	"show": {
+		"bones": {
+			"flower_3/图层 13": {
+				"rotate": [
+					{ "time": 1 }
+				]
+			},
+			"flower_3/图层 6": {
+				"rotate": [
+					{ "angle": -37.62, "curve": 0.25, "c3": 0.75 },
+					{ "time": 1 }
+				]
+			},
+			"flower_3/图层 10": {
+				"rotate": [
+					{ "angle": 47.03, "curve": 0.25, "c3": 0.75 },
+					{ "time": 1, "angle": 0.39 }
+				]
+			},
+			"flower_3/图层 8": {
+				"rotate": [
+					{ "angle": -42.74, "curve": 0.25, "c3": 0.75 },
+					{ "time": 1 }
+				]
+			},
+			"flower_3/图层 5": {
+				"rotate": [
+					{ "angle": -31.23, "curve": 0.25, "c3": 0.75 },
+					{ "time": 1, "angle": -0.27 }
+				]
+			},
+			"flower_3/图层 4": {
+				"rotate": [
+					{ "time": 1, "angle": -0.05 }
+				],
+				"scale": [
+					{ "x": 0.396, "y": 0.436, "curve": 0, "c2": 0.56, "c3": 0.75 },
+					{ "time": 1 }
+				]
+			},
+			"flower_3/图层 7": {
+				"rotate": [
+					{ "angle": -44.85, "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.9667 }
+				]
+			}
+		}
+	}
+}
+}

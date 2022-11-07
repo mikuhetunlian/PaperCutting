@@ -1,0 +1,103 @@
+{
+"skeleton": {
+	"hash": "ipB2x3lQZs6MX5+wAR1OYXK4q1I",
+	"spine": "3.8",
+	"x": -358,
+	"y": -180.5,
+	"width": 1653,
+	"height": 593,
+	"images": "../../../PSD/images/开头场景/支撑木/",
+	"audio": ""
+},
+"bones": [
+	{ "name": "root" },
+	{ "name": "支撑木", "parent": "root", "length": 153.91, "rotation": 49.48, "x": 785, "y": 241.5 },
+	{ "name": "支撑木_碎片2", "parent": "root", "length": 161.84, "rotation": 50.01, "x": 803, "y": -40.5 }
+],
+"slots": [
+	{ "name": "支撑木", "bone": "root", "attachment": "支撑木" },
+	{ "name": "支撑木_碎片1", "bone": "支撑木", "attachment": "支撑木_碎片1" },
+	{ "name": "支撑木_碎片2", "bone": "支撑木_碎片2", "attachment": "支撑木_碎片2" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"支撑木_碎片2": {
+				"支撑木_碎片2": { "x": 98.22, "y": -106.22, "rotation": -50.01, "width": 695, "height": 294 }
+			},
+			"支撑木": {
+				"支撑木": { "x": -10.5, "y": 22, "width": 695, "height": 294 }
+			},
+			"支撑木_碎片1": {
+				"支撑木_碎片1": { "x": 15, "y": 19.39, "rotation": -49.48, "width": 360, "height": 294 }
+			}
+		}
+	}
+],
+"events": {
+	"broken": {}
+},
+"animations": {
+	"broken": {
+		"slots": {
+			"支撑木_碎片2": {
+				"color": [
+					{ "time": 0.3, "color": "ffffffff", "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.6, "color": "ffffff00" }
+				]
+			},
+			"支撑木": {
+				"color": [
+					{ "color": "ffffff00" }
+				]
+			},
+			"支撑木_碎片1": {
+				"color": [
+					{ "time": 0.3, "color": "ffffffff", "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.6, "color": "ffffff00" }
+				]
+			}
+		},
+		"bones": {
+			"支撑木": {
+				"rotate": [
+					{ "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.6, "angle": -114.15 }
+				],
+				"translate": [
+					{ "x": -643.01, "y": -238.52, "curve": 0.238, "c2": 0.27, "c3": 0.75 },
+					{ "time": 0.6, "x": -238.65, "y": -856.16 }
+				]
+			},
+			"支撑木_碎片2": {
+				"rotate": [
+					{ "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.6, "angle": 108.7 }
+				],
+				"translate": [
+					{ "x": -970.78, "y": 59.21, "curve": 0.285, "c2": 0.36, "c3": 0.75 },
+					{ "time": 0.6, "x": -1139.3, "y": -521.77 }
+				]
+			}
+		},
+		"events": [
+			{ "time": 0.6, "name": "broken" }
+		]
+	},
+	"idle": {
+		"slots": {
+			"支撑木_碎片2": {
+				"color": [
+					{ "color": "ffffff00" }
+				]
+			},
+			"支撑木_碎片1": {
+				"color": [
+					{ "color": "ffffff00" }
+				]
+			}
+		}
+	}
+}
+}

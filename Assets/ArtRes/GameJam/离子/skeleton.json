@@ -1,0 +1,458 @@
+{
+"skeleton": {
+	"hash": "Y33QenJEXJTI4HHF01UZe5BKDB8",
+	"spine": "3.8",
+	"x": -109.82,
+	"y": -77.01,
+	"width": 234.62,
+	"height": 153.77,
+	"images": "../图片导出/特效/离子/",
+	"audio": ""
+},
+"bones": [
+	{ "name": "root", "x": 18.08, "y": -20.79 },
+	{ "name": "ca", "parent": "root", "length": 34.1, "rotation": 82.76, "x": -3.83, "y": -5.59 },
+	{ "name": "k", "parent": "root", "length": 43.85, "rotation": 93.02, "x": -20.99, "y": 22.53 },
+	{ "name": "mg", "parent": "root", "length": 62.6, "rotation": 89.59, "x": -18.73, "y": 13.26 },
+	{ "name": "n", "parent": "root", "length": 58.31, "rotation": 89.78, "x": -21.44, "y": 15.75 },
+	{ "name": "p", "parent": "root", "length": 66.45, "rotation": 89.61, "x": -9.24, "y": 21.4 },
+	{ "name": "s", "parent": "root", "length": 56.55, "rotation": 92.52, "x": -17.6, "y": 20.5 }
+],
+"slots": [
+	{ "name": "ca", "bone": "ca", "attachment": "ca" },
+	{ "name": "k", "bone": "k", "attachment": "k" },
+	{ "name": "mg", "bone": "mg", "attachment": "mg" },
+	{ "name": "n", "bone": "n", "attachment": "n" },
+	{ "name": "p", "bone": "p", "attachment": "p" },
+	{ "name": "s", "bone": "s", "attachment": "s" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"mg": {
+				"mg": { "x": 2.77, "y": -8.12, "rotation": -90.68, "width": 232, "height": 140 }
+			},
+			"ca": {
+				"ca": { "x": 31.94, "y": 3.22, "rotation": -82.76, "width": 111, "height": 103 }
+			},
+			"k": {
+				"k": { "x": -0.04, "y": -19.76, "rotation": -106.83, "width": 81, "height": 117 }
+			},
+			"n": {
+				"n": { "x": 19.63, "y": 7.76, "rotation": -89.78, "width": 82, "height": 104 }
+			},
+			"p": {
+				"p": { "x": 7.77, "y": -12.6, "rotation": -89.61, "width": 39, "height": 129 }
+			},
+			"s": {
+				"s": { "x": 13.06, "y": -11.66, "rotation": -92.52, "width": 58, "height": 127 }
+			}
+		}
+	}
+],
+"events": {
+	"Destory": {}
+},
+"animations": {
+	"CaShow": {
+		"slots": {
+			"p": {
+				"color": [
+					{ "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "name": "p" }
+				]
+			},
+			"k": {
+				"color": [
+					{ "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "name": "k" }
+				]
+			},
+			"ca": {
+				"color": [
+					{ "color": "ffffff00" },
+					{ "time": 0.3667, "color": "ffffffff", "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.6333, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "name": "ca" }
+				]
+			},
+			"s": {
+				"color": [
+					{ "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "name": "s" }
+				]
+			},
+			"n": {
+				"color": [
+					{ "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "name": "n" }
+				]
+			},
+			"mg": {
+				"color": [
+					{ "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "name": "mg" }
+				]
+			}
+		},
+		"bones": {
+			"ca": {
+				"scale": [
+					{ "x": 0.2, "y": 0.2, "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.4333 }
+				]
+			}
+		},
+		"events": [
+			{ "time": 0.6333, "name": "Destory" }
+		]
+	},
+	"KShow": {
+		"slots": {
+			"p": {
+				"color": [
+					{ "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "name": "p" }
+				]
+			},
+			"k": {
+				"color": [
+					{ "color": "ffffffff", "curve": "stepped" },
+					{ "time": 0.4667, "color": "ffffffff", "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.8333, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "name": "k" }
+				]
+			},
+			"ca": {
+				"color": [
+					{ "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "name": "ca" }
+				]
+			},
+			"s": {
+				"color": [
+					{ "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "name": "s" }
+				]
+			},
+			"n": {
+				"color": [
+					{ "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "name": "n" }
+				]
+			},
+			"mg": {
+				"color": [
+					{ "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "name": "mg" }
+				]
+			}
+		},
+		"bones": {
+			"ca": {
+				"rotate": [
+					{ "angle": -0.95 }
+				],
+				"scale": [
+					{ "x": 0.2, "y": 0.2 },
+					{ "time": 0.6333 }
+				]
+			},
+			"k": {
+				"scale": [
+					{ "x": 0.2, "y": 0.2, "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.6333 }
+				]
+			}
+		},
+		"events": [
+			{ "time": 0.8333, "name": "Destory" }
+		]
+	},
+	"MgShow": {
+		"slots": {
+			"p": {
+				"color": [
+					{ "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "name": "p" }
+				]
+			},
+			"k": {
+				"color": [
+					{ "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "name": "k" }
+				]
+			},
+			"ca": {
+				"color": [
+					{ "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "name": "ca" }
+				]
+			},
+			"s": {
+				"color": [
+					{ "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "name": "s" }
+				]
+			},
+			"n": {
+				"color": [
+					{ "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "name": "n" }
+				]
+			},
+			"mg": {
+				"color": [
+					{ "color": "ffffffff", "curve": "stepped" },
+					{ "time": 0.4, "color": "ffffffff", "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.8333, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "name": "mg" }
+				]
+			}
+		},
+		"bones": {
+			"mg": {
+				"scale": [
+					{ "x": 0.2, "y": 0.2, "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.5 }
+				]
+			}
+		},
+		"events": [
+			{ "time": 0.8333, "name": "Destory" }
+		]
+	},
+	"NShow": {
+		"slots": {
+			"p": {
+				"color": [
+					{ "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "name": "p" }
+				]
+			},
+			"k": {
+				"color": [
+					{ "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "name": "k" }
+				]
+			},
+			"ca": {
+				"color": [
+					{ "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "name": "ca" }
+				]
+			},
+			"s": {
+				"color": [
+					{ "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "name": "s" }
+				]
+			},
+			"n": {
+				"color": [
+					{ "color": "ffffffff", "curve": "stepped" },
+					{ "time": 0.3667, "color": "ffffffff", "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.8667, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "name": "n" }
+				]
+			},
+			"mg": {
+				"color": [
+					{ "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "name": "mg" }
+				]
+			}
+		},
+		"bones": {
+			"n": {
+				"scale": [
+					{ "x": 0.2, "y": 0.2, "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.5 }
+				]
+			}
+		},
+		"events": [
+			{ "time": 0.8667, "name": "Destory" }
+		]
+	},
+	"PShow": {
+		"slots": {
+			"p": {
+				"color": [
+					{ "color": "ffffffff", "curve": "stepped" },
+					{ "time": 0.6667, "color": "ffffffff", "curve": 0.25, "c3": 0.75 },
+					{ "time": 1, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "name": "p" }
+				]
+			},
+			"k": {
+				"color": [
+					{ "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "name": "k" }
+				]
+			},
+			"ca": {
+				"color": [
+					{ "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "name": "ca" }
+				]
+			},
+			"s": {
+				"color": [
+					{ "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "name": "s" }
+				]
+			},
+			"n": {
+				"color": [
+					{ "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "name": "n" }
+				]
+			},
+			"mg": {
+				"color": [
+					{ "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "name": "mg" }
+				]
+			}
+		},
+		"bones": {
+			"p": {
+				"scale": [
+					{ "x": 0.2, "y": 0.2 },
+					{ "time": 0.8333 }
+				]
+			}
+		},
+		"events": [
+			{ "time": 1, "name": "Destory" }
+		]
+	},
+	"SShow": {
+		"slots": {
+			"p": {
+				"color": [
+					{ "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "name": "p" }
+				]
+			},
+			"k": {
+				"color": [
+					{ "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "name": "k" }
+				]
+			},
+			"ca": {
+				"color": [
+					{ "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "name": "ca" }
+				]
+			},
+			"s": {
+				"color": [
+					{ "color": "ffffffff", "curve": "stepped" },
+					{ "time": 0.5667, "color": "ffffffff", "curve": 0.25, "c3": 0.75 },
+					{ "time": 1, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "name": "s" }
+				]
+			},
+			"n": {
+				"color": [
+					{ "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "name": "n" }
+				]
+			},
+			"mg": {
+				"color": [
+					{ "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "name": "mg" }
+				]
+			}
+		},
+		"bones": {
+			"s": {
+				"scale": [
+					{ "x": 0.2, "y": 0.2, "curve": 0.25, "c3": 0.75 },
+					{ "time": 0.8 }
+				]
+			}
+		},
+		"events": [
+			{ "time": 1, "name": "Destory" }
+		]
+	}
+}
+}

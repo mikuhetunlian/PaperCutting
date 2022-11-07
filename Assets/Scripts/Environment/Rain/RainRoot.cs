@@ -12,6 +12,8 @@ public class RainRoot : MonoBehaviour
     ///射线检测的条数
     public int RayNum = 30;
     public List<PaperBridgeHandle> _paperBrigdeList = new List<PaperBridgeHandle>();
+
+
     protected BoxCollider2D _collider;
     protected Vector2 leftTopPos;
     protected Vector2 rightTopPos;
@@ -43,7 +45,7 @@ public class RainRoot : MonoBehaviour
         EventMgr.GetInstance().AddLinstener<Collider2D>("RainDeathCallback", RainDeathCallback);
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (!isStopRainDetect)
         {
@@ -78,6 +80,7 @@ public class RainRoot : MonoBehaviour
             }
         }
 
+        //如果检测到player 且 还没有流血
         if (isDetectPlayer && !isCreateRainBlood)
         {
             StopAllCoroutines();
@@ -93,22 +96,39 @@ public class RainRoot : MonoBehaviour
     /// <returns></returns>
     protected IEnumerator CreateRainBlood(Collider2D collider)
     {
+        Debug.Log("创造血");
         isCreateRainBlood = true;
+        float Ft = 0;
+        float Lt = 0;
         while (isDetectPlayer)
         {
+            Debug.Log(Time.time - Lt);
             if (collider == null)
             {
                 isCreateRainBlood = false;
                 yield break;
+
             }
 
-            GameObject rainBlood = ResMgr.GetInstance().LoadRes<GameObject>(BloodRainPath + Random.Range(0, 4).ToString());
+            Debug.Log("创造血中");
+            string path = BloodRainPath + Random.Range(0, 4).ToString();
+
+            //同步加载
+            GameObject rainBlood =  ResMgr.GetInstance().LoadRes<GameObject>(path);
             rainBlood.transform.position = collider.transform.position;
-            yield return new WaitForSeconds(0.35f);
+            Lt = Time.time;
+
+            yield return new WaitForSeconds(0.15f);
         }
+        Debug.Log("没在创造血");
         isCreateRainBlood = false;
     }
 
+    /// <summary>
+    /// 在雨中的计时
+    /// </summary>
+    /// <param name="collider"></param>
+    /// <returns></returns>
     protected IEnumerator Timer(Collider2D collider)
     {
 
@@ -123,6 +143,7 @@ public class RainRoot : MonoBehaviour
             t += Time.fixedDeltaTime;
             yield return new WaitForFixedUpdate();
         }
+
         Health health = collider.GetComponent<Health>();
         health.Damage(health.MaximumHealth, Health.DeathStyle.DeathwithoutFlower,()=>
         {

@@ -190,7 +190,7 @@ public class Player : MonoBehaviour
     public void RespawnAt(Transform spawnPoint, FacingDirections facingDirections)
     {
         transform.position = spawnPoint.position;
-        ResetVelosity();
+        Debug.Log("重生设置了位置");
         SetFace(facingDirections);
     }
 
@@ -230,13 +230,7 @@ public class Player : MonoBehaviour
 
 
 
-    /// <summary>
-    /// 重置 player 的 velosity
-    /// </summary>
-    public void ResetVelosity()
-    {
-        _rbody.velocity = Vector2.zero;
-    }
+  
 
     /// <summary>
     /// 变透明

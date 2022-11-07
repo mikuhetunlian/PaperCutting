@@ -11,6 +11,7 @@ public class PlayerControllerState
     public bool isCollidingBelow { get; set; }
     ///是否靠近到能够操控物体的程度
     public bool isDetectControlableObject { get; set; }
+
     ///有没有碰到什么
     public bool HasCollision 
     {
@@ -48,7 +49,10 @@ public class PlayerControllerState
     public bool JustGotGround { get; set; }
     ///有没有缩放碰撞器大小来适应小空间
     public bool ColliderResized { get; set; }
-
+    ///是否在右边操控物体
+    public bool IsControlingRight { get; set; }
+    ///是否在左边操控物体
+    public bool IsControlingLeft { get; set; }
 
     /// <summary>
     /// reset all collsion states to false

@@ -5,6 +5,13 @@ using Cinemachine;
 
 public class CameraTriggerBase : MonoBehaviour
 {
+    ///其他场景变暗的遮罩图片
+    public  SpriteRenderer[] BeDrakScenceMasks;
+    ///自己场景变透明的的遮罩图片
+    public  SpriteRenderer[] BeTranspaencyScenceMasks;
+    ///进入trigger激活到的列表
+    public List<GameObject> ActiveListWhenIn;
+    public bool IsCameraOutsideBlack;
     protected string _VCameraName;
     protected CinemachineVirtualCamera _VCamera;
     protected float _inBlendTime = 2;
@@ -35,8 +42,24 @@ public class CameraTriggerBase : MonoBehaviour
 
     protected virtual void DoWhenTriggerEnter(Collider2D collision)
     {
+        if (_VCamera == null)
+        {
+            Debug.Log(""); ;
+        }
         _VCamera.enabled = true;
         CameraMgr.GetInstance().SetDefaultBlednTime(_inBlendTime);
+        if (IsCameraOutsideBlack)
+        {
+            StopAllCoroutines();
+            StartCoroutine(TransparentizeScene());
+            StartCoroutine(DarkScene());
+        }
+
+        //激活进入trriger后需要激活的东西
+        foreach (GameObject obj in ActiveListWhenIn)
+        {
+            obj.SetActive(true);
+        }
     }
 
 
@@ -59,7 +82,60 @@ public class CameraTriggerBase : MonoBehaviour
     }
 
 
-   
+    protected IEnumerator TransparentizeScene()
+    {
+        float t = 0;
+        while (t <= _inBlendTime)
+        {
+            for (int i = 0; i < BeTranspaencyScenceMasks.Length; i++)
+            {
+                SpriteRenderer s = BeTranspaencyScenceMasks[i];
+                if (s.color.a == 0)
+                {
+                    continue;
+                }
+                float a = Mathf.Lerp(1, 0, t / _inBlendTime);
+                s.color = new Color(s.color.r, s.color.g, s.color.b, a);
+            }
+            t += Time.fixedDeltaTime;
+            yield return new WaitForFixedUpdate();
+        }
+
+        for (int i = 0; i < BeDrakScenceMasks.Length; i++)
+        {
+            SpriteRenderer s = BeDrakScenceMasks[i];
+            s.color = new Color(s.color.r, s.color.g, s.color.b, 0);
+        }
+    }
+
+    protected IEnumerator DarkScene()
+    {
+        float t = 0;
+        while (t <= _inBlendTime)
+        {
+            for(int i = 0; i < BeDrakScenceMasks.Length; i++)
+            {
+                SpriteRenderer s = BeDrakScenceMasks[i];
+                if (s.color.a == 1)
+                {
+                    continue;
+                }
+                float a = Mathf.Lerp(0, 1, t / _inBlendTime);
+                s.color = new Color(s.color.r, s.color.g, s.color.b, a);
+            }
+
+            t += Time.fixedDeltaTime;
+            yield return new WaitForFixedUpdate();
+        }
+
+
+        for (int i = 0; i < BeDrakScenceMasks.Length; i++)
+        {
+            SpriteRenderer s = BeDrakScenceMasks[i];
+            s.color = new Color(s.color.r, s.color.g, s.color.b, 1);
+        }
+    }
+
 
 
 
